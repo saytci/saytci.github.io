@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DEMO · Xonça Patisserie &amp; Chocolate — Bakı</title>
+  <meta name="description" content="Desertlər, peçenyələr, çörək, kruasan və sendviçlər — qiymətlərlə. İki filial: Malakan bağı və Sahil. Sifariş WhatsApp ilə.">
+  <!-- Демо для показа владельцу: не индексировать -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1E1A17">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Xonça Patisserie &amp; Chocolate — Bakı">
+  <meta property="og:description" content="Menyu və qiymətlər, sifariş WhatsApp ilə. Malakan bağı və Sahil.">
+  <meta property="og:locale" content="az_AZ">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E1A17'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-size='36' fill='%23D8B57E'%3EX%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF6EF;
+      --paper: #FFFDF9;
+      --cream2: #F1E8DA;
+      --ink: #1E1A17;
+      --dim: #6E6257;
+      --line: rgba(30, 26, 23, .12);
+      --gold: #8A6230;
+      --gold-hover: #6F4E25;
+      --gold-light: #D8B57E;
+      --dark: #1E1A17;
+      --on-dark: #F4ECDF;
+      --on-dark-dim: #BFB2A2;
+      --wa: #157F43;
+      --radius: 22px;
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg); color: var(--ink);
+      font-size: 17px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; }
+    img { max-width: 100%; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    :focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; border-radius: 8px; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    .ribbon { background: #000; color: var(--on-dark); font-size: 13.5px; line-height: 1.4; text-align: center; padding: 8px 16px; }
+    .ribbon a { color: var(--gold-light); font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .ribbon a:hover { text-decoration: underline; }
+    .ribbon__tag { display: inline-block; background: var(--gold-light); color: var(--ink); font-size: 11px; letter-spacing: .12em; padding: 2px 8px; border-radius: 999px; margin-right: 6px; vertical-align: 1px; }
+
+    /* Окно «это демо» */
+    .demo-dialog { border: 0; border-radius: var(--radius); padding: 0; width: min(480px, calc(100% - 32px)); background: var(--paper); color: var(--ink); box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .6); }
+    .demo-dialog::backdrop { background: rgba(20, 16, 13, .6); }
+    .demo-dialog__in { padding: 28px; }
+    .demo-dialog h3 { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.1; margin-bottom: 8px; }
+    .demo-dialog p { color: var(--dim); font-size: 15.5px; }
+    .demo-dialog pre { white-space: pre-wrap; font: inherit; font-size: 14.5px; background: #E7F5EC; border-radius: 14px; padding: 14px 16px; margin: 16px 0 0; max-height: 40vh; overflow: auto; }
+    .demo-dialog pre:empty { display: none; }
+    .demo-dialog .btn { width: 100%; margin-top: 18px; height: 50px; }
+
+    /* Шапка */
+    .header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(30, 26, 23, .92);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      color: var(--on-dark);
+      border-bottom: 1px solid rgba(216, 181, 126, .18);
+    }
+    .header__in { display: flex; align-items: center; gap: 24px; height: 72px; }
+    .logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+    .logo b { font-family: var(--serif); font-weight: 600; font-size: 30px; letter-spacing: .14em; color: var(--gold-light); }
+    .logo span { font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase; color: var(--on-dark-dim); margin-top: 4px; }
+    .nav { display: flex; gap: 26px; margin-left: auto; }
+    .nav a { text-decoration: none; font-size: 15px; font-weight: 500; color: var(--on-dark-dim); }
+    .nav a:hover { color: var(--on-dark); }
+    .langs { display: flex; border: 1px solid rgba(216, 181, 126, .3); border-radius: 999px; padding: 3px; }
+    .langs button {
+      border: 0; background: none; cursor: pointer;
+      color: var(--on-dark-dim); font-size: 12.5px; font-weight: 600; letter-spacing: .06em;
+      min-width: 38px; height: 30px; padding: 0 9px; border-radius: 999px;
+    }
+    .langs button:hover { color: var(--on-dark); }
+    .langs button[aria-pressed="true"] { background: var(--gold-light); color: var(--ink); }
+    .wa-icon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 42px; height: 42px; border-radius: 50%; background: var(--wa); color: #fff; }
+    .wa-icon svg { width: 20px; height: 20px; }
+
+    /* Кнопки */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      height: 54px; padding: 0 28px; border-radius: 999px; border: 0; cursor: pointer;
+      font-weight: 600; font-size: 16px; text-decoration: none; white-space: nowrap;
+      transition: background-color .15s, color .15s, transform .15s;
+    }
+    .btn svg { width: 20px; height: 20px; flex: none; }
+    .btn:active { transform: scale(.97); }
+    .btn--gold { background: var(--gold-light); color: var(--ink); }
+    .btn--gold:hover { background: #E6C796; }
+    .btn--line { border: 1.5px solid rgba(216, 181, 126, .6); color: var(--on-dark); }
+    .btn--line:hover { background: rgba(216, 181, 126, .12); }
+    .btn--dark { background: var(--ink); color: var(--on-dark); }
+    .btn--dark:hover { background: #000; }
+    .btn--wa { background: var(--wa); color: #fff; }
+    .btn--wa:hover { background: #106636; }
+
+    /* Первый экран */
+    .hero { background: var(--dark); color: var(--on-dark); padding: 56px 0 80px; position: relative; overflow: hidden; }
+    .hero::after {
+      content: ""; position: absolute; right: -10%; bottom: -60%; width: 70%; aspect-ratio: 1;
+      background: radial-gradient(closest-side, rgba(216, 181, 126, .16), transparent);
+      pointer-events: none;
+    }
+    .hero__in { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+    .eyebrow { font-size: 12.5px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+    .hero .eyebrow { color: var(--gold-light); }
+    h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(46px, 6.4vw, 84px); line-height: 1.02; letter-spacing: -.01em; margin: 18px 0 22px; }
+    h1 em { font-style: italic; color: var(--gold-light); }
+    .hero__sub { font-size: 18.5px; color: var(--on-dark-dim); max-width: 540px; }
+    .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 34px 0 36px; }
+    .facts { list-style: none; display: flex; flex-wrap: wrap; gap: 30px; }
+    .facts b { display: block; font-family: var(--serif); font-size: 34px; font-weight: 600; color: var(--gold-light); line-height: 1.1; }
+    .facts span { font-size: 14px; color: var(--on-dark-dim); }
+    .arch {
+      position: relative; max-width: 400px; margin: 0 auto; aspect-ratio: 4 / 5;
+      border-radius: 999px 999px 24px 24px; overflow: hidden;
+      border: 1.5px solid rgba(216, 181, 126, .55); padding: 10px;
+    }
+    .arch img { width: 100%; height: 100%; object-fit: cover; border-radius: 999px 999px 16px 16px; }
+    .arch__tag {
+      position: absolute; left: 50%; bottom: 26px; transform: translateX(-50%);
+      background: rgba(30, 26, 23, .86); color: var(--on-dark); border: 1px solid rgba(216, 181, 126, .5);
+      border-radius: 999px; padding: 8px 18px; font-size: 14px; white-space: nowrap;
+    }
+    .arch__tag b { color: var(--gold-light); font-weight: 600; }
+
+    /* Секции */
+    section[id] { scroll-margin-top: 128px; }
+    .section { padding: 88px 0; }
+    .section__head { max-width: 680px; margin-bottom: 36px; }
+    h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 4.8vw, 58px); line-height: 1.05; margin: 12px 0 14px; }
+    .section__lead { color: var(--dim); font-size: 18px; }
+
+    /* Избранное с фото */
+    .picks { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .pick { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+    .pick__img { aspect-ratio: 1; overflow: hidden; background: var(--cream2); }
+    .pick__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .pick:hover .pick__img img { transform: scale(1.04); }
+    .pick__body { padding: 16px 16px 18px; display: flex; flex-direction: column; flex: 1; }
+    .pick h3 { font-family: var(--serif); font-weight: 600; font-size: 23px; line-height: 1.1; }
+    .pick details { margin: 6px 0 14px; font-size: 13.5px; color: var(--dim); flex: 1; }
+    .pick summary { cursor: pointer; color: var(--gold); font-weight: 600; list-style: none; }
+    .pick summary::-webkit-details-marker { display: none; }
+    .pick summary::after { content: " +"; }
+    .pick details[open] summary::after { content: " −"; }
+    .pick details p { margin-top: 6px; line-height: 1.5; }
+    .pick__row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .price { font-weight: 700; white-space: nowrap; }
+
+    /* Меню */
+    .menu { margin-top: 56px; }
+    .menu__bar { display: flex; gap: 14px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 18px; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tabs button {
+      border: 1px solid var(--line); background: var(--paper); cursor: pointer;
+      height: 42px; padding: 0 16px; border-radius: 999px; font-size: 15px; font-weight: 500; color: var(--dim);
+    }
+    .tabs button:hover { color: var(--ink); border-color: rgba(138, 98, 48, .4); }
+    .tabs button[aria-selected="true"] { background: var(--ink); color: var(--on-dark); border-color: var(--ink); }
+    .search { position: relative; flex: 0 1 300px; }
+    .search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--dim); pointer-events: none; }
+    .search input { width: 100%; height: 44px; border: 1px solid rgba(30, 26, 23, .2); border-radius: 999px; padding: 0 16px 0 40px; background: #fff; font-size: 15.5px; }
+    .search input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(216, 181, 126, .35); }
+    .list { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 24px; columns: 2; column-gap: 48px; }
+    .item { break-inside: avoid; display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px dashed rgba(30, 26, 23, .12); }
+    .item__name { flex: 1; min-width: 0; }
+    .item__name small { display: block; font-size: 12.5px; color: var(--dim); }
+    .item .price { font-size: 15.5px; }
+    .item .price span { font-weight: 400; color: var(--dim); font-size: 13px; }
+    .empty { padding: 28px 0; color: var(--dim); text-align: center; column-span: all; }
+    .menu__note { margin-top: 14px; font-size: 14px; color: var(--dim); }
+
+    /* Кнопка «+» и счётчик */
+    .qty { display: inline-flex; align-items: center; gap: 2px; flex: none; }
+    .qty button {
+      width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--gold-light);
+      background: #fff; color: var(--gold); cursor: pointer; font-size: 18px; line-height: 1; font-weight: 600;
+      display: grid; place-items: center;
+    }
+    .qty button:hover { background: var(--gold-light); color: var(--ink); }
+    .qty output { min-width: 42px; text-align: center; font-weight: 700; font-size: 14.5px; }
+    .add { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--gold-light); background: #fff; color: var(--gold); cursor: pointer; font-size: 20px; line-height: 1; display: grid; place-items: center; flex: none; }
+    .add:hover { background: var(--gold-light); color: var(--ink); }
+
+    /* Плашка корзины */
+    .cartbar {
+      position: fixed; left: 50%; bottom: 16px; transform: translate(-50%, 140%); z-index: 30;
+      width: min(560px, calc(100% - 24px));
+      background: var(--ink); color: var(--on-dark); border: 1px solid rgba(216, 181, 126, .4);
+      border-radius: 999px; padding: 8px 8px 8px 22px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      box-shadow: 0 18px 40px -16px rgba(0, 0, 0, .5);
+      transition: transform .3s ease;
+    }
+    .cartbar.is-on { transform: translate(-50%, 0); }
+    .cartbar b { color: var(--gold-light); }
+    .cartbar .btn { height: 44px; padding: 0 20px; font-size: 15px; }
+
+    /* Заказ */
+    .order { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: start; }
+    .steps { list-style: none; display: grid; gap: 20px; margin-top: 28px; counter-reset: s; }
+    .steps li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; counter-increment: s; }
+    .steps li::before {
+      content: counter(s); width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid var(--gold-light); color: var(--gold);
+      display: grid; place-items: center; font-family: var(--serif); font-size: 22px; font-weight: 600;
+    }
+    .steps b { display: block; font-weight: 600; }
+    .steps span { color: var(--dim); font-size: 15.5px; }
+    .tip { margin-top: 26px; padding: 18px 20px; border-radius: 16px; background: var(--cream2); font-size: 15px; }
+    .tip b { font-weight: 600; }
+    .form { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; }
+    .summary { border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 18px; background: #fff; }
+    .summary h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .summary ul { list-style: none; display: grid; gap: 6px; font-size: 15px; }
+    .summary li { display: flex; justify-content: space-between; gap: 10px; }
+    .summary li button { border: 0; background: none; color: var(--dim); cursor: pointer; font-size: 13px; text-decoration: underline; padding: 0 0 0 8px; }
+    .summary__total { display: flex; justify-content: space-between; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); font-weight: 700; }
+    .summary__empty { color: var(--dim); font-size: 14.5px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: grid; gap: 7px; margin-bottom: 16px; }
+    .field label { font-size: 14px; font-weight: 600; }
+    .field label small { font-weight: 400; color: var(--dim); }
+    .field input, .field select, .field textarea {
+      width: 100%; min-height: 50px; padding: 12px 14px;
+      border: 1px solid rgba(30, 26, 23, .2); border-radius: 12px; background: #fff; font-size: 16px;
+    }
+    .field select {
+      -webkit-appearance: none; appearance: none; padding-right: 40px; height: 50px;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238A6230' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center / 18px;
+      text-overflow: ellipsis;
+    }
+    .field input[type="date"] { -webkit-appearance: none; appearance: none; height: 50px; }
+    .field textarea { min-height: 90px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(216, 181, 126, .35); }
+    .field [aria-invalid="true"] { border-color: #B3261E; }
+    .err { color: #B3261E; font-size: 13.5px; }
+    .form .btn { width: 100%; margin-top: 6px; }
+    .form__note { font-size: 13.5px; color: var(--dim); margin-top: 12px; text-align: center; }
+
+    /* Филиалы */
+    .branches { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .branch { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+    .branch iframe { display: block; width: 100%; height: 260px; border: 0; background: var(--cream2); }
+    .branch__body { padding: 24px 26px 26px; }
+    .branch h3 { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.1; }
+    .branch p { color: var(--dim); margin: 6px 0 18px; }
+    .branch .btn { height: 46px; padding: 0 18px; font-size: 15px; }
+    .phones { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin-top: 28px; font-size: 18px; font-weight: 600; }
+    .phones a { text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .phones a:hover { color: var(--gold); }
+    .phones svg { width: 18px; height: 18px; color: var(--gold); }
+
+    .social { background: var(--dark); color: var(--on-dark); border-radius: 32px; margin: 0 12px; padding: 60px 0; }
+    .social__in { display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
+    .social h2 { margin: 8px 0 6px; }
+    .social .eyebrow { color: var(--gold-light); }
+    .social p { color: var(--on-dark-dim); }
+    .social__btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .footer { padding: 34px 0 96px; color: var(--dim); font-size: 14.5px; }
+    .footer__in { display: flex; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 24px; }
+    .footer a { color: var(--gold); font-weight: 600; text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .js .reveal.is-in { opacity: 1; transform: none; }
+
+    @media (max-width: 1060px) {
+      .picks { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 230px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; margin: 0 -24px; padding-left: 24px; padding-right: 24px; scroll-padding: 0 24px; }
+      .pick { scroll-snap-align: start; }
+    }
+    @media (max-width: 880px) {
+      .nav { display: none; }
+      .langs { margin-left: auto; }
+      .hero { padding: 32px 0 60px; }
+      .hero__in, .order, .branches { grid-template-columns: 1fr; }
+      .hero__in { gap: 28px; }
+      .hero__art { order: -1; }
+      .arch { max-width: 260px; }
+      .list { columns: 1; }
+      .section { padding: 64px 0; }
+      .search { flex: 1 1 100%; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .wrap { padding: 0 16px; }
+      .picks { margin: 0 -16px; padding-left: 16px; padding-right: 16px; scroll-padding: 0 16px; grid-auto-columns: 72%; }
+      .header__in { gap: 10px; height: 64px; }
+      .logo b { font-size: 24px; }
+      .logo span { font-size: 9px; letter-spacing: .2em; }
+      .langs button { min-width: 33px; padding: 0 6px; font-size: 11.5px; }
+      .wa-icon { width: 38px; height: 38px; }
+      .hero__sub { font-size: 17px; }
+      .hero__cta .btn { flex: 1 1 auto; }
+      .facts { gap: 20px; }
+      .facts b { font-size: 28px; }
+      .tabs { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 0 16px 4px; }
+      .tabs button { flex: none; }
+      .list { padding: 4px 16px; }
+      .form { padding: 20px; }
+      .grid2 { grid-template-columns: 1fr; gap: 0; }
+      .social { margin: 0 8px; border-radius: 24px; padding: 44px 0; }
+      .social__btns, .social__btns .btn { width: 100%; }
+      .cartbar { padding-left: 16px; font-size: 14.5px; }
+      .cartbar .btn { padding: 0 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-chat" viewBox="0 0 24 24">
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-1.8-1-1 .8a3.6 3.6 0 0 1-2.2-2.2l.8-1-1-1.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 11 21 3l-8 18-2-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9v6l5-3z" fill="currentColor"/></symbol>
+  </svg>
+
+  <header class="header">
+    <div class="ribbon">
+      <b class="ribbon__tag">DEMO</b>
+      <span data-i18n="ribbon.text">Bu, nümunə saytdır: sifariş qəbul olunmur. Xonça üçün pulsuz hazırlanıb.</span>
+      <a href="https://saytci.github.io/" target="_blank" rel="noopener">saytçı →</a>
+    </div>
+    <div class="wrap header__in">
+      <a class="logo" href="#top" aria-label="Xonça Patisserie &amp; Chocolate">
+        <b>XONÇA</b>
+        <span>Patisserie &amp; Chocolate</span>
+      </a>
+      <nav class="nav" aria-label="Menyu" data-i18n-attr="aria-label:nav.aria">
+        <a href="#menu" data-i18n="nav.menu">Menyu</a>
+        <a href="#order" data-i18n="nav.order">Sifariş</a>
+        <a href="#branches" data-i18n="nav.branches">Filiallar</a>
+      </nav>
+      <div class="langs" role="group" aria-label="Dil" data-i18n-attr="aria-label:lang.label">
+        <button type="button" data-lang="az" aria-pressed="true">AZ</button>
+        <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="wa-icon js-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp" data-i18n-attr="aria-label:wa.aria">
+        <svg aria-hidden="true"><use href="#i-chat"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero__in">
+        <div>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Patisserie &amp; Chocolate · Bakı</p>
+          <h1 data-i18n-html="hero.title">Bayramınız <em>Xonça</em>dan başlasın</h1>
+          <p class="hero__sub" data-i18n="hero.sub">Desertlər, peçenyələr, təzə çörək, kruasan və sendviçlər. Bütün menyu və qiymətlər bir yerdə — sifarişi WhatsApp-a bir kliklə göndərin.</p>
+          <div class="hero__cta">
+            <a class="btn btn--gold" href="#menu" data-i18n="hero.cta">Menyuya bax</a>
+            <a class="btn btn--line" href="#order" data-i18n="hero.order">Sifariş et</a>
+          </div>
+          <ul class="facts">
+            <li><b>2015</b><span data-i18n="fact.since">ildən bəri</span></li>
+            <li><b>56 500+</b><span data-i18n="fact.ig">Instagram-da izləyici</span></li>
+            <li><b>2</b><span data-i18n="fact.branches">filial Bakının mərkəzində</span></li>
+          </ul>
+        </div>
+        <div class="hero__art">
+          <div class="arch">
+            <img src="img/oreo.jpg" width="469" height="480" alt="Oreo cheesecake — Xonça" data-i18n-attr="alt:hero.imgAlt">
+            <span class="arch__tag">Oreo cheesecake · <b class="js-oreo-price">8,00 ₼</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Меню -->
+    <section class="section" id="menu">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <p class="eyebrow" data-i18n="picks.eyebrow">Seçilmişlər</p>
+          <h2 data-i18n="picks.title">Ən çox sevilənlər</h2>
+          <p class="section__lead" data-i18n="picks.lead">Tərkibi açıq — nə yediyinizi bilin.</p>
+        </div>
+        <div class="picks" id="picks"></div>
+
+        <div class="menu" id="fullmenu">
+          <div class="section__head reveal" style="margin-bottom:22px">
+            <p class="eyebrow" data-i18n="menu.eyebrow">Tam menyu</p>
+            <h2 data-i18n="menu.title">Menyu və qiymətlər</h2>
+          </div>
+          <div class="menu__bar">
+            <div class="tabs" role="tablist" aria-label="Bölmələr" data-i18n-attr="aria-label:menu.tabsLabel" id="tabs"></div>
+            <label class="search">
+              <span class="sr-only" data-i18n="menu.search">Axtarış</span>
+              <svg aria-hidden="true"><use href="#i-search"/></svg>
+              <input type="search" id="q" placeholder="Məs.: eclair, baget" data-i18n-attr="placeholder:menu.searchPh" autocomplete="off">
+            </label>
+          </div>
+          <div class="list" id="list" role="tabpanel" aria-live="polite"></div>
+          <p class="menu__note" data-i18n="menu.note">Qiymətlər manatla. Peçenyələrin çoxu kiloqramla satılır.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Заказ -->
+    <section class="section" id="order" style="padding-top:24px">
+      <div class="wrap order">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="ord.eyebrow">Onlayn sifariş</p>
+          <h2 data-i18n="ord.title">Sifarişi bir dəqiqəyə verin</h2>
+          <p class="section__lead" data-i18n="ord.lead">Menyudan seçin, tarixi və filialı göstərin — hazır mesaj WhatsApp-da açılacaq.</p>
+          <ol class="steps">
+            <li><div><b data-i18n="st1.t">Seçin</b><span data-i18n="st1.d">Menyuda «+» düyməsini basın.</span></div></li>
+            <li><div><b data-i18n="st2.t">Tarix və filial</b><span data-i18n="st2.d">Nə vaxt və haradan götürəcəksiniz.</span></div></li>
+            <li><div><b data-i18n="st3.t">Göndərin</b><span data-i18n="st3.d">Sifariş WhatsApp-da təsdiqlənir.</span></div></li>
+          </ol>
+          <p class="tip" data-i18n-html="ord.tip"><b>Bütöv tort lazımdır?</b> Qeyddə yazın: hansı tort, neçə nəfər üçün və üzərindəki yazı. Ölçü və qiyməti WhatsApp-da dəqiqləşdirəcəyik.</p>
+        </div>
+
+        <form class="form reveal" id="orderForm" novalidate>
+          <div class="summary" id="summary"></div>
+          <div class="grid2">
+            <div class="field">
+              <label for="fDate" data-i18n="f.date">Hansı günə?</label>
+              <input id="fDate" name="date" type="date" required aria-describedby="eDate">
+              <span class="err" id="eDate" role="alert"></span>
+            </div>
+            <div class="field">
+              <label for="fBranch" data-i18n="f.branch">Filial</label>
+              <select id="fBranch" name="branch">
+                <option value="malakan" data-i18n="b1.short">Malakan bağı — Rəsul Rza 11B</option>
+                <option value="sahil" data-i18n="b2.short">Sahil — Səməd Vurğun 24D</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="fNote"><span data-i18n="f.note">Qeyd</span> <small data-i18n="f.optional">(istəyə görə)</small></label>
+            <textarea id="fNote" name="note" maxlength="500" placeholder="Məs.: bütöv tort 8 nəfərlik, üzərində «Ad günün mübarək, Aysel!»" data-i18n-attr="placeholder:f.notePh" aria-describedby="eNote"></textarea>
+            <span class="err" id="eNote" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="fName" data-i18n="f.name">Adınız</label>
+            <input id="fName" name="name" type="text" autocomplete="name" required aria-describedby="eName">
+            <span class="err" id="eName" role="alert"></span>
+          </div>
+          <button class="btn btn--wa" type="submit">
+            <svg aria-hidden="true"><use href="#i-chat"/></svg>
+            <span data-i18n="f.submit">WhatsApp ilə göndər</span>
+          </button>
+          <p class="form__note" data-i18n="f.hint">Heç nə avtomatik göndərilmir: mesajı WhatsApp-da özünüz təsdiqləyirsiniz.</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Филиалы -->
+    <section class="section" id="branches" style="padding-top:24px">
+      <div class="wrap">
+        <div class="section__head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+          <p class="eyebrow" data-i18n="br.eyebrow">Filiallar</p>
+          <h2 data-i18n="br.title">Bizə gəlin</h2>
+        </div>
+        <div class="branches">
+          <article class="branch reveal">
+            <iframe class="js-map" src="https://maps.google.com/maps?q=Xon%C3%A7a%20Patisserie%2C%20R%C9%99sul%20Rza%2011B%2C%20Bak%C4%B1&amp;z=16&amp;hl=az&amp;output=embed" title="Xəritə: Malakan bağı" data-i18n-attr="title:b1.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="branch__body">
+              <h3 data-i18n="b1.name">Malakan bağı</h3>
+              <p data-i18n="b1.addr">Səbail rayonu, Rəsul Rza küçəsi 11B</p>
+              <a class="btn btn--dark" href="https://www.google.com/maps/search/?api=1&amp;query=Xon%C3%A7a%20Patisserie%20R%C9%99sul%20Rza%2011B%20Bak%C4%B1" target="_blank" rel="noopener">
+                <svg aria-hidden="true"><use href="#i-route"/></svg><span data-i18n="b.route">Yol tarifi</span>
+              </a>
+            </div>
+          </article>
+          <article class="branch reveal">
+            <iframe class="js-map" src="https://maps.google.com/maps?q=Xon%C3%A7a%20Patisserie%2C%20S%C9%99m%C9%99d%20Vur%C4%9Fun%2024D%2C%20Bak%C4%B1&amp;z=16&amp;hl=az&amp;output=embed" title="Xəritə: Sahil" data-i18n-attr="title:b2.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="branch__body">
+              <h3 data-i18n="b2.name">Sahil</h3>
+              <p data-i18n="b2.addr">Səbail rayonu, Səməd Vurğun küçəsi 24D</p>
+              <a class="btn btn--dark" href="https://www.google.com/maps/search/?api=1&amp;query=Xon%C3%A7a%20Patisserie%20S%C9%99m%C9%99d%20Vur%C4%9Fun%2024D%20Bak%C4%B1" target="_blank" rel="noopener">
+                <svg aria-hidden="true"><use href="#i-route"/></svg><span data-i18n="b.route">Yol tarifi</span>
+              </a>
+            </div>
+          </article>
+        </div>
+        <div class="phones reveal">
+          <a><svg aria-hidden="true"><use href="#i-phone"/></svg>+994 99 209 85 01</a>
+          <a><svg aria-hidden="true"><use href="#i-phone"/></svg>+994 99 209 85 02</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="social">
+      <div class="wrap social__in">
+        <div>
+          <p class="eyebrow" data-i18n="soc.eyebrow">Bizi izləyin</p>
+          <h2 data-i18n="soc.title">Mətbəximizdən birbaşa</h2>
+          <p data-i18n="soc.text">Yeni desertlər, istehsalın pərdəarxası və müştərilərimizin bayramları.</p>
+        </div>
+        <div class="social__btns">
+          <a class="btn btn--gold" href="https://www.instagram.com/xonca.patisserie/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ig"/></svg>Instagram</a>
+          <a class="btn btn--line" href="https://www.youtube.com/@xoncapatisserie" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-yt"/></svg>YouTube</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <span>© 2026 Xonça Patisserie &amp; Chocolate · <span data-i18n="footer.since">2015-dən bəri</span></span>
+      <span><span data-i18n="footer.demo">Nümunə sayt. Hazırladı:</span> <a href="https://saytci.github.io/" target="_blank" rel="noopener">saytçı</a></span>
+    </div>
+  </footer>
+
+  <dialog class="demo-dialog" id="demoDialog" aria-labelledby="demoTitle">
+    <div class="demo-dialog__in">
+      <h3 id="demoTitle" data-i18n="demo.title">Bu, demo-saytdır</h3>
+      <p id="demoText" data-i18n="demo.text">Heç nə göndərilmədi. Real saytda bu düymə sifarişi Xonça-nın WhatsApp-ına göndərəcək.</p>
+      <pre id="demoMsg"></pre>
+      <button type="button" class="btn btn--dark" id="demoClose" data-i18n="demo.close">Bağla</button>
+    </div>
+  </dialog>
+
+  <div class="cartbar" id="cartbar" aria-live="polite">
+    <span id="cartText"></span>
+    <a class="btn btn--gold" href="#order" data-i18n="cart.go">Sifarişə keç</a>
+  </div>
+
+  <script>
+    const CONFIG = {
+      whatsapp: "994992098501",  // номер для заказов: только цифры
+      demo: true                 // true — ничего не отправляется, только показывается окно «это демо»
+    };
+
+    // Демо-режим: заказы и WhatsApp не работают, номера не кликаются
+    function showDemo(message) {
+      document.getElementById("demoMsg").textContent = message || "";
+      const dlg = document.getElementById("demoDialog");
+      if (typeof dlg.showModal === "function") dlg.showModal();
+      else alert(document.getElementById("demoTitle").textContent + "\n\n" + document.getElementById("demoText").textContent);
+    }
+    if (CONFIG.demo) {
+      document.addEventListener("click", e => {
+        const wa = e.target.closest(".js-wa");
+        if (wa) { e.preventDefault(); showDemo(""); }
+      });
+      document.querySelectorAll('a[href^="tel:"]').forEach(a => a.removeAttribute("href"));
+      document.getElementById("demoClose").addEventListener("click", () => document.getElementById("demoDialog").close());
+    }
+
+    // Меню из хайлайтов Instagram (Menu), цены в манатах. u: "kg" — за кг, "pc" — за штуку
+    const CATS = [
+      { id: "d", key: "cat.desserts" },
+      { id: "c", key: "cat.cookies" },
+      { id: "s", key: "cat.sandwich" },
+      { id: "p", key: "cat.buns" },
+      { id: "b", key: "cat.bread" }
+    ];
+    const MENU = [
+      ["d","Vanilla raspberry eclair",6],["d","Eclair chocolate",6],["d","Opera classic",7],["d","Two chocolate",8],
+      ["d","Honey hazelnut",7],["d","Çia puding",8],["d","Kadayıf profiterol",7],["d","Dessert Tiramisu Cup Strawberry",7],
+      ["d","Dessert Tiramisu Cup",7],["d","Dessert Lotus Cup",5],["d","Dessert San Sebastian",6],["d","Snickers",6],
+      ["d","Esterhazy",7],["d","Sharlotta strawberry",9],["d","Chocolatine",6],["d","Black forest",8],
+      ["d","Mixed berry cheesecake",9],["d","Cocobean mango tart",7],["d","Cocobean raspberry tart",7],["d","Tartlet strawberry",7],
+      ["d","Oreo cheesecake",8],["d","Sunny cake",9],["d","Marengue",9],["d","Tiramisu",10],["d","Eclair amaretto",6],["d","Eclair coffee",6],
+
+      ["c","Sable vanilla",27,"kg"],["c","Sable chocolate",27,"kg"],["c","Winners cookie",27,"kg"],["c","Lunette apricot",25,"kg"],
+      ["c","Apricot cookie",30,"kg"],["c","Mutaki qozlu",25,"kg"],["c","Şamaxı mutaki",25,"kg"],["c","Naxçıvan kökəsi",3,"pc"],
+      ["c","Şəkərbura",3,"pc"],["c","Madeline",26,"kg"],["c","Chocolate madeline",30,"kg"],["c","Paxlava",45,"kg"],
+      ["c","Coconut cookie",23,"kg"],["c","Acı badem",30,"kg"],["c","Dark chocolate cookie",32,"kg"],["c","Milk chocolate cookie",32,"kg"],
+      ["c","White chocolate cookie",32,"kg"],
+
+      ["s","Golden salmon kruasan",12],["s","Golden hindi kruasan",9],["s","Golden hindi burger",9],["s","Italiano garden kruasan",10],
+      ["s","Italiano garden ciabatta",10],["s","Mini buckfeta",8],["s","Black fit salmon",12],["s","Black salmon deluxe",12],
+      ["s","Ciabatta file deluxe",8],["s","Golden grain chicken",9],["s","Deli salami kruasan",12],["s","Fresh balance",12],
+      ["s","Tropical balance",13],["s","Super grain",12],
+
+      ["p","Coconut bun",9],["p","Raisin bun",9],["p","Walnut bun",9],["p","Xaçapuri pendirli",4],
+      ["p","Qatqat üçbucaq ətli",1.8],["p","Qatqat kartoflu",1.5],["p","Qatqat hinduşkalı",1.8],["p","Şor qoğal",3],
+      ["p","Kəsmikli piroq",7],["p","Kəsmikli kökə",6],["p","Xaşxaşlı rulet",7],["p","Qozlu rulet",9],
+
+      ["b","Baltik çörəyi",3.5],["b","Acıtmalı kartoflu çörək",2.5],["b","Acıtmalı ballı qara çörək",4],["b","Acıtmalı çovdar çörəyi",3],
+      ["b","Acıtmalı qarışıq taxıllı çörək",3],["b","Acıtmalı qozlu, gavalılı çörək",3.5],["b","Acıtmalı günəbaxan tumlu çörək",4],
+      ["b","Acıtmalı ağ çörək",2.5],["b","Acıtmalı qarğıdalı çörəyi",3.5],["b","Ağ baget",4],["b","Qarışıq taxıllı baget",4],
+      ["b","Çia toxumlu baget",4],["b","Qarabaşaqlı baget",4]
+    ].map(([cat, name, price, unit], i) => ({ id: "m" + i, cat, name, price, unit: unit || "pc" }));
+    const byName = n => MENU.find(m => m.name === n);
+
+    // Избранное: фото и состав из сторис «Tortlar» и «Sendviç&bowl»
+    const PICKS = [
+      { name: "Oreo cheesecake", img: "img/oreo.jpg", w: 469, h: 480,
+        mix: "Krem pendir, ağ şokolad, şəkər pudrası, çiyələk, peçenye (oreo), yumurta, portağal, qaymaq, qlazur, limon, kərə yağı, xama, qaragilə, fizalis." },
+      { name: "Sunny cake", img: "img/sunny.jpg", w: 469, h: 500,
+        mix: "Şəkər tozu, yumurta, süd, qaymaq, badam ləpəsi, qoz ləpəsi, çiyələk, qlazur, su, qara şokolad, dilimlənmiş ananas, konservləşdirilmiş armud, moruq, jelatin, fizalis, qaragilə, qara qarağat." },
+      { name: "Italiano garden ciabatta", img: "img/ciabatta.jpg", w: 793, h: 679,
+        mix: "Çiabatta, mozarella pendiri, pomidor, krem pendir, roka, balzamik və pesto sousu, kahı, duz, istiot." },
+      { name: "Italiano garden kruasan", img: "img/croissant.jpg", w: 793, h: 568,
+        mix: "Kərə yağlı kruasan, mozarella, pomidor, krem pendir, roka, balzamik sous, pesto sousu, kahı, duz, qara istiot." },
+      { name: "Mini buckfeta", img: "img/buckfeta.jpg", w: 793, h: 630,
+        mix: "Kiçik qarabaşaqlı baget, feta pendiri, pomidor, xiyar, krem pendir, kahı, roka." }
+    ];
+
+    const LANGS = ["az", "ru", "en"];
+    const OG_LOCALES = { az: "az_AZ", ru: "ru_RU", en: "en_US" };
+    const I18N = {
+      "meta.title": { az: "Xonça Patisserie & Chocolate — Bakı", ru: "Xonça Patisserie & Chocolate — Баку", en: "Xonça Patisserie & Chocolate — Baku" },
+      "meta.desc": {
+        az: "Desertlər, peçenyələr, çörək, kruasan və sendviçlər — qiymətlərlə. İki filial: Malakan bağı və Sahil. Sifariş WhatsApp ilə.",
+        ru: "Десерты, печенье, хлеб, круассаны и сэндвичи — с ценами. Два филиала: Малаканский сад и Сахиль. Заказ через WhatsApp.",
+        en: "Desserts, cookies, bread, croissants and sandwiches — with prices. Two shops: Malakan Garden and Sahil. Order via WhatsApp."
+      },
+      "ribbon.text": {
+        az: "Bu, nümunə saytdır: sifariş qəbul olunmur. Xonça üçün pulsuz hazırlanıb.",
+        ru: "Это демо-сайт: заказы через него не принимаются. Бесплатно подготовлен для Xonça.",
+        en: "This is a demo website: it does not take orders. Made for Xonça for free."
+      },
+      "demo.title": { az: "Bu, demo-saytdır", ru: "Это демо-сайт", en: "This is a demo" },
+      "demo.text": {
+        az: "Heç nə göndərilmədi. Real saytda bu düymə sifarişi Xonça-nın WhatsApp-ına belə bir mesajla göndərəcək:",
+        ru: "Ничего не отправлено. На настоящем сайте эта кнопка отправит заказ в WhatsApp Xonça вот таким сообщением:",
+        en: "Nothing was sent. On the real site this button would send the order to Xonça's WhatsApp as a message like this:"
+      },
+      "demo.close": { az: "Bağla", ru: "Закрыть", en: "Close" },
+      "nav.aria": { az: "Menyu", ru: "Навигация", en: "Navigation" },
+      "nav.menu": { az: "Menyu", ru: "Меню", en: "Menu" },
+      "nav.order": { az: "Sifariş", ru: "Заказ", en: "Order" },
+      "nav.branches": { az: "Filiallar", ru: "Филиалы", en: "Shops" },
+      "lang.label": { az: "Dil", ru: "Язык", en: "Language" },
+      "wa.aria": { az: "WhatsApp-da yazın", ru: "Написать в WhatsApp", en: "Message us on WhatsApp" },
+      "wa.hello": { az: "Salam! Saytınızdan yazıram.", ru: "Здравствуйте! Пишу с вашего сайта.", en: "Hi! I'm writing from your website." },
+
+      "hero.eyebrow": { az: "Patisserie & Chocolate · Bakı", ru: "Patisserie & Chocolate · Баку", en: "Patisserie & Chocolate · Baku" },
+      "hero.title": { az: "Bayramınız <em>Xonça</em>dan başlasın", ru: "Праздник начинается <em>с Xonça</em>", en: "Every celebration starts <em>at Xonça</em>" },
+      "hero.sub": {
+        az: "Desertlər, peçenyələr, təzə çörək, kruasan və sendviçlər. Bütün menyu və qiymətlər bir yerdə — sifarişi WhatsApp-a bir kliklə göndərin.",
+        ru: "Десерты, печенье, свежий хлеб, круассаны и сэндвичи. Всё меню и цены в одном месте — заказ уходит в WhatsApp в один клик.",
+        en: "Desserts, cookies, fresh bread, croissants and sandwiches. The whole menu with prices in one place — send your order to WhatsApp in one tap."
+      },
+      "hero.cta": { az: "Menyuya bax", ru: "Смотреть меню", en: "See the menu" },
+      "hero.order": { az: "Sifariş et", ru: "Заказать", en: "Order" },
+      "hero.imgAlt": { az: "Oreo cheesecake — Xonça", ru: "Oreo cheesecake — Xonça", en: "Oreo cheesecake at Xonça" },
+      "fact.since": { az: "ildən bəri", ru: "год основания", en: "founded" },
+      "fact.ig": { az: "Instagram-da izləyici", ru: "подписчиков в Instagram", en: "Instagram followers" },
+      "fact.branches": { az: "filial Bakının mərkəzində", ru: "филиала в центре Баку", en: "shops in central Baku" },
+
+      "picks.eyebrow": { az: "Seçilmişlər", ru: "Избранное", en: "Favourites" },
+      "picks.title": { az: "Ən çox sevilənlər", ru: "Самое любимое", en: "Most loved" },
+      "picks.lead": { az: "Tərkibi açıq — nə yediyinizi bilin.", ru: "Состав открыт — вы знаете, что едите.", en: "Ingredients listed — know what you eat." },
+      "picks.mix": { az: "Tərkibi", ru: "Состав", en: "Ingredients" },
+
+      "menu.eyebrow": { az: "Tam menyu", ru: "Всё меню", en: "Full menu" },
+      "menu.title": { az: "Menyu və qiymətlər", ru: "Меню и цены", en: "Menu and prices" },
+      "menu.tabsLabel": { az: "Bölmələr", ru: "Разделы", en: "Sections" },
+      "menu.search": { az: "Axtarış", ru: "Поиск", en: "Search" },
+      "menu.searchPh": { az: "Məs.: eclair, baget", ru: "Например: eclair, багет", en: "E.g. eclair, baguette" },
+      "menu.note": { az: "Qiymətlər manatla. Peçenyələrin çoxu kiloqramla satılır.", ru: "Цены в манатах. Большая часть печенья продаётся на вес.", en: "Prices in manat. Most cookies are sold by weight." },
+      "menu.empty": { az: "Heç nə tapılmadı", ru: "Ничего не найдено", en: "Nothing found" },
+      "cat.desserts": { az: "Desertlər", ru: "Десерты", en: "Desserts" },
+      "cat.cookies": { az: "Peçenyələr", ru: "Печенье", en: "Cookies" },
+      "cat.sandwich": { az: "Sendviç və kruasan", ru: "Сэндвичи и круассаны", en: "Sandwiches & croissants" },
+      "cat.buns": { az: "Bulka və qat-qat", ru: "Булки и слойки", en: "Buns & pastries" },
+      "cat.bread": { az: "Çörəklər", ru: "Хлеб", en: "Bread" },
+      "u.kg": { az: "kq", ru: "кг", en: "kg" },
+      "u.pc": { az: "əd.", ru: "шт.", en: "pcs" },
+      "add": { az: "Səbətə əlavə et", ru: "Добавить в корзину", en: "Add to basket" },
+      "less": { az: "Azalt", ru: "Меньше", en: "Less" },
+      "more": { az: "Artır", ru: "Больше", en: "More" },
+      "cart.items": { az: "Səbətdə: {n} məhsul · <b>{sum}</b>", ru: "В корзине: {n} · <b>{sum}</b>", en: "Basket: {n} items · <b>{sum}</b>" },
+      "cart.go": { az: "Sifarişə keç", ru: "К заказу", en: "Checkout" },
+
+      "ord.eyebrow": { az: "Onlayn sifariş", ru: "Онлайн-заказ", en: "Online order" },
+      "ord.title": { az: "Sifarişi bir dəqiqəyə verin", ru: "Закажите за минуту", en: "Order in a minute" },
+      "ord.lead": {
+        az: "Menyudan seçin, tarixi və filialı göstərin — hazır mesaj WhatsApp-da açılacaq.",
+        ru: "Выберите в меню, укажите дату и филиал — готовое сообщение откроется в WhatsApp.",
+        en: "Pick from the menu, choose a date and a shop — a ready message opens in WhatsApp."
+      },
+      "st1.t": { az: "Seçin", ru: "Выберите", en: "Choose" },
+      "st1.d": { az: "Menyuda «+» düyməsini basın.", ru: "Нажмите «+» в меню.", en: "Tap “+” in the menu." },
+      "st2.t": { az: "Tarix və filial", ru: "Дата и филиал", en: "Date and shop" },
+      "st2.d": { az: "Nə vaxt və haradan götürəcəksiniz.", ru: "Когда и где заберёте.", en: "When and where you'll pick up." },
+      "st3.t": { az: "Göndərin", ru: "Отправьте", en: "Send" },
+      "st3.d": { az: "Sifariş WhatsApp-da təsdiqlənir.", ru: "Заказ подтверждается в WhatsApp.", en: "The order is confirmed on WhatsApp." },
+      "ord.tip": {
+        az: "<b>Bütöv tort lazımdır?</b> Qeyddə yazın: hansı tort, neçə nəfər üçün və üzərindəki yazı. Ölçü və qiyməti WhatsApp-da dəqiqləşdirəcəyik.",
+        ru: "<b>Нужен целый торт?</b> Напишите в пожеланиях: какой торт, на сколько человек и надпись. Размер и цену уточним в WhatsApp.",
+        en: "<b>Need a whole cake?</b> Write in the notes: which cake, for how many people and the message on top. We'll confirm size and price on WhatsApp."
+      },
+      "sum.title": { az: "Sifarişiniz", ru: "Ваш заказ", en: "Your order" },
+      "sum.total": { az: "Cəmi", ru: "Итого", en: "Total" },
+      "sum.remove": { az: "sil", ru: "убрать", en: "remove" },
+      "sum.empty": { az: "Səbət boşdur — menyudan seçin və ya istəyinizi qeyddə yazın.", ru: "Корзина пуста — выберите в меню или напишите в пожеланиях.", en: "Your basket is empty — pick from the menu or write in the notes." },
+      "f.date": { az: "Hansı günə?", ru: "На какой день?", en: "For which day?" },
+      "f.branch": { az: "Filial", ru: "Филиал", en: "Shop" },
+      "f.note": { az: "Qeyd", ru: "Пожелания", en: "Notes" },
+      "f.notePh": { az: "Məs.: bütöv tort 8 nəfərlik, üzərində «Ad günün mübarək, Aysel!»", ru: "Например: целый торт на 8 человек, надпись «С днём рождения, Айсель!»", en: "E.g. a whole cake for 8, with “Happy birthday, Aysel!”" },
+      "f.optional": { az: "(istəyə görə)", ru: "(необязательно)", en: "(optional)" },
+      "f.name": { az: "Adınız", ru: "Ваше имя", en: "Your name" },
+      "f.submit": { az: "WhatsApp ilə göndər", ru: "Отправить в WhatsApp", en: "Send via WhatsApp" },
+      "f.hint": { az: "Demo: sifariş göndərilmir — yalnız mesajın necə görünəcəyini göstəririk.", ru: "Демо: заказ не отправляется — мы только показываем, как будет выглядеть сообщение.", en: "Demo: no order is sent — we only show what the message would look like." },
+      "e.name": { az: "Adınızı yazın", ru: "Напишите ваше имя", en: "Please enter your name" },
+      "e.date": { az: "Bu gün və ya sonrakı tarixi seçin", ru: "Выберите сегодня или более позднюю дату", en: "Pick today or a later date" },
+      "e.empty": { az: "Menyudan seçin və ya qeyddə nə istədiyinizi yazın", ru: "Выберите в меню или напишите, что хотите", en: "Pick from the menu or describe your order" },
+      "msg.head": { az: "Salam! Sifariş vermək istəyirəm (saytdan):", ru: "Здравствуйте! Хочу сделать заказ (с сайта):", en: "Hi! I'd like to place an order (from the website):" },
+      "msg.total": { az: "Cəmi", ru: "Итого", en: "Total" },
+      "msg.date": { az: "Tarix", ru: "Дата", en: "Date" },
+      "msg.branch": { az: "Filial", ru: "Филиал", en: "Shop" },
+      "msg.note": { az: "Qeyd", ru: "Пожелания", en: "Notes" },
+      "msg.name": { az: "Ad", ru: "Имя", en: "Name" },
+
+      "br.eyebrow": { az: "Filiallar", ru: "Филиалы", en: "Our shops" },
+      "br.title": { az: "Bizə gəlin", ru: "Приходите к нам", en: "Come visit" },
+      "b1.name": { az: "Malakan bağı", ru: "Малаканский сад", en: "Malakan Garden" },
+      "b1.addr": { az: "Səbail rayonu, Rəsul Rza küçəsi 11B", ru: "Сабаильский район, ул. Расула Рзы, 11B", en: "11B Rasul Rza St, Sabail, Baku" },
+      "b1.short": { az: "Malakan bağı — Rəsul Rza 11B", ru: "Малаканский сад — Расула Рзы, 11B", en: "Malakan Garden — 11B Rasul Rza" },
+      "b1.map": { az: "Xəritə: Malakan bağı filialı", ru: "Карта: филиал у Малаканского сада", en: "Map: Malakan Garden shop" },
+      "b2.name": { az: "Sahil", ru: "Сахиль", en: "Sahil" },
+      "b2.addr": { az: "Səbail rayonu, Səməd Vurğun küçəsi 24D", ru: "Сабаильский район, ул. Самеда Вургуна, 24D", en: "24D Samad Vurgun St, Sabail, Baku" },
+      "b2.short": { az: "Sahil — Səməd Vurğun 24D", ru: "Сахиль — Самеда Вургуна, 24D", en: "Sahil — 24D Samad Vurgun" },
+      "b2.map": { az: "Xəritə: Sahil filialı", ru: "Карта: филиал в Сахиле", en: "Map: Sahil shop" },
+      "b.route": { az: "Yol tarifi", ru: "Как добраться", en: "Directions" },
+
+      "soc.eyebrow": { az: "Bizi izləyin", ru: "Следите за нами", en: "Follow us" },
+      "soc.title": { az: "Mətbəximizdən birbaşa", ru: "Прямо с нашей кухни", en: "Straight from our kitchen" },
+      "soc.text": { az: "Yeni desertlər, istehsalın pərdəarxası və müştərilərimizin bayramları.", ru: "Новые десерты, закулисье производства и праздники наших гостей.", en: "New desserts, behind the scenes and our guests' celebrations." },
+      "footer.since": { az: "2015-dən bəri", ru: "с 2015 года", en: "since 2015" },
+      "footer.demo": { az: "Nümunə sayt. Hazırladı:", ru: "Демо-сайт. Сделано:", en: "Demo website by" }
+    };
+
+    let lang = "az";
+    let tab = "d";
+    const cart = new Map();   // id -> количество
+    const rerender = [];
+
+    function t(key, vars) {
+      const e = I18N[key];
+      let s = e ? (e[lang] ?? e.az) : key;
+      if (vars) s = s.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+      return s;
+    }
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const money = n => (lang === "en" ? "₼" + n.toFixed(2) : n.toFixed(2).replace(".", ",") + " ₼");
+    const stepOf = m => (m.unit === "kg" ? 0.5 : 1);
+    const qtyText = (m, q) => (m.unit === "kg" ? String(q).replace(".", lang === "en" ? "." : ",") + " " + t("u.kg") : q + " " + t("u.pc"));
+
+    function qtyControl(m) {
+      const q = cart.get(m.id) || 0;
+      if (!q) return `<button type="button" class="add" data-add="${m.id}" aria-label="${esc(t("add"))}: ${esc(m.name)}">+</button>`;
+      return `<span class="qty"><button type="button" data-dec="${m.id}" aria-label="${esc(t("less"))}: ${esc(m.name)}">−</button><output>${esc(qtyText(m, q))}</output><button type="button" data-add="${m.id}" aria-label="${esc(t("more"))}: ${esc(m.name)}">+</button></span>`;
+    }
+
+    // Избранное
+    function renderPicks() {
+      document.getElementById("picks").innerHTML = PICKS.map(p => {
+        const m = byName(p.name);
+        return `<article class="pick reveal is-in">
+          <div class="pick__img"><img src="${p.img}" width="${p.w}" height="${p.h}" alt="${esc(p.name)}" loading="lazy"></div>
+          <div class="pick__body">
+            <h3>${esc(p.name === "Italiano garden kruasan" ? "Italiano garden croissant" : p.name)}</h3>
+            <details><summary>${esc(t("picks.mix"))}</summary><p lang="az">${esc(p.mix)}</p></details>
+            <div class="pick__row"><span class="price">${money(m.price)}</span>${qtyControl(m)}</div>
+          </div>
+        </article>`;
+      }).join("");
+      const oreo = byName("Oreo cheesecake");
+      document.querySelector(".js-oreo-price").textContent = money(oreo.price);
+    }
+    rerender.push(renderPicks);
+
+    // Вкладки и список
+    function renderTabs() {
+      const q = document.getElementById("q").value.trim();
+      document.getElementById("tabs").innerHTML = CATS.map(c =>
+        `<button type="button" role="tab" data-tab="${c.id}" aria-selected="${!q && c.id === tab}">${esc(t(c.key))}</button>`).join("");
+    }
+    function norm(s) {
+      return s.toLocaleLowerCase("az").normalize("NFD").replace(/[̀-ͯ]/g, "")
+        .replace(/ə/g, "e").replace(/ı/g, "i").replace(/ş/g, "s").replace(/ç/g, "c").replace(/ğ/g, "g").replace(/ö/g, "o").replace(/ü/g, "u");
+    }
+    function renderList() {
+      const q = norm(document.getElementById("q").value.trim());
+      const items = q ? MENU.filter(m => norm(m.name).includes(q)) : MENU.filter(m => m.cat === tab);
+      const catName = id => t(CATS.find(c => c.id === id).key);
+      document.getElementById("list").innerHTML = items.length ? items.map(m => `
+        <div class="item">
+          <div class="item__name">${esc(m.name)}${q ? `<small>${esc(catName(m.cat))}</small>` : ""}</div>
+          <span class="price">${money(m.price)}${m.unit === "kg" ? ` <span>/ ${esc(t("u.kg"))}</span>` : ""}</span>
+          ${qtyControl(m)}
+        </div>`).join("") : `<p class="empty">${esc(t("menu.empty"))}</p>`;
+    }
+    rerender.push(renderTabs, renderList);
+
+    document.getElementById("tabs").addEventListener("click", e => {
+      const b = e.target.closest("[data-tab]");
+      if (!b) return;
+      tab = b.dataset.tab;
+      document.getElementById("q").value = "";
+      renderTabs(); renderList();
+    });
+    document.getElementById("q").addEventListener("input", () => { renderTabs(); renderList(); });
+
+    // Корзина
+    function cartTotal() {
+      let sum = 0, n = 0;
+      cart.forEach((q, id) => { const m = MENU.find(x => x.id === id); sum += m.price * q; n += 1; });
+      return { sum, n };
+    }
+    function renderCart() {
+      const { sum, n } = cartTotal();
+      const bar = document.getElementById("cartbar");
+      bar.classList.toggle("is-on", n > 0);
+      document.getElementById("cartText").innerHTML = t("cart.items", { n, sum: money(sum) });
+      const box = document.getElementById("summary");
+      if (!n) { box.innerHTML = `<p class="summary__empty">${esc(t("sum.empty"))}</p>`; return; }
+      box.innerHTML = `<h3>${esc(t("sum.title"))}</h3><ul>${[...cart].map(([id, q]) => {
+        const m = MENU.find(x => x.id === id);
+        return `<li><span>${esc(m.name)} × ${esc(qtyText(m, q))}</span><span>${money(m.price * q)}<button type="button" data-del="${id}">${esc(t("sum.remove"))}</button></span></li>`;
+      }).join("")}</ul><div class="summary__total"><span>${esc(t("sum.total"))}</span><span>${money(sum)}</span></div>`;
+    }
+    rerender.push(renderCart);
+
+    function changeQty(id, dir) {
+      const m = MENU.find(x => x.id === id);
+      const step = stepOf(m);
+      const next = Math.max(0, Math.round(((cart.get(id) || 0) + dir * step) * 10) / 10);
+      if (next) cart.set(id, next); else cart.delete(id);
+      // Перерисовать и вернуть фокус на кнопку того же товара в том же блоке
+      const active = document.activeElement;
+      const hadFocus = active && (active.dataset.add === id || active.dataset.dec === id);
+      const where = active && active.closest("#picks") ? "#picks" : "#list";
+      renderPicks(); renderList(); renderCart();
+      if (hadFocus) {
+        const again = document.querySelector(`${where} [data-add="${id}"]`);
+        if (again) again.focus({ preventScroll: true });
+      }
+    }
+    document.addEventListener("click", e => {
+      const add = e.target.closest("[data-add]");
+      const dec = e.target.closest("[data-dec]");
+      const del = e.target.closest("[data-del]");
+      if (add) changeQty(add.dataset.add, 1);
+      else if (dec) changeQty(dec.dataset.dec, -1);
+      else if (del) { cart.delete(del.dataset.del); renderPicks(); renderList(); renderCart(); }
+    });
+
+    // Язык
+    function setLang(next, remember) {
+      lang = LANGS.includes(next) ? next : "az";
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+      document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+      document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+        el.dataset.i18nAttr.split(",").forEach(pair => {
+          const [attr, key] = pair.split(":").map(s => s.trim());
+          el.setAttribute(attr, t(key));
+        });
+      });
+      document.title = (CONFIG.demo ? "DEMO · " : "") + t("meta.title");
+      document.querySelector('meta[name="description"]').setAttribute("content", t("meta.desc"));
+      document.querySelector('meta[property="og:title"]').setAttribute("content", t("meta.title"));
+      document.querySelector('meta[property="og:locale"]').setAttribute("content", OG_LOCALES[lang]);
+      document.querySelectorAll(".langs [data-lang]").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+      const hello = CONFIG.demo ? "#" : "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(t("wa.hello"));
+      document.querySelectorAll(".js-wa").forEach(a => a.setAttribute("href", hello));
+      document.querySelectorAll(".js-map").forEach(m => {
+        const src = m.getAttribute("src").replace(/([?&]hl=)[a-z]+/, "$1" + lang);
+        if (src !== m.getAttribute("src")) m.setAttribute("src", src);
+      });
+      document.querySelectorAll(".err").forEach(e => { e.textContent = ""; });
+      rerender.forEach(fn => fn());
+      if (remember) {
+        try { localStorage.setItem("xonca-lang", lang); } catch (e) {}
+        try { const u = new URL(location.href); u.searchParams.set("lang", lang); history.replaceState(null, "", u); } catch (e) {}
+      }
+    }
+    function detectLang() {
+      try { const p = new URLSearchParams(location.search).get("lang"); if (LANGS.includes(p)) return p; } catch (e) {}
+      try { const s = localStorage.getItem("xonca-lang"); if (LANGS.includes(s)) return s; } catch (e) {}
+      for (const l of (navigator.languages || [navigator.language || ""])) {
+        const c = String(l).slice(0, 2).toLowerCase();
+        if (LANGS.includes(c)) return c;
+      }
+      return "az";
+    }
+    document.querySelectorAll(".langs [data-lang]").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang, true)));
+
+    // Форма заказа → WhatsApp
+    (function () {
+      const form = document.getElementById("orderForm");
+      const date = form.elements.date, name = form.elements.name, note = form.elements.note;
+      let today;
+      try {
+        today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Baku", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+      } catch (e) { today = new Date().toISOString().slice(0, 10); }
+      date.min = today;
+
+      const setErr = (input, msg) => {
+        input.setAttribute("aria-invalid", msg ? "true" : "false");
+        document.getElementById(input.getAttribute("aria-describedby")).textContent = msg || "";
+      };
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const { sum, n } = cartTotal();
+        let ok = true;
+        if (!n && !note.value.trim()) { setErr(note, t("e.empty")); ok = false; } else setErr(note, "");
+        if (!date.value || date.value < today) { setErr(date, t("e.date")); ok = false; } else setErr(date, "");
+        if (!name.value.trim()) { setErr(name, t("e.name")); ok = false; } else setErr(name, "");
+        if (!ok) { form.querySelector('[aria-invalid="true"]').focus(); return; }
+
+        const [y, m, d] = date.value.split("-");
+        const lines = [t("msg.head")];
+        cart.forEach((q, id) => {
+          const it = MENU.find(x => x.id === id);
+          lines.push("• " + it.name + " × " + qtyText(it, q) + " — " + money(it.price * q));
+        });
+        if (n) lines.push(t("msg.total") + ": " + money(sum));
+        lines.push("", t("msg.date") + ": " + d + "." + m + "." + y);
+        lines.push(t("msg.branch") + ": " + form.elements.branch.options[form.elements.branch.selectedIndex].textContent.trim());
+        if (note.value.trim()) lines.push(t("msg.note") + ": " + note.value.trim());
+        lines.push(t("msg.name") + ": " + name.value.trim());
+        if (CONFIG.demo) { showDemo(lines.join("\n")); return; }
+        window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(lines.join("\n")), "_blank", "noopener");
+      });
+      [name, date, note].forEach(i => i.addEventListener("input", () => setErr(i, "")));
+    })();
+
+    // Появление блоков
+    (function () {
+      const items = document.querySelectorAll(".reveal:not(.is-in)");
+      if (!("IntersectionObserver" in window)) { items.forEach(el => el.classList.add("is-in")); return; }
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      items.forEach(el => io.observe(el));
+    })();
+
+    setLang(detectLang(), false);
+  </script>
+</body>
+</html>
