@@ -1,0 +1,1131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO (тексты меняются вместе с языком — см. словарь I18N внизу) -->
+  <title>Obed — ресторан в Баку | Вкус и элегантность</title>
+  <meta name="description" content="Ресторан Obed в центре Баку: шашлык на углях, домашние супы и авторская азербайджанская кухня от лучших поваров. Бронируйте столик онлайн, ежедневно с 12:00.">
+  <meta name="theme-color" content="#0a0d0b">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:title" content="Obed — ресторан в Баку | Вкус и элегантность">
+  <meta property="og:description" content="Шашлык на углях, домашние супы и авторская кухня в центре Баку. Бронируйте столик онлайн.">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:locale:alternate" content="az_AZ">
+  <meta property="og:locale:alternate" content="en_US">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0d0b'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%233ecf8e' stroke-width='6'/%3E%3C/svg%3E">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Obed",
+    "description": "Ресторан азербайджанской и авторской кухни в центре Баку",
+    "servesCuisine": ["Азербайджанская", "Кавказская", "Мангал"],
+    "priceRange": "$$",
+    "telephone": "+994120000000",
+    "acceptsReservations": "True",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Низами, 45",
+      "addressLocality": "Баку",
+      "addressCountry": "AZ"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Sunday"], "opens": "12:00", "closes": "23:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "12:00", "closes": "01:00" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Onest и Cormorant Garamond содержат все буквы русского и азербайджанского алфавитов (включая Ə ə) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0d0b;
+      --surface: #111814;
+      --surface-2: #17201b;
+      --line: rgba(234, 240, 236, .09);
+      --line-strong: rgba(234, 240, 236, .18);
+      --text: #eaf0ec;
+      --muted: #9aa8a0;
+      --dim: #6b7a72;
+      --accent: #3ecf8e;
+      --accent-hi: #63dea6;
+      --accent-ink: #03140b;
+      --accent-soft: rgba(62, 207, 142, .10);
+      --accent-line: rgba(62, 207, 142, .38);
+      --danger: #ff7a7a;
+      --radius: 18px;
+      --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      --sans: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --header-h: 68px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
+    }
+    a { color: inherit; }
+    img, svg { display: block; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+    section { scroll-margin-top: var(--header-h); }
+
+    .wrap { width: min(1160px, 100% - 2 * clamp(16px, 4vw, 40px)); margin-inline: auto; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; flex: none; }
+
+    h1, h2 { font-family: var(--serif); font-weight: 500; letter-spacing: -.01em; }
+    h2 { font-size: clamp(40px, 6vw, 64px); line-height: 1; margin-top: 16px; }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 56px; padding: 0 30px; border-radius: 999px; border: 1px solid transparent;
+      background: var(--accent); color: var(--accent-ink);
+      font: 700 15px/1.2 var(--sans); letter-spacing: .01em; text-decoration: none; text-align: center;
+      cursor: pointer; transition: background .2s, transform .2s, border-color .2s, color .2s;
+    }
+    .btn:hover { background: var(--accent-hi); transform: translateY(-1px); }
+    .btn svg { transition: transform .2s; flex: none; }
+    .btn:hover svg { transform: translateX(3px); }
+    .btn--ghost { background: transparent; color: var(--text); border-color: var(--line-strong); }
+    .btn--ghost:hover { background: transparent; border-color: var(--accent); color: var(--accent); }
+    .btn--full { width: 100%; }
+
+    /* ---------- Header ---------- */
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(10, 13, 11, .75);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header__in { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: var(--header-h); }
+    .header__right { display: flex; align-items: center; gap: 8px; }
+    .logo { font-family: var(--serif); font-size: 32px; font-weight: 600; line-height: 1; text-decoration: none; letter-spacing: .01em; }
+    .logo span { color: var(--accent); }
+    .nav { display: flex; gap: 32px; }
+    .nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav a:hover { color: var(--text); }
+    .phone {
+      display: inline-flex; align-items: center; gap: 10px;
+      height: 42px; padding: 0 18px; border: 1px solid var(--line-strong); border-radius: 999px;
+      font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap;
+      transition: border-color .2s;
+    }
+    .phone svg { color: var(--accent); flex: none; }
+    .phone:hover { border-color: var(--accent); }
+
+    /* ---------- Language switcher ---------- */
+    .lang { position: relative; }
+    html:not(.js) .lang { display: none; }
+    .lang__btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      height: 42px; padding: 0 14px; border: 1px solid var(--line-strong); border-radius: 999px;
+      background: transparent; color: var(--text); cursor: pointer;
+      font: 600 13px/1 var(--sans); letter-spacing: .06em;
+      transition: border-color .2s;
+    }
+    .lang__btn svg { color: var(--accent); flex: none; }
+    .lang__btn:hover, .lang__btn[aria-expanded="true"] { border-color: var(--accent); }
+    .lang__menu {
+      position: absolute; right: 0; top: calc(100% + 8px); z-index: 60;
+      min-width: 210px; padding: 6px; list-style: none;
+      background: var(--surface-2); border: 1px solid var(--line-strong); border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, .45);
+    }
+    .lang__menu button {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 12px 14px; border: 0; border-radius: 10px; background: transparent; color: var(--text);
+      font: 500 15px/1.2 var(--sans); text-align: left; cursor: pointer;
+    }
+    .lang__menu button:hover { background: var(--accent-soft); }
+    .lang__menu button span { font-size: 12px; font-weight: 600; letter-spacing: .08em; color: var(--dim); }
+    .lang__menu button[aria-current="true"],
+    .lang__menu button[aria-current="true"] span { color: var(--accent); }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(600px 420px at 78% 38%, rgba(62, 207, 142, .16), transparent 70%),
+        radial-gradient(500px 360px at 0% 100%, rgba(62, 207, 142, .06), transparent 70%);
+    }
+    .hero__grid {
+      position: relative;
+      display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 48px;
+      min-height: min(calc(100svh - var(--header-h)), 820px);
+      padding: clamp(64px, 10vw, 120px) 0;
+    }
+    .hero h1 { font-size: clamp(56px, 9.5vw, 120px); line-height: .92; margin: 24px 0 28px; }
+    .hero h1 em { display: block; font-style: italic; color: var(--accent); }
+    .hero__sub { font-size: clamp(16px, 1.8vw, 19px); color: var(--muted); max-width: 500px; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+    .hero__meta {
+      display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 48px; padding-top: 28px;
+      border-top: 1px solid var(--line); font-size: 14px; color: var(--muted);
+    }
+    .hero__meta b { color: var(--text); font-weight: 600; }
+
+    .plate { width: 100%; max-width: 440px; justify-self: end; }
+    .plate text { font-family: var(--sans); }
+    .plate .mono { font-family: var(--serif); }
+    .plate__spin { transform-origin: 220px 220px; animation: spin 70s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---------- Sections ---------- */
+    .section { padding: clamp(80px, 11vw, 128px) 0; border-bottom: 1px solid var(--line); }
+    .section__head {
+      display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap;
+      gap: 20px 48px; margin-bottom: clamp(44px, 6vw, 64px);
+    }
+    .section__lead { color: var(--muted); max-width: 400px; }
+
+    /* ---------- Menu ---------- */
+    .menu { display: grid; grid-template-columns: repeat(2, 1fr); gap: 64px 80px; }
+    .menu__cat h3 {
+      display: flex; align-items: baseline; gap: 14px;
+      font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+      padding-bottom: 18px; margin-bottom: 10px; border-bottom: 1px solid var(--line-strong);
+    }
+    .menu__cat h3 span:first-child { color: var(--accent); font-family: var(--serif); font-style: italic; font-size: 20px; letter-spacing: 0; text-transform: none; }
+    .menu__cat ul { list-style: none; }
+    .dish { padding: 18px 0; border-bottom: 1px solid var(--line); }
+    .dish:last-child { border-bottom: 0; }
+    .dish__row { display: flex; align-items: baseline; gap: 12px; }
+    .dish__name { font-size: 18px; font-weight: 600; }
+    .dish__dots { flex: 1; min-width: 20px; border-bottom: 1px dotted var(--line-strong); transform: translateY(-5px); }
+    .dish__price { font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; font-size: 17px; }
+    .dish__desc { margin-top: 4px; font-size: 14px; color: var(--muted); max-width: 90%; }
+
+    .signature {
+      grid-column: 1 / -1;
+      display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px 40px;
+      padding: clamp(28px, 4vw, 44px);
+      border: 1px solid var(--accent-line); border-radius: var(--radius);
+      background: linear-gradient(120deg, var(--accent-soft), transparent 60%), var(--surface);
+    }
+    .badge {
+      display: inline-block; padding: 6px 12px; border-radius: 999px;
+      background: var(--accent); color: var(--accent-ink);
+      font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .signature h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4vw, 42px); line-height: 1.05; margin: 16px 0 10px; }
+    .signature p { color: var(--muted); max-width: 560px; }
+    .signature__price { font-family: var(--serif); font-size: clamp(48px, 6vw, 72px); line-height: 1; color: var(--accent); }
+
+    /* ---------- Chefs ---------- */
+    .chefs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .chef {
+      padding: 32px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface);
+      transition: border-color .3s, transform .3s;
+    }
+    .chef:hover { border-color: var(--accent-line); transform: translateY(-3px); }
+    .chef__avatar {
+      width: 88px; height: 88px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: radial-gradient(circle at 30% 25%, #24382c, #0e1411 70%);
+      border: 1px solid var(--accent-line);
+      font-family: var(--serif); font-style: italic; font-size: 34px; color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .chef h3 { font-family: var(--serif); font-weight: 600; font-size: 28px; line-height: 1.1; }
+    .chef__role { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-top: 8px; }
+    .chef__bio { color: var(--muted); font-size: 15px; margin-top: 16px; }
+    .chef__exp { display: flex; align-items: baseline; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+    .chef__exp b { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--text); line-height: 1; }
+
+    /* ---------- Reservation ---------- */
+    .reserve__grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 7vw, 96px); align-items: start; }
+    .reserve__intro p { color: var(--muted); margin-top: 24px; max-width: 420px; }
+    .reserve__call { display: inline-flex; flex-direction: column; gap: 4px; margin-top: 36px; text-decoration: none; }
+    .reserve__call small { color: var(--dim); font-size: 13px; }
+    .reserve__call span { font-family: var(--serif); font-size: 32px; line-height: 1.1; transition: color .2s; }
+    .reserve__call:hover span { color: var(--accent); }
+
+    .form {
+      padding: clamp(24px, 4vw, 40px);
+      border: 1px solid var(--line); border-radius: calc(var(--radius) + 4px); background: var(--surface);
+    }
+    .field { margin-bottom: 20px; }
+    .field > label, .tables legend { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 10px; letter-spacing: .02em; }
+    .field input {
+      width: 100%; height: 56px; padding: 0 18px;
+      background: var(--bg); color: var(--text);
+      border: 1px solid var(--line-strong); border-radius: 12px;
+      font: 500 16px var(--sans);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field input::placeholder { color: var(--dim); }
+    .field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    .field input[aria-invalid="true"] { border-color: var(--danger); }
+    .err { display: none; color: var(--danger); font-size: 13px; margin-top: 8px; }
+    .is-invalid .err { display: block; }
+
+    .tables { border: 0; margin-bottom: 28px; }
+    .tables__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .table-opt { position: relative; cursor: pointer; }
+    .table-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .table-opt__box {
+      display: flex; flex-direction: column; gap: 2px; height: 100%;
+      padding: 16px 16px 16px 44px; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--bg);
+      transition: border-color .2s, background .2s;
+      position: relative;
+    }
+    .table-opt__box::before {
+      content: ""; position: absolute; left: 16px; top: 19px;
+      width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--line-strong);
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .table-opt__name { font-weight: 600; font-size: 15px; line-height: 1.3; }
+    .table-opt__meta { font-size: 13px; color: var(--muted); }
+    .table-opt:hover .table-opt__box { border-color: var(--accent-line); }
+    .table-opt input:checked + .table-opt__box { border-color: var(--accent); background: var(--accent-soft); }
+    .table-opt input:checked + .table-opt__box::before { border-color: var(--accent); background: var(--accent); box-shadow: inset 0 0 0 3px var(--bg); }
+    .table-opt input:focus-visible + .table-opt__box { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .form__note { margin-top: 14px; font-size: 13px; color: var(--dim); text-align: center; }
+
+    .success { text-align: center; padding: 32px 8px; }
+    .success__icon {
+      width: 64px; height: 64px; margin: 0 auto 24px; border-radius: 50%;
+      display: grid; place-items: center; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--accent);
+    }
+    .success h3 { font-family: var(--serif); font-weight: 500; font-size: 34px; line-height: 1.1; }
+    .success p { color: var(--muted); margin: 14px auto 28px; max-width: 380px; }
+
+    /* ---------- Place ---------- */
+    .place { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 7vw, 96px); align-items: stretch; }
+    .info { margin: 40px 0; display: grid; gap: 28px; }
+    .info dt { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-bottom: 8px; }
+    .info dd { font-size: 18px; }
+    .info dd a { text-decoration: none; }
+    .info dd a:hover { color: var(--accent); }
+    .hours { list-style: none; max-width: 420px; font-size: 16px; }
+    .hours li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 6px 0; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+    .hours li span:last-child { white-space: nowrap; }
+    .hours li.is-today { color: var(--accent); }
+    .status { display: inline-flex; align-items: center; gap: 8px; margin-left: 12px; font-size: 13px; font-weight: 600; color: var(--muted); vertical-align: middle; letter-spacing: 0; text-transform: none; }
+    .status:empty { display: none; }
+    .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--dim); }
+    .status.is-open { color: var(--accent); }
+    .status.is-open::before { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+
+    .map {
+      min-height: 420px; border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--line); background: var(--surface);
+    }
+    .map iframe {
+      width: 100%; height: 100%; min-height: 420px; border: 0; display: block;
+      filter: invert(90%) hue-rotate(180deg) saturate(.6) brightness(.95) contrast(.95);
+    }
+
+    /* ---------- Footer ---------- */
+    .footer { padding: 40px 0; }
+    .footer__in { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--dim); font-size: 14px; }
+    .footer .logo { font-size: 26px; color: var(--text); }
+
+    /* ---------- Reveal ---------- */
+    .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+    .js .reveal.is-in { opacity: 1; transform: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .nav { display: none; }
+      .hero__grid { grid-template-columns: 1fr; min-height: 0; }
+      .plate { display: none; }
+      .menu { grid-template-columns: 1fr; gap: 48px; }
+      .signature { grid-template-columns: 1fr; }
+      .chefs { grid-template-columns: 1fr; }
+      .reserve__grid, .place { grid-template-columns: 1fr; }
+      .map, .map iframe { min-height: 340px; }
+    }
+    @media (min-width: 640px) and (max-width: 960px) {
+      .chefs { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      :root { --header-h: 60px; }
+      .header__in { gap: 12px; }
+      .header__right { gap: 6px; }
+      .logo { font-size: 28px; }
+      .phone { height: 40px; padding: 0 12px; font-size: 12.5px; gap: 7px; }
+      .lang__btn { height: 40px; padding: 0 11px; gap: 6px; }
+      .hero__actions .btn { width: 100%; }
+      .dish__desc { max-width: none; }
+      .chef { padding: 26px; }
+      .table-opt__box { padding: 14px 12px 14px 38px; }
+      .table-opt__box::before { left: 13px; top: 17px; }
+    }
+    @media (max-width: 350px) {
+      .phone__label { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .plate__spin { animation: none; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .btn, .chef { transition: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header">
+    <div class="wrap header__in">
+      <a class="logo" href="#top" aria-label="Obed — на главную" data-i18n-attr="aria-label:logo.aria">obed<span>.</span></a>
+      <nav class="nav" aria-label="Основная навигация" data-i18n-attr="aria-label:nav.aria">
+        <a href="#menu" data-i18n="nav.menu">Меню</a>
+        <a href="#chefs" data-i18n="nav.chefs">Повара</a>
+        <a href="#reserve" data-i18n="nav.reserve">Бронь</a>
+        <a href="#place" data-i18n="nav.contacts">Контакты</a>
+      </nav>
+      <div class="header__right">
+        <a class="phone" href="tel:+994120000000">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="phone__label">+994 12 000 00 00</span>
+        </a>
+
+        <!-- Переключатель языка -->
+        <div class="lang" id="lang">
+          <button class="lang__btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" aria-label="Язык сайта: Русский">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+            <span id="langCur">RU</span>
+          </button>
+          <ul class="lang__menu" id="langMenu" hidden>
+            <li><button type="button" data-lang="ru" lang="ru" aria-current="true">Русский <span>RU</span></button></li>
+            <li><button type="button" data-lang="az" lang="az">Azərbaycanca <span>AZ</span></button></li>
+            <li><button type="button" data-lang="en" lang="en">English <span>EN</span></button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Первый экран -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Ресторан в центре Баку</p>
+          <h1 data-i18n-html="hero.title">Вкус и <em>элегантность</em></h1>
+          <p class="hero__sub" data-i18n="hero.sub">Азербайджанская кухня в современной подаче: мясо на живом огне, лаваш из тандыра и блюда, которые хочется заказать снова.</p>
+          <div class="hero__actions">
+            <a class="btn" href="#reserve">
+              <span data-i18n="hero.cta">Зарезервировать онлайн</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="#menu" data-i18n="hero.menu">Смотреть меню</a>
+          </div>
+          <div class="hero__meta">
+            <span data-i18n-html="hero.meta1"><b>Ежедневно</b> с 12:00</span>
+            <span data-i18n-html="hero.meta2"><b>ул. Низами,</b> 45</span>
+            <span data-i18n-html="hero.meta3"><b>Мангал</b> и тандыр</span>
+          </div>
+        </div>
+
+        <svg class="plate" viewBox="0 0 440 440" aria-hidden="true">
+          <defs>
+            <radialGradient id="plateFill" cx="45%" cy="35%" r="70%">
+              <stop offset="0" stop-color="#1f2f26"/>
+              <stop offset="1" stop-color="#0c110e"/>
+            </radialGradient>
+            <path id="ring" d="M220,220 m-176,0 a176,176 0 1,1 352,0 a176,176 0 1,1 -352,0"/>
+          </defs>
+          <circle cx="220" cy="220" r="214" fill="none" stroke="rgba(234,240,236,.08)"/>
+          <g class="plate__spin">
+            <text font-size="12" font-weight="600" letter-spacing="5" fill="#3ecf8e">
+              <textPath href="#ring" textLength="1100" lengthAdjust="spacing" data-i18n="plate.ring">ВКУС И ЭЛЕГАНТНОСТЬ · БАКУ · МАНГАЛ И ТАНДЫР · АВТОРСКАЯ КУХНЯ ·</textPath>
+            </text>
+          </g>
+          <circle cx="220" cy="220" r="150" fill="url(#plateFill)" stroke="rgba(62,207,142,.4)"/>
+          <circle cx="220" cy="220" r="120" fill="none" stroke="rgba(234,240,236,.08)"/>
+          <text class="mono" x="220" y="232" text-anchor="middle" font-size="72" font-style="italic" fill="#eaf0ec">obed</text>
+          <text x="220" y="268" text-anchor="middle" font-size="11" font-weight="600" letter-spacing="6" fill="#9aa8a0" data-i18n="plate.city">BAKU</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Меню -->
+    <section class="section" id="menu">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="menu.eyebrow">Меню</p>
+            <h2 data-i18n="menu.title">Что мы готовим</h2>
+          </div>
+          <p class="section__lead" data-i18n="menu.lead">Простые продукты, честный огонь и рецепты, которые передают из поколения в поколение.</p>
+        </div>
+
+        <div class="menu">
+          <div class="menu__cat reveal">
+            <h3><span>01</span> <span data-i18n="cat.grill">Мангал</span></h3>
+            <ul>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d1.name">Шашлык</span><span class="dish__dots"></span><span class="dish__price">$30</span></div>
+                <p class="dish__desc" data-i18n="d1.desc">Баранина на углях, лук с сумахом, лаваш из тандыра</p>
+              </li>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d2.name">Люля-кебаб</span><span class="dish__dots"></span><span class="dish__price">$14</span></div>
+                <p class="dish__desc" data-i18n="d2.desc">Рубленая баранина с зеленью и специями</p>
+              </li>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d3.name">Овощи на мангале</span><span class="dish__dots"></span><span class="dish__price">$7</span></div>
+                <p class="dish__desc" data-i18n="d3.desc">Баклажан, томаты и перец с ароматным маслом</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal">
+            <h3><span>02</span> <span data-i18n="cat.soups">Супы</span></h3>
+            <ul>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d4.name">Довга</span><span class="dish__dots"></span><span class="dish__price">$5</span></div>
+                <p class="dish__desc" data-i18n="d4.desc">Кисломолочный суп с рисом и свежей зеленью</p>
+              </li>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d5.name">Пити</span><span class="dish__dots"></span><span class="dish__price">$5</span></div>
+                <p class="dish__desc" data-i18n="d5.desc">Наваристый суп с бараниной и нутом в глиняном горшочке</p>
+              </li>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d6.name">Мерджимек</span><span class="dish__dots"></span><span class="dish__price">$5</span></div>
+                <p class="dish__desc" data-i18n="d6.desc">Чечевичный крем-суп с лимоном и гренками</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal">
+            <h3><span>03</span> <span data-i18n="cat.mains">Горячее</span></h3>
+            <ul>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d7.name">Плов «Шах»</span><span class="dish__dots"></span><span class="dish__price">$22</span></div>
+                <p class="dish__desc" data-i18n="d7.desc">Шафрановый рис, каштаны и сухофрукты в хрустящем лаваше</p>
+              </li>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d8.name">Долма</span><span class="dish__dots"></span><span class="dish__price">$10</span></div>
+                <p class="dish__desc" data-i18n="d8.desc">Виноградные листья с мясом, мацони с чесноком</p>
+              </li>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d9.name">Кутабы</span><span class="dish__dots"></span><span class="dish__price">$6</span></div>
+                <p class="dish__desc" data-i18n="d9.desc">Тонкие лепёшки с зеленью, тыквой или мясом</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal">
+            <h3><span>04</span> <span data-i18n="cat.desserts">Десерты и чай</span></h3>
+            <ul>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d10.name">Пахлава</span><span class="dish__dots"></span><span class="dish__price">$6</span></div>
+                <p class="dish__desc" data-i18n="d10.desc">Бакинская, с грецким орехом и шафраном</p>
+              </li>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d11.name">Шекербура</span><span class="dish__dots"></span><span class="dish__price">$4</span></div>
+                <p class="dish__desc" data-i18n="d11.desc">Нежное тесто с ореховой начинкой</p>
+              </li>
+              <li class="dish">
+                <div class="dish__row"><span class="dish__name" data-i18n="d12.name">Чайный сет</span><span class="dish__dots"></span><span class="dish__price">$3</span></div>
+                <p class="dish__desc" data-i18n="d12.desc">Чай в армуды и варенье из белой черешни</p>
+              </li>
+            </ul>
+          </div>
+
+          <article class="signature reveal">
+            <div>
+              <span class="badge" data-i18n="sig.badge">Фирменное блюдо</span>
+              <h3 data-i18n="sig.title">«Каспийский закат»</h3>
+              <p data-i18n="sig.desc">Кутум на углях с гранатовым наршарабом, шафрановым рисом и печёной айвой. Придумано нашим шеф-поваром — больше нигде не попробуете.</p>
+            </div>
+            <div class="signature__price">$28</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Повара -->
+    <section class="section" id="chefs">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <div>
+            <p class="eyebrow" data-i18n="chefs.eyebrow">Команда</p>
+            <h2 data-i18n="chefs.title">Лучшие повара</h2>
+          </div>
+          <p class="section__lead" data-i18n="chefs.lead">Люди, которые каждый день превращают огонь, специи и терпение в ужин, о котором вспоминают.</p>
+        </div>
+
+        <div class="chefs">
+          <article class="chef reveal">
+            <div class="chef__avatar" aria-hidden="true" data-i18n="c1.init">РА</div>
+            <h3 data-i18n="c1.name">Рашад Алиев</h3>
+            <p class="chef__role" data-i18n="c1.role">Шеф-повар</p>
+            <p class="chef__bio" data-i18n="c1.bio">Соединяет рецепты бакинских дворов с современной подачей. Автор «Каспийского заката».</p>
+            <p class="chef__exp" data-i18n-html="c1.exp"><b>18</b> лет у плиты</p>
+          </article>
+          <article class="chef reveal">
+            <div class="chef__avatar" aria-hidden="true" data-i18n="c2.init">ЭМ</div>
+            <h3 data-i18n="c2.name">Эльчин Мамедов</h3>
+            <p class="chef__role" data-i18n="c2.role">Мастер мангала</p>
+            <p class="chef__bio" data-i18n="c2.bio">Знает, когда угли готовы, по одному взгляду. Отвечает за шашлык и всё, что пахнет дымом.</p>
+            <p class="chef__exp" data-i18n-html="c2.exp"><b>22</b> года с огнём</p>
+          </article>
+          <article class="chef reveal">
+            <div class="chef__avatar" aria-hidden="true" data-i18n="c3.init">ЛГ</div>
+            <h3 data-i18n="c3.name">Лейла Гасанова</h3>
+            <p class="chef__role" data-i18n="c3.role">Шеф-кондитер</p>
+            <p class="chef__bio" data-i18n="c3.bio">Пахлава в 24 слоя и шекербура с ручным узором — каждый день, с утра.</p>
+            <p class="chef__exp" data-i18n-html="c3.exp"><b>12</b> лет в десертах</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Бронь -->
+    <section class="section" id="reserve">
+      <div class="wrap reserve__grid">
+        <div class="reserve__intro reveal">
+          <p class="eyebrow" data-i18n="res.eyebrow">Бронирование</p>
+          <h2 data-i18n="res.title">Зарезервировать столик</h2>
+          <p data-i18n="res.text">Оставьте заявку — администратор перезвонит в течение 15 минут и подтвердит бронь.</p>
+          <a class="reserve__call" href="tel:+994120000000">
+            <small data-i18n="res.call">Или позвоните нам</small>
+            <span>+994 12 000 00 00</span>
+          </a>
+        </div>
+
+        <form class="form reveal" id="reserveForm" novalidate>
+          <div class="form__fields">
+            <div class="field">
+              <label for="name" data-i18n="f.name">Имя</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" data-i18n-attr="placeholder:f.namePh" required>
+              <p class="err" id="nameErr" data-i18n="f.nameErr">Пожалуйста, введите имя</p>
+            </div>
+            <div class="field">
+              <label for="phone" data-i18n="f.phone">Телефон</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+994 50 123 45 67" required>
+              <p class="err" id="phoneErr" data-i18n="f.phoneErr">Введите номер телефона полностью</p>
+            </div>
+
+            <fieldset class="tables field">
+              <legend data-i18n="f.table">Выберите столик</legend>
+              <div class="tables__grid">
+                <label class="table-opt">
+                  <input type="radio" name="table" value="window">
+                  <span class="table-opt__box"><span class="table-opt__name" data-i18n="t1.name">У окна</span><span class="table-opt__meta" data-i18n="t1.meta">на 2 гостей</span></span>
+                </label>
+                <label class="table-opt">
+                  <input type="radio" name="table" value="hall">
+                  <span class="table-opt__box"><span class="table-opt__name" data-i18n="t2.name">Основной зал</span><span class="table-opt__meta" data-i18n="t2.meta">на 4 гостей</span></span>
+                </label>
+                <label class="table-opt">
+                  <input type="radio" name="table" value="terrace">
+                  <span class="table-opt__box"><span class="table-opt__name" data-i18n="t3.name">Терраса</span><span class="table-opt__meta" data-i18n="t3.meta">на 4 гостей</span></span>
+                </label>
+                <label class="table-opt">
+                  <input type="radio" name="table" value="vip">
+                  <span class="table-opt__box"><span class="table-opt__name" data-i18n="t4.name">VIP-кабинет</span><span class="table-opt__meta" data-i18n="t4.meta">до 8 гостей</span></span>
+                </label>
+              </div>
+              <p class="err" id="tableErr" data-i18n="f.tableErr">Выберите один из столиков</p>
+            </fieldset>
+
+            <button class="btn btn--full" type="submit" data-i18n="f.submit">Отправить заявку</button>
+            <p class="form__note" data-i18n="f.note">Мы используем ваш номер только для подтверждения брони</p>
+          </div>
+
+          <div class="success" id="success" role="status" aria-live="polite" hidden>
+            <div class="success__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h3 data-i18n="ok.title">Заявка принята</h3>
+            <p id="successText"></p>
+            <button class="btn btn--ghost" type="button" id="again" data-i18n="ok.again">Новая заявка</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Место -->
+    <section class="section" id="place">
+      <div class="wrap place">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="place.eyebrow">Как нас найти</p>
+          <h2 data-i18n="place.title">Место</h2>
+          <dl class="info">
+            <div>
+              <dt data-i18n="place.addrLabel">Адрес</dt>
+              <dd data-i18n-html="place.addr">ул. Низами, 45<br>Баку, Азербайджан</dd>
+            </div>
+            <div>
+              <dt><span data-i18n="place.hoursLabel">Часы работы</span> <span class="status" id="status"></span></dt>
+              <dd>
+                <ul class="hours" id="hours">
+                  <li data-days="1,2,3,4"><span data-i18n="h.monThu">Пн – Чт</span><span>12:00 – 23:00</span></li>
+                  <li data-days="5,6"><span data-i18n="h.friSat">Пт – Сб</span><span>12:00 – 01:00</span></li>
+                  <li data-days="0"><span data-i18n="h.sun">Вс</span><span>12:00 – 23:00</span></li>
+                </ul>
+              </dd>
+            </div>
+            <div>
+              <dt data-i18n="place.phoneLabel">Телефон</dt>
+              <dd><a href="tel:+994120000000">+994 12 000 00 00</a></dd>
+            </div>
+          </dl>
+          <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Nizami+Street+45+Baku" target="_blank" rel="noopener">
+            <span data-i18n="place.maps">Открыть в картах</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        </div>
+
+        <div class="map reveal">
+          <iframe
+            id="map"
+            src="https://maps.google.com/maps?q=Nizami%20Street%2045%2C%20Baku&amp;z=15&amp;hl=ru&amp;output=embed"
+            title="Карта: ресторан Obed, ул. Низами, 45, Баку"
+            data-i18n-attr="title:place.mapTitle"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <a class="logo" href="#top">obed<span>.</span></a>
+      <span data-i18n="footer.text">© 2026 Obed · Баку · Ресторан азербайджанской кухни</span>
+    </div>
+  </footer>
+
+  <script>
+    /* =====================================================================
+       ПЕРЕВОДЫ. Каждая фраза — на трёх языках рядом: ru / az / en.
+       Чтобы поменять текст на сайте, достаточно поправить его здесь.
+       ===================================================================== */
+    const I18N = {
+      "meta.title": {
+        ru: "Obed — ресторан в Баку | Вкус и элегантность",
+        az: "Obed — Bakıda restoran | Ləzzət və zəriflik",
+        en: "Obed — Restaurant in Baku | Taste and Elegance"
+      },
+      "meta.desc": {
+        ru: "Ресторан Obed в центре Баку: шашлык на углях, домашние супы и авторская азербайджанская кухня от лучших поваров. Бронируйте столик онлайн, ежедневно с 12:00.",
+        az: "Bakının mərkəzində Obed restoranı: közdə kabab, ev üsulu şorbalar və ən yaxşı aşpazların hazırladığı Azərbaycan mətbəxi. Masanızı onlayn rezerv edin — hər gün saat 12-dən açığıq.",
+        en: "Obed restaurant in central Baku: charcoal-grilled shashlik, homemade soups and signature Azerbaijani cuisine from the best chefs. Book a table online — open daily from 12:00."
+      },
+      "meta.ogDesc": {
+        ru: "Шашлык на углях, домашние супы и авторская кухня в центре Баку. Бронируйте столик онлайн.",
+        az: "Bakının mərkəzində közdə kabab, ev üsulu şorbalar və müəllif mətbəxi. Masanızı onlayn rezerv edin.",
+        en: "Charcoal-grilled shashlik, homemade soups and signature cuisine in central Baku. Book a table online."
+      },
+
+      // Шапка
+      "lang.label": { ru: "Язык сайта", az: "Saytın dili", en: "Site language" },
+      "logo.aria":  { ru: "Obed — на главную", az: "Obed — ana səhifə", en: "Obed — home" },
+      "nav.aria":   { ru: "Основная навигация", az: "Əsas naviqasiya", en: "Main navigation" },
+      "nav.menu":     { ru: "Меню", az: "Menyu", en: "Menu" },
+      "nav.chefs":    { ru: "Повара", az: "Aşpazlar", en: "Chefs" },
+      "nav.reserve":  { ru: "Бронь", az: "Rezervasiya", en: "Booking" },
+      "nav.contacts": { ru: "Контакты", az: "Əlaqə", en: "Contact" },
+
+      // Первый экран
+      "hero.eyebrow": { ru: "Ресторан в центре Баку", az: "Bakının mərkəzində restoran", en: "Restaurant in the heart of Baku" },
+      "hero.title":   { ru: "Вкус и <em>элегантность</em>", az: "Ləzzət və <em>zəriflik</em>", en: "Taste and <em>elegance</em>" },
+      "hero.sub": {
+        ru: "Азербайджанская кухня в современной подаче: мясо на живом огне, лаваш из тандыра и блюда, которые хочется заказать снова.",
+        az: "Müasir təqdimatda Azərbaycan mətbəxi: açıq odda bişmiş ət, təndirdən isti lavaş və yenidən sifariş etmək istəyəcəyiniz yeməklər.",
+        en: "Azerbaijani cuisine with a modern touch: meat cooked over an open fire, lavash fresh from the tandoor, and dishes you’ll want to order again."
+      },
+      "hero.cta":   { ru: "Зарезервировать онлайн", az: "Onlayn rezerv edin", en: "Reserve online" },
+      "hero.menu":  { ru: "Смотреть меню", az: "Menyuya baxın", en: "View the menu" },
+      "hero.meta1": { ru: "<b>Ежедневно</b> с 12:00", az: "<b>Hər gün</b> saat 12-dən", en: "<b>Daily</b> from 12:00" },
+      "hero.meta2": { ru: "<b>ул. Низами,</b> 45", az: "<b>Nizami küçəsi,</b> 45", en: "45 <b>Nizami Street</b>" },
+      "hero.meta3": { ru: "<b>Мангал</b> и тандыр", az: "<b>Manqal</b> və təndir", en: "<b>Charcoal grill</b> & tandoor" },
+      "plate.ring": {
+        ru: "ВКУС И ЭЛЕГАНТНОСТЬ · БАКУ · МАНГАЛ И ТАНДЫР · АВТОРСКАЯ КУХНЯ ·",
+        az: "LƏZZƏT VƏ ZƏRİFLİK · BAKI · MANQAL VƏ TƏNDİR · MÜƏLLİF MƏTBƏXİ ·",
+        en: "TASTE AND ELEGANCE · BAKU · GRILL AND TANDOOR · SIGNATURE CUISINE ·"
+      },
+      "plate.city": { ru: "BAKU", az: "BAKI", en: "BAKU" },
+
+      // Меню
+      "menu.eyebrow": { ru: "Меню", az: "Menyu", en: "Menu" },
+      "menu.title":   { ru: "Что мы готовим", az: "Nə bişiririk", en: "What we cook" },
+      "menu.lead": {
+        ru: "Простые продукты, честный огонь и рецепты, которые передают из поколения в поколение.",
+        az: "Sadə məhsullar, əsl od və nəsildən-nəslə ötürülən reseptlər.",
+        en: "Simple ingredients, real fire and recipes handed down from generation to generation."
+      },
+      "cat.grill":    { ru: "Мангал", az: "Manqal", en: "Grill" },
+      "cat.soups":    { ru: "Супы", az: "Şorbalar", en: "Soups" },
+      "cat.mains":    { ru: "Горячее", az: "İsti yeməklər", en: "Mains" },
+      "cat.desserts": { ru: "Десерты и чай", az: "Desertlər və çay", en: "Desserts & tea" },
+
+      "d1.name":  { ru: "Шашлык", az: "Tikə kabab", en: "Shashlik" },
+      "d1.desc":  { ru: "Баранина на углях, лук с сумахом, лаваш из тандыра", az: "Közdə bişmiş quzu əti, sumaxlı soğan, təndir lavaşı", en: "Charcoal-grilled lamb, sumac onions, tandoor lavash" },
+      "d2.name":  { ru: "Люля-кебаб", az: "Lülə kabab", en: "Lula kebab" },
+      "d2.desc":  { ru: "Рубленая баранина с зеленью и специями", az: "Göyərti və ədviyyatlarla quzu əti qiyməsi", en: "Minced lamb with herbs and spices" },
+      "d3.name":  { ru: "Овощи на мангале", az: "Közlənmiş tərəvəzlər", en: "Grilled vegetables" },
+      "d3.desc":  { ru: "Баклажан, томаты и перец с ароматным маслом", az: "Ətirli yağla badımcan, pomidor və bibər", en: "Eggplant, tomatoes and peppers with fragrant oil" },
+      "d4.name":  { ru: "Довга", az: "Dovğa", en: "Dovga" },
+      "d4.desc":  { ru: "Кисломолочный суп с рисом и свежей зеленью", az: "Düyü və təzə göyərti ilə qatıq şorbası", en: "Yogurt soup with rice and fresh herbs" },
+      "d5.name":  { ru: "Пити", az: "Piti", en: "Piti" },
+      "d5.desc":  { ru: "Наваристый суп с бараниной и нутом в глиняном горшочке", az: "Saxsı qabda bişirilmiş quzu ətli və noxudlu doyumlu şorba", en: "Hearty lamb and chickpea soup in a clay pot" },
+      "d6.name":  { ru: "Мерджимек", az: "Mərcimək", en: "Merjimek" },
+      "d6.desc":  { ru: "Чечевичный крем-суп с лимоном и гренками", az: "Limon və qızardılmış çörəklə mərcimək krem-şorbası", en: "Creamy lentil soup with lemon and croutons" },
+      "d7.name":  { ru: "Плов «Шах»", az: "Şah plov", en: "Shah pilaf" },
+      "d7.desc":  { ru: "Шафрановый рис, каштаны и сухофрукты в хрустящем лаваше", az: "Xırtıldayan lavaşda zəfəranlı düyü, şabalıd və quru meyvələr", en: "Saffron rice, chestnuts and dried fruit in crispy lavash" },
+      "d8.name":  { ru: "Долма", az: "Yarpaq dolması", en: "Dolma" },
+      "d8.desc":  { ru: "Виноградные листья с мясом, мацони с чесноком", az: "Ət içlikli üzüm yarpağı, sarımsaqlı qatıqla", en: "Grape leaves stuffed with meat, served with garlic yogurt" },
+      "d9.name":  { ru: "Кутабы", az: "Qutab", en: "Qutab" },
+      "d9.desc":  { ru: "Тонкие лепёшки с зеленью, тыквой или мясом", az: "Göyərti, balqabaq və ya ət içlikli nazik xəmir", en: "Thin flatbreads with herbs, pumpkin or meat" },
+      "d10.name": { ru: "Пахлава", az: "Paxlava", en: "Pakhlava" },
+      "d10.desc": { ru: "Бакинская, с грецким орехом и шафраном", az: "Bakı üsulu, qoz və zəfəranla", en: "Baku-style, with walnuts and saffron" },
+      "d11.name": { ru: "Шекербура", az: "Şəkərbura", en: "Shekerbura" },
+      "d11.desc": { ru: "Нежное тесто с ореховой начинкой", az: "Qoz içlikli zərif xəmir", en: "Delicate pastry with a nut filling" },
+      "d12.name": { ru: "Чайный сет", az: "Çay dəsti", en: "Tea set" },
+      "d12.desc": { ru: "Чай в армуды и варенье из белой черешни", az: "Armudu stəkanda çay və ağ gilas mürəbbəsi", en: "Tea in an armudu glass with white cherry jam" },
+
+      "sig.badge": { ru: "Фирменное блюдо", az: "Xüsusi yeməyimiz", en: "Signature dish" },
+      "sig.title": { ru: "«Каспийский закат»", az: "«Xəzər qürubu»", en: "“Caspian Sunset”" },
+      "sig.desc": {
+        ru: "Кутум на углях с гранатовым наршарабом, шафрановым рисом и печёной айвой. Придумано нашим шеф-поваром — больше нигде не попробуете.",
+        az: "Narşərab, zəfəranlı düyü və sobada bişmiş heyva ilə közdə qızardılmış kütüm. Baş aşpazımızın müəllif reseptidir — bu yeməyi başqa heç yerdə dada bilməzsiniz.",
+        en: "Charcoal-grilled kutum with pomegranate narsharab, saffron rice and baked quince. Created by our head chef — you won’t taste it anywhere else."
+      },
+
+      // Повара
+      "chefs.eyebrow": { ru: "Команда", az: "Komanda", en: "Team" },
+      "chefs.title":   { ru: "Лучшие повара", az: "Ən yaxşı aşpazlar", en: "The best chefs" },
+      "chefs.lead": {
+        ru: "Люди, которые каждый день превращают огонь, специи и терпение в ужин, о котором вспоминают.",
+        az: "Hər gün odu, ədviyyatları və səbri unudulmaz şam yeməyinə çevirən insanlar.",
+        en: "People who turn fire, spices and patience into a dinner worth remembering — every single day."
+      },
+      "c1.init": { ru: "РА", az: "RƏ", en: "RA" },
+      "c1.name": { ru: "Рашад Алиев", az: "Rəşad Əliyev", en: "Rashad Aliyev" },
+      "c1.role": { ru: "Шеф-повар", az: "Baş aşpaz", en: "Head chef" },
+      "c1.bio": {
+        ru: "Соединяет рецепты бакинских дворов с современной подачей. Автор «Каспийского заката».",
+        az: "Bakı həyətlərinin reseptlərini müasir təqdimatla birləşdirir. «Xəzər qürubu» yeməyinin müəllifi.",
+        en: "Blends recipes from Baku’s old courtyards with modern presentation. Creator of “Caspian Sunset”."
+      },
+      "c1.exp": { ru: "<b>18</b> лет у плиты", az: "<b>18</b> il mətbəxdə", en: "<b>18</b> years at the stove" },
+      "c2.init": { ru: "ЭМ", az: "EM", en: "EM" },
+      "c2.name": { ru: "Эльчин Мамедов", az: "Elçin Məmmədov", en: "Elchin Mammadov" },
+      "c2.role": { ru: "Мастер мангала", az: "Manqal ustası", en: "Grill master" },
+      "c2.bio": {
+        ru: "Знает, когда угли готовы, по одному взгляду. Отвечает за шашлык и всё, что пахнет дымом.",
+        az: "Közün hazır olduğunu bir baxışdan bilir. Kababdan və tüstü ətri gələn hər şeydən o məsuldur.",
+        en: "Can tell the coals are ready at a single glance. In charge of the shashlik and everything that smells of smoke."
+      },
+      "c2.exp": { ru: "<b>22</b> года с огнём", az: "<b>22</b> il manqal başında", en: "<b>22</b> years by the fire" },
+      "c3.init": { ru: "ЛГ", az: "LH", en: "LH" },
+      "c3.name": { ru: "Лейла Гасанова", az: "Leyla Həsənova", en: "Leyla Hasanova" },
+      "c3.role": { ru: "Шеф-кондитер", az: "Baş qənnadçı", en: "Pastry chef" },
+      "c3.bio": {
+        ru: "Пахлава в 24 слоя и шекербура с ручным узором — каждый день, с утра.",
+        az: "24 qatlı paxlava və əl ilə naxışlanmış şəkərbura — hər gün, səhər tezdən.",
+        en: "24-layer pakhlava and hand-patterned shekerbura — fresh every morning."
+      },
+      "c3.exp": { ru: "<b>12</b> лет в десертах", az: "<b>12</b> il şirniyyat sənətində", en: "<b>12</b> years in pastry" },
+
+      // Бронь
+      "res.eyebrow": { ru: "Бронирование", az: "Rezervasiya", en: "Reservations" },
+      "res.title":   { ru: "Зарезервировать столик", az: "Masa rezerv edin", en: "Reserve a table" },
+      "res.text": {
+        ru: "Оставьте заявку — администратор перезвонит в течение 15 минут и подтвердит бронь.",
+        az: "Müraciət göndərin — administrator 15 dəqiqə ərzində sizə zəng edib rezervi təsdiqləyəcək.",
+        en: "Leave a request and our host will call you back within 15 minutes to confirm your booking."
+      },
+      "res.call":   { ru: "Или позвоните нам", az: "Və ya bizə zəng edin", en: "Or give us a call" },
+      "f.name":     { ru: "Имя", az: "Adınız", en: "Name" },
+      "f.namePh":   { ru: "Как к вам обращаться", az: "Sizə necə müraciət edək?", en: "What should we call you?" },
+      "f.nameErr":  { ru: "Пожалуйста, введите имя", az: "Zəhmət olmasa, adınızı daxil edin", en: "Please enter your name" },
+      "f.phone":    { ru: "Телефон", az: "Telefon nömrəniz", en: "Phone" },
+      "f.phoneErr": { ru: "Введите номер телефона полностью", az: "Telefon nömrəsini tam daxil edin", en: "Please enter your full phone number" },
+      "f.table":    { ru: "Выберите столик", az: "Masa seçin", en: "Choose a table" },
+      "t1.name": { ru: "У окна", az: "Pəncərə yanında", en: "By the window" },
+      "t1.meta": { ru: "на 2 гостей", az: "2 nəfərlik", en: "for 2 guests" },
+      "t2.name": { ru: "Основной зал", az: "Əsas zal", en: "Main hall" },
+      "t2.meta": { ru: "на 4 гостей", az: "4 nəfərlik", en: "for 4 guests" },
+      "t3.name": { ru: "Терраса", az: "Terras", en: "Terrace" },
+      "t3.meta": { ru: "на 4 гостей", az: "4 nəfərlik", en: "for 4 guests" },
+      "t4.name": { ru: "VIP-кабинет", az: "VIP otaq", en: "VIP room" },
+      "t4.meta": { ru: "до 8 гостей", az: "8 nəfərədək", en: "up to 8 guests" },
+      "f.tableErr": { ru: "Выберите один из столиков", az: "Zəhmət olmasa, masa seçin", en: "Please choose a table" },
+      "f.submit":   { ru: "Отправить заявку", az: "Müraciəti göndərin", en: "Send request" },
+      "f.note": {
+        ru: "Мы используем ваш номер только для подтверждения брони",
+        az: "Nömrənizdən yalnız rezervi təsdiqləmək üçün istifadə edirik",
+        en: "We only use your number to confirm your booking"
+      },
+      "ok.title": { ru: "Заявка принята", az: "Müraciətiniz qəbul olundu", en: "Request received" },
+      "ok.text": {
+        ru: "Спасибо, {name}! Мы перезвоним на {phone}, чтобы подтвердить столик «{table}».",
+        az: "Təşəkkür edirik, {name}! Rezervi təsdiqləmək üçün {phone} nömrəsinə zəng edəcəyik. Seçdiyiniz masa: {table}.",
+        en: "Thank you, {name}! We’ll call you at {phone} to confirm your booking. Your table: {table}."
+      },
+      "ok.again": { ru: "Новая заявка", az: "Yeni müraciət", en: "New request" },
+
+      // Место
+      "place.eyebrow":    { ru: "Как нас найти", az: "Bizi necə tapmaq olar", en: "How to find us" },
+      "place.title":      { ru: "Место", az: "Məkan", en: "Location" },
+      "place.addrLabel":  { ru: "Адрес", az: "Ünvan", en: "Address" },
+      "place.addr":       { ru: "ул. Низами, 45<br>Баку, Азербайджан", az: "Nizami küçəsi, 45<br>Bakı, Azərbaycan", en: "45 Nizami Street<br>Baku, Azerbaijan" },
+      "place.hoursLabel": { ru: "Часы работы", az: "İş saatları", en: "Opening hours" },
+      "status.open":      { ru: "Сейчас открыто", az: "İndi açıqdır", en: "Open now" },
+      "status.closed":    { ru: "Сейчас закрыто", az: "İndi bağlıdır", en: "Closed now" },
+      "h.monThu": { ru: "Пн – Чт", az: "Bazar ertəsi – Cümə axşamı", en: "Mon – Thu" },
+      "h.friSat": { ru: "Пт – Сб", az: "Cümə – Şənbə", en: "Fri – Sat" },
+      "h.sun":    { ru: "Вс", az: "Bazar", en: "Sun" },
+      "place.phoneLabel": { ru: "Телефон", az: "Telefon", en: "Phone" },
+      "place.maps":       { ru: "Открыть в картах", az: "Xəritədə açın", en: "Open in Maps" },
+      "place.mapTitle": {
+        ru: "Карта: ресторан Obed, ул. Низами, 45, Баку",
+        az: "Xəritə: Obed restoranı, Nizami küçəsi, 45, Bakı",
+        en: "Map: Obed restaurant, 45 Nizami Street, Baku"
+      },
+      "footer.text": {
+        ru: "© 2026 Obed · Баку · Ресторан азербайджанской кухни",
+        az: "© 2026 Obed · Bakı · Azərbaycan mətbəxi restoranı",
+        en: "© 2026 Obed · Baku · Azerbaijani cuisine restaurant"
+      }
+    };
+
+    const LANGS = ["ru", "az", "en"];
+    const LANG_NAMES = { ru: "Русский", az: "Azərbaycanca", en: "English" };
+    const OG_LOCALES = { ru: "ru_RU", az: "az_AZ", en: "en_US" };
+    let lang = "ru";
+    const onLangChange = []; // сюда другие блоки добавляют свои обработчики
+
+    function t(key, vars) {
+      const entry = I18N[key];
+      let s = entry ? (entry[lang] ?? entry.ru) : key;
+      if (vars) s = s.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+      return s;
+    }
+
+    function setLang(next, remember) {
+      lang = LANGS.includes(next) ? next : "ru";
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+      document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+      document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+        el.dataset.i18nAttr.split(",").forEach(pair => {
+          const [attr, key] = pair.split(":").map(s => s.trim());
+          el.setAttribute(attr, t(key));
+        });
+      });
+
+      // SEO-теги
+      document.title = t("meta.title");
+      document.querySelector('meta[name="description"]').setAttribute("content", t("meta.desc"));
+      document.querySelector('meta[property="og:title"]').setAttribute("content", t("meta.title"));
+      document.querySelector('meta[property="og:description"]').setAttribute("content", t("meta.ogDesc"));
+      document.querySelector('meta[property="og:locale"]').setAttribute("content", OG_LOCALES[lang]);
+
+      // Кнопка языка
+      document.getElementById("langCur").textContent = lang.toUpperCase();
+      document.getElementById("langBtn").setAttribute("aria-label", t("lang.label") + ": " + LANG_NAMES[lang]);
+      document.querySelectorAll("#langMenu [data-lang]").forEach(b => {
+        if (b.dataset.lang === lang) b.setAttribute("aria-current", "true");
+        else b.removeAttribute("aria-current");
+      });
+
+      // Язык подписей на карте
+      const map = document.getElementById("map");
+      const src = map.getAttribute("src").replace(/([?&]hl=)[a-z]+/, "$1" + lang);
+      if (src !== map.getAttribute("src")) map.setAttribute("src", src);
+
+      onLangChange.forEach(fn => fn());
+
+      if (remember) {
+        try { localStorage.setItem("obed-lang", lang); } catch (e) {}
+        try {
+          const url = new URL(location.href);
+          url.searchParams.set("lang", lang);
+          history.replaceState(null, "", url);
+        } catch (e) {}
+      }
+    }
+
+    function detectLang() {
+      try {
+        const p = new URLSearchParams(location.search).get("lang");
+        if (LANGS.includes(p)) return p;
+      } catch (e) {}
+      try {
+        const saved = localStorage.getItem("obed-lang");
+        if (LANGS.includes(saved)) return saved;
+      } catch (e) {}
+      const prefs = navigator.languages || [navigator.language || ""];
+      for (const l of prefs) {
+        const code = String(l).slice(0, 2).toLowerCase();
+        if (LANGS.includes(code)) return code;
+      }
+      return "ru";
+    }
+
+    // Меню выбора языка
+    (function () {
+      const btn = document.getElementById("langBtn");
+      const menu = document.getElementById("langMenu");
+      const open = () => { menu.hidden = false; btn.setAttribute("aria-expanded", "true"); };
+      const close = (focusBtn) => {
+        menu.hidden = true; btn.setAttribute("aria-expanded", "false");
+        if (focusBtn) btn.focus();
+      };
+      btn.addEventListener("click", () => (menu.hidden ? open() : close()));
+      menu.addEventListener("click", (e) => {
+        const b = e.target.closest("[data-lang]");
+        if (!b) return;
+        setLang(b.dataset.lang, true);
+        close(true);
+      });
+      document.addEventListener("click", (e) => { if (!e.target.closest("#lang")) close(); });
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) close(true); });
+    })();
+
+    // Плавное появление блоков при прокрутке
+    (function () {
+      const items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        items.forEach(el => el.classList.add("is-in"));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      items.forEach(el => io.observe(el));
+    })();
+
+    // «Открыто сейчас» по времени Баку
+    (function () {
+      let open = null;
+      try {
+        const parts = new Intl.DateTimeFormat("en-US", {
+          timeZone: "Asia/Baku", weekday: "short", hour: "numeric", minute: "numeric", hourCycle: "h23"
+        }).formatToParts(new Date());
+        const get = type => parts.find(p => p.type === type).value;
+        const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday"));
+        const mins = Number(get("hour")) * 60 + Number(get("minute"));
+        const closeAt = d => (d === 5 || d === 6) ? 25 * 60 : 23 * 60; // Пт–Сб до 01:00
+        const prev = (day + 6) % 7;
+        open = (mins >= 12 * 60 && mins < closeAt(day)) || (mins < closeAt(prev) - 24 * 60);
+
+        document.querySelectorAll("#hours li").forEach(li => {
+          if (li.dataset.days.split(",").map(Number).includes(day)) li.classList.add("is-today");
+        });
+      } catch (e) { /* без статуса — не страшно */ }
+
+      const status = document.getElementById("status");
+      const render = () => {
+        if (open === null) return;
+        status.textContent = t(open ? "status.open" : "status.closed");
+        status.classList.toggle("is-open", open);
+      };
+      onLangChange.push(render);
+    })();
+
+    // Форма бронирования
+    (function () {
+      const form = document.getElementById("reserveForm");
+      const fields = form.querySelector(".form__fields");
+      const success = document.getElementById("success");
+      const successText = document.getElementById("successText");
+      const name = form.elements.name;
+      const phone = form.elements.phone;
+      let booking = null;
+
+      function setError(input, wrapper, hasError, errId) {
+        wrapper.classList.toggle("is-invalid", hasError);
+        if (input) {
+          input.setAttribute("aria-invalid", hasError ? "true" : "false");
+          input.setAttribute("aria-describedby", errId);
+        }
+      }
+
+      function validate() {
+        const nameOk = name.value.trim().length >= 2;
+        const digits = phone.value.replace(/\D/g, "");
+        const phoneOk = digits.length >= 9 && digits.length <= 15;
+        const table = form.querySelector('input[name="table"]:checked');
+
+        setError(name, name.closest(".field"), !nameOk, "nameErr");
+        setError(phone, phone.closest(".field"), !phoneOk, "phoneErr");
+        setError(null, form.querySelector(".tables"), !table, "tableErr");
+
+        if (!nameOk) name.focus();
+        else if (!phoneOk) phone.focus();
+        else if (!table) form.querySelector('input[name="table"]').focus();
+
+        if (!(nameOk && phoneOk && table)) return null;
+        return {
+          name: name.value.trim(),
+          phone: phone.value.trim(),
+          table: table.value,
+          tableKey: table.closest(".table-opt").querySelector(".table-opt__name").dataset.i18n
+        };
+      }
+
+      function renderSuccess() {
+        if (!booking) return;
+        successText.textContent = t("ok.text", { name: booking.name, phone: booking.phone, table: t(booking.tableKey) });
+      }
+      onLangChange.push(renderSuccess);
+
+      // Сбрасываем ошибку, как только пользователь исправляет поле
+      form.addEventListener("input", (e) => {
+        const wrap = e.target.closest(".field");
+        if (wrap && wrap.classList.contains("is-invalid")) {
+          wrap.classList.remove("is-invalid");
+          e.target.setAttribute("aria-invalid", "false");
+        }
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = validate();
+        if (!data) return;
+        booking = data;
+        // Здесь можно отправить data на сервер, в Telegram-бота или Google Таблицу
+        renderSuccess();
+        fields.hidden = true;
+        success.hidden = false;
+      });
+
+      document.getElementById("again").addEventListener("click", () => {
+        form.reset();
+        booking = null;
+        success.hidden = true;
+        fields.hidden = false;
+        name.focus();
+      });
+    })();
+
+    // Запуск: выбираем язык (ссылка ?lang= → прошлый выбор → язык браузера → русский)
+    setLang(detectLang(), false);
+  </script>
+</body>
+</html>

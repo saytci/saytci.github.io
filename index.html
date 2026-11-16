@@ -1,0 +1,1296 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>saytçı — сайты для бизнеса в Баку</title>
+  <meta name="description" content="Сайты для кафе, ресторанов, салонов и магазинов в Баку: меню и цены на трёх языках, онлайн-бронь, карта и WhatsApp. Бесплатный пример до оплаты, от 150 ₼.">
+  <meta name="theme-color" content="#f4f3ef">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="saytçı">
+  <meta property="og:title" content="saytçı — сайты для бизнеса в Баку">
+  <meta property="og:description" content="Сайты для кафе, ресторанов, салонов и магазинов в Баку: меню и цены на трёх языках, онлайн-бронь, карта и WhatsApp. Бесплатный пример до оплаты, от 150 ₼.">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111216'/%3E%3Ccircle cx='46' cy='45' r='5' fill='%23d6ff4a'/%3E%3Cpath d='M38 22c-2-3-5.5-4.5-9.5-4.5-5.5 0-9.5 3-9.5 7.5 0 9.5 19 5.5 19 14.5 0 4.5-4 7.5-10 7.5-4.5 0-8-1.8-10-5' fill='none' stroke='%23fff' stroke-width='5.5' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "saytçı",
+    "description": "Websites for small businesses in Baku: menus and price lists in Azerbaijani, Russian and English, online booking, maps and WhatsApp.",
+    "areaServed": { "@type": "City", "name": "Baku" },
+    "availableLanguage": ["az", "ru", "en"],
+    "priceRange": "150–400 AZN"
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #f4f3ef;
+      --bg-alt: #eceae4;
+      --surface: #ffffff;
+      --field: #f7f6f2;
+      --ink: #111216;
+      --muted: #5b5e66;
+      --line: #dfddd5;
+      --accent: #2952ff;
+      --accent-hover: #1d40de;
+      --accent-soft: #e6ebff;
+      --mark: #d6ff4a;
+      --ok: #22c55e;
+      --danger: #d92d20;
+      --dark: #111216;
+      --dark-2: #1b1d23;
+      --dark-line: #2c2f37;
+      --dark-muted: #a4a8b2;
+      --radius: 20px;
+      --max: 1160px;
+      --header-h: 64px;
+      --f-body: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --f-display: "Unbounded", "Onest", system-ui, sans-serif;
+      color-scheme: light;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 16px/1.6 var(--f-body);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img, svg, iframe { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3 { margin: 0; font-weight: 600; line-height: 1.15; }
+    h1, h2 { font-family: var(--f-display); letter-spacing: -0.025em; }
+    p { margin: 0; }
+    ul, ol { margin: 0; padding: 0; list-style: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+    section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
+
+    .skip {
+      position: absolute; left: 12px; top: -80px; z-index: 100;
+      background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px;
+      text-decoration: none; font-weight: 600;
+    }
+    .skip:focus { top: 12px; }
+
+    /* ---------- Кнопки ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 24px; border-radius: 999px;
+      font: 600 16px/1.2 var(--f-body); text-decoration: none; text-align: center;
+      border: 1px solid transparent; cursor: pointer;
+      transition: background-color .2s, color .2s, border-color .2s, transform .2s;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn svg { width: 18px; height: 18px; flex: none; }
+    .btn--accent { background: var(--accent); color: #fff; }
+    .btn--accent:hover { background: var(--accent-hover); }
+    .btn--ink { background: var(--ink); color: #fff; }
+    .btn--ink:hover { background: #2a2c33; }
+    .btn--ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
+    .btn--ghost:hover { background: var(--ink); color: #fff; }
+    .btn--sm { min-height: 40px; padding: 0 16px; font-size: 14px; }
+    .btn--block { width: 100%; }
+
+    /* ---------- Шапка ---------- */
+    .header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(244, 243, 239, .84);
+      -webkit-backdrop-filter: saturate(1.4) blur(14px);
+      backdrop-filter: saturate(1.4) blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .header.is-scrolled { border-bottom-color: var(--line); }
+    .header__in { height: var(--header-h); display: flex; align-items: center; gap: 12px; }
+    .logo {
+      font: 700 20px/1 var(--f-display); letter-spacing: -0.03em;
+      text-decoration: none; white-space: nowrap;
+    }
+    .logo span { color: var(--accent); }
+    .nav { display: none; gap: 2px; margin-left: 20px; }
+    .nav a {
+      padding: 8px 12px; border-radius: 999px; text-decoration: none;
+      color: var(--muted); font-weight: 500; font-size: 15px;
+      transition: color .2s, background-color .2s;
+    }
+    .nav a:hover { color: var(--ink); background: rgba(17, 18, 22, .05); }
+    @media (min-width: 940px) { .nav { display: flex; } }
+    .header__right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+    .lang {
+      display: flex; padding: 3px; gap: 2px;
+      border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+    }
+    .lang button {
+      appearance: none; border: 0; background: none; cursor: pointer;
+      min-width: 36px; padding: 9px 8px; border-radius: 999px;
+      font: 600 12px/1 var(--f-body); letter-spacing: .04em; color: var(--muted);
+      transition: background-color .2s, color .2s;
+    }
+    .lang button:hover { color: var(--ink); }
+    .lang button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+    @media (max-width: 479px) {
+      .header .btn--sm { width: 40px; padding: 0; }
+      .header .btn--sm span { display: none; }
+    }
+
+    /* ---------- Первый экран ---------- */
+    .hero { position: relative; overflow: hidden; padding: 36px 0 72px; }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: radial-gradient(ellipse 75% 65% at 72% 35%, #000 15%, transparent 72%);
+      mask-image: radial-gradient(ellipse 75% 65% at 72% 35%, #000 15%, transparent 72%);
+      opacity: .7;
+    }
+    .hero__in { position: relative; display: grid; gap: 56px; align-items: center; }
+    @media (min-width: 960px) {
+      .hero { padding: 72px 0 104px; }
+      .hero__in { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 48px; }
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 14px 6px 10px; border: 1px solid var(--line); border-radius: 999px;
+      background: var(--surface); color: var(--muted); font-weight: 600; font-size: 14px;
+    }
+    .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(34, 197, 94, .18); }
+    h1 { font-size: clamp(30px, 6.4vw, 56px); line-height: 1.1; margin: 22px 0 20px; }
+    h1 em {
+      font-style: normal; padding: 0 .06em;
+      background: linear-gradient(transparent 58%, var(--mark) 58%, var(--mark) 92%, transparent 92%);
+      -webkit-box-decoration-break: clone; box-decoration-break: clone;
+    }
+    .hero__sub { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 34em; }
+    .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    @media (max-width: 479px) { .hero__cta .btn { width: 100%; } }
+
+    .facts {
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 40px 0 0; padding-top: 20px; border-top: 1px solid var(--line);
+    }
+    .facts div { padding-right: 10px; min-width: 0; }
+    .facts div + div { padding-left: 14px; border-left: 1px solid var(--line); }
+    .facts dt { font: 600 clamp(15px, 2.3vw, 22px)/1.25 var(--f-display); letter-spacing: -0.02em; }
+    .facts dd { margin: 6px 0 0; font-size: 13px; line-height: 1.35; color: var(--muted); }
+    @media (max-width: 479px) {
+      .facts { grid-template-columns: 1fr; gap: 12px; }
+      .facts div, .facts div + div { display: flex; align-items: baseline; gap: 12px; padding: 0; border: 0; }
+      .facts dt { flex: none; width: 8.4em; font-size: 16px; }
+      .facts dd { margin: 0; font-size: 14px; }
+    }
+
+    .hero__demo { display: flex; flex-direction: column; align-items: center; gap: 36px; }
+    .phone {
+      --s: .62;
+      position: relative; padding: 10px; border-radius: 48px; background: #0e0f13;
+      box-shadow:
+        inset 0 0 0 1px #2c2e36,
+        0 40px 80px -30px rgba(17, 18, 22, .45),
+        0 18px 36px -18px rgba(17, 18, 22, .35);
+    }
+    @media (min-width: 960px) { .phone { --s: .7; } }
+    .phone__screen {
+      position: relative; isolation: isolate; overflow: hidden;
+      width: calc(390px * var(--s)); height: calc(844px * var(--s));
+      border-radius: 38px; background: #0a0d0b;
+    }
+    .phone__screen iframe {
+      width: 390px; height: 844px; max-width: none; border: 0;
+      transform: scale(var(--s)); transform-origin: 0 0;
+    }
+    .phone__tap { position: absolute; inset: 0; z-index: 2; }
+    @media (hover: hover) and (pointer: fine) { .phone__tap { display: none; } }
+    .phone__badge {
+      position: absolute; z-index: 3; bottom: -17px; left: 50%; transform: translateX(-50%);
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px; background: var(--surface);
+      font-size: 13px; font-weight: 600; white-space: nowrap;
+      box-shadow: 0 10px 30px -10px rgba(17, 18, 22, .35);
+    }
+    .phone__badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, .5); } 50% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); } }
+    .demo-link { font-weight: 600; color: var(--accent); text-decoration: none; }
+    .demo-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ---------- Общие секции ---------- */
+    .section { padding: clamp(64px, 10vw, 112px) 0; }
+    .section--alt { background: var(--bg-alt); }
+    .section--dark { background: var(--dark); color: #f4f3ef; }
+    .sec-head { max-width: 720px; margin-bottom: clamp(32px, 5vw, 56px); }
+    .sec-head h2 { font-size: clamp(28px, 4.6vw, 46px); }
+    .sec-head p { margin-top: 16px; font-size: clamp(16px, 1.8vw, 18px); color: var(--muted); }
+    .section--dark .sec-head p { color: var(--dark-muted); }
+
+    /* Для кого */
+    .who { display: grid; gap: 12px; }
+    @media (min-width: 600px) { .who { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+    @media (min-width: 960px) { .who { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .who__card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .who__card:hover { transform: translateY(-3px); border-color: #cfccc2; box-shadow: 0 18px 40px -24px rgba(17, 18, 22, .3); }
+    .who__card--more { background: transparent; border-style: dashed; }
+    .ico {
+      width: 46px; height: 46px; padding: 11px; margin-bottom: 18px;
+      border-radius: 14px; background: var(--accent-soft); color: var(--accent);
+    }
+    .who__card h3 { font-size: 18px; margin-bottom: 8px; }
+    .who__card p { color: var(--muted); font-size: 15px; }
+
+    /* Услуги */
+    .svc { display: grid; border-top: 1px solid var(--dark-line); }
+    @media (min-width: 760px) { .svc { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; } }
+    .svc__item { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; padding: 26px 0; border-bottom: 1px solid var(--dark-line); }
+    .svc__n { font: 600 14px/1.7 var(--f-display); color: var(--mark); }
+    .svc__item h3 { font-size: 19px; margin-bottom: 6px; }
+    .svc__item p { color: var(--dark-muted); font-size: 15px; }
+
+    /* Цены */
+    .plans { display: grid; gap: 28px 16px; }
+    @media (min-width: 900px) { .plans { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .plan {
+      position: relative; display: flex; flex-direction: column;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+    }
+    .plan--hot { border: 2px solid var(--accent); box-shadow: 0 30px 60px -36px rgba(41, 82, 255, .55); }
+    .plan__badge {
+      position: absolute; top: -13px; left: 26px;
+      padding: 5px 12px; border-radius: 999px; background: var(--accent); color: #fff;
+      font-size: 12px; font-weight: 600; letter-spacing: .02em;
+    }
+    .plan__name { font: 600 15px/1 var(--f-display); letter-spacing: .04em; text-transform: uppercase; }
+    .plan__desc { margin-top: 10px; color: var(--muted); font-size: 15px; }
+    @media (min-width: 900px) { .plan__desc { min-height: 3.2em; } }
+    .plan__price { margin: 22px 0 24px; font: 600 46px/1 var(--f-display); letter-spacing: -0.03em; }
+    .plan__price span { font-size: .6em; margin-left: 4px; }
+    .plan__list { display: grid; gap: 11px; margin-bottom: 28px; flex: 1; align-content: start; }
+    .plan__list li { position: relative; padding-left: 30px; font-size: 15px; line-height: 1.5; }
+    .plan__list li::before {
+      content: ""; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%;
+      background: var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232952ff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 12px no-repeat;
+    }
+
+    .extras {
+      margin-top: 16px; display: grid; gap: 32px;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+    }
+    @media (min-width: 900px) { .extras { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; padding: 32px 36px; } }
+    .extras h3 { font: 600 15px/1 var(--f-display); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 10px; }
+    .extras__list li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 13px 0; border-bottom: 1px dashed var(--line); }
+    .extras__list li:last-child { border-bottom: 0; }
+    .extras__list b { font-weight: 600; white-space: nowrap; }
+    .notes { display: grid; gap: 12px; margin-top: 16px; }
+    .notes li { position: relative; padding-left: 22px; color: var(--muted); font-size: 15px; }
+    .notes li::before { content: ""; position: absolute; left: 4px; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+    /* Работы */
+    .works { display: grid; gap: 16px; }
+    @media (min-width: 900px) { .works { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); } }
+    .work {
+      display: flex; flex-direction: column; overflow: hidden;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 24px;
+    }
+    .work__shot { display: block; padding: 22px 22px 0; background: linear-gradient(160deg, #18231c, #0a0d0b); }
+    .browser { border-radius: 12px 12px 0 0; overflow: hidden; box-shadow: 0 -10px 40px -12px rgba(0, 0, 0, .7); transition: transform .35s; }
+    .work__shot:hover .browser { transform: translateY(-4px); }
+    .browser__bar { display: flex; align-items: center; gap: 6px; height: 26px; padding: 0 12px; background: #1d2320; }
+    .browser__bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a413c; }
+    .browser img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+    .work__body { display: grid; justify-items: start; gap: 10px; padding: 24px 26px 28px; }
+    .tag {
+      padding: 5px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+      font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    }
+    .work__body h3 { font-size: 22px; }
+    .work__body p { color: var(--muted); }
+    .link { font-weight: 600; color: var(--accent); text-decoration: none; }
+    .link:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .work--next { justify-content: center; align-items: flex-start; gap: 14px; padding: 32px 28px; background: transparent; border-style: dashed; border-color: #c9c6bc; }
+    .work--next h3 { font: 600 clamp(22px, 2.6vw, 28px)/1.2 var(--f-display); letter-spacing: -0.02em; }
+    .work--next p { color: var(--muted); margin-bottom: 8px; }
+
+    /* Как работаю */
+    .steps { display: grid; gap: 16px; }
+    @media (min-width: 720px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (min-width: 1040px) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+    .step { padding: 24px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); }
+    .step__n {
+      display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 18px;
+      border-radius: 50%; background: var(--ink); color: #fff; font: 600 16px/1 var(--f-display);
+    }
+    .step:last-child .step__n { background: var(--mark); color: var(--ink); }
+    .step h3 { font-size: 18px; margin-bottom: 8px; }
+    .step p { color: var(--muted); font-size: 15px; }
+
+    /* Вопросы */
+    .faq-wrap { display: grid; gap: 8px; }
+    @media (min-width: 960px) {
+      .faq-wrap { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 64px; align-items: start; }
+      .faq-wrap .sec-head { margin-bottom: 0; position: sticky; top: calc(var(--header-h) + 32px); }
+    }
+    .faq { border-top: 1px solid #d6d3ca; }
+    .faq details { border-bottom: 1px solid #d6d3ca; }
+    .faq summary {
+      list-style: none; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      padding: 20px 0; font-weight: 600; font-size: 17px; line-height: 1.4;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: ""; flex: none; width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid #cfccc2; transition: transform .25s, background-color .25s;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111216' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center / 12px no-repeat;
+    }
+    .faq details[open] summary::after { transform: rotate(45deg); background-color: var(--surface); }
+    .faq details p { padding: 0 46px 22px 0; color: var(--muted); }
+
+    /* Контакты */
+    .contact { background: var(--dark); color: #f4f3ef; }
+    .contact__in { display: grid; gap: 40px; }
+    @media (min-width: 960px) { .contact__in { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: start; } }
+    .contact h2 { font-size: clamp(28px, 4.6vw, 46px); }
+    .contact__lead { margin-top: 16px; color: var(--dark-muted); font-size: clamp(16px, 1.8vw, 18px); }
+    .direct { margin-top: 32px; display: grid; gap: 10px; }
+    .direct__label { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--dark-muted); }
+    .direct__row {
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+      padding: 14px 16px; border: 1px solid var(--dark-line); border-radius: 14px; text-decoration: none;
+      transition: border-color .2s, background-color .2s;
+    }
+    .direct__row:hover { border-color: #4a4e58; background: var(--dark-2); }
+    .direct__row svg { width: 20px; height: 20px; flex: none; color: var(--mark); }
+    .direct__row b { margin-left: auto; font-weight: 600; white-space: nowrap; }
+    .direct__notes { margin-top: 14px; display: grid; gap: 8px; color: var(--dark-muted); font-size: 15px; }
+    .direct__notes li { position: relative; padding-left: 26px; }
+    .direct__notes li::before {
+      content: ""; position: absolute; left: 0; top: .2em; width: 16px; height: 16px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d6ff4a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 16px no-repeat;
+    }
+
+    .form { display: grid; gap: 18px; background: var(--surface); color: var(--ink); border-radius: 24px; padding: clamp(20px, 4vw, 36px); }
+    .field { display: grid; gap: 8px; min-width: 0; margin: 0; padding: 0; border: 0; }
+    fieldset.field { display: block; }
+    .field > label, .field > legend { font-weight: 600; font-size: 15px; padding: 0; }
+    fieldset.field > legend { margin-bottom: 10px; }
+    .field small { font-weight: 400; font-size: 13px; color: var(--muted); }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 13px 14px; border-radius: 12px;
+      background: var(--field); border: 1px solid var(--line);
+      font-size: 16px; line-height: 1.4; color: var(--ink);
+      transition: border-color .2s, background-color .2s, box-shadow .2s;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #8d9097; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: var(--accent); background: #fff; box-shadow: 0 0 0 4px var(--accent-soft);
+    }
+    .field select {
+      appearance: none; -webkit-appearance: none; padding-right: 42px; cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b5e66' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; background-size: 16px;
+    }
+    .field textarea { min-height: 96px; resize: vertical; }
+    .err { display: none; color: var(--danger); font-size: 13px; font-weight: 500; }
+    .is-invalid .err { display: block; }
+    .is-invalid input { border-color: var(--danger); background: #fff6f5; }
+    .form__row { display: grid; gap: 18px; }
+    @media (min-width: 560px) { .form__row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { position: relative; }
+    .chip input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+    .chip span {
+      display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px;
+      border: 1px solid var(--line); border-radius: 999px; background: var(--field);
+      font-size: 15px; font-weight: 500; transition: background-color .2s, color .2s, border-color .2s;
+    }
+    .chip input:checked + span { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .chip input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .form__sent { padding: 14px 16px; border-radius: 12px; background: var(--accent-soft); color: #1b2b80; font-size: 15px; }
+
+    /* Подвал */
+    .footer { background: var(--dark); color: var(--dark-muted); border-top: 1px solid var(--dark-line); padding: 28px 0 calc(28px + env(safe-area-inset-bottom)); }
+    .footer__in { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 24px; font-size: 14px; }
+    .footer .logo { color: #f4f3ef; font-size: 18px; }
+    .footer__top { margin-left: auto; text-decoration: none; font-weight: 600; color: #f4f3ef; }
+    .footer__top:hover { color: var(--mark); }
+
+    /* Появление при прокрутке */
+    .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; transition-delay: calc(var(--d, 0) * 70ms); }
+    .js .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .phone__badge i { animation: none; }
+      .who__card, .browser { transition: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Перейти к содержимому</a>
+
+  <header class="header" id="top">
+    <div class="wrap header__in">
+      <a class="logo" href="#top">saytçı<span>.</span></a>
+      <nav class="nav" data-i18n-attr="aria-label:nav.label" aria-label="Разделы сайта">
+        <a href="#services" data-i18n="nav.services">Услуги</a>
+        <a href="#pricing" data-i18n="nav.pricing">Цены</a>
+        <a href="#work" data-i18n="nav.work">Работы</a>
+        <a href="#faq" data-i18n="nav.faq">Вопросы</a>
+      </nav>
+      <div class="header__right">
+        <div class="lang" role="group" data-i18n-attr="aria-label:lang.label" aria-label="Язык сайта">
+          <button type="button" data-lang="az" lang="az" aria-pressed="false" title="Azərbaycanca">AZ</button>
+          <button type="button" data-lang="ru" lang="ru" aria-pressed="true" title="Русский">RU</button>
+          <button type="button" data-lang="en" lang="en" aria-pressed="false" title="English">EN</button>
+        </div>
+        <a class="btn btn--ink btn--sm" href="#contact" data-i18n-attr="aria-label:nav.cta" aria-label="Написать">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          <span data-i18n="nav.cta">Написать</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Первый экран ===== -->
+    <section class="hero">
+      <div class="wrap hero__in">
+        <div class="hero__text">
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.eyebrow">Сайты для бизнеса в Баку</span></p>
+          <h1 data-i18n-html="hero.title">Сайт для вашего бизнеса — <em>готов за неделю</em></h1>
+          <p class="hero__sub" data-i18n="hero.sub">Меню или прайс на трёх языках, онлайн-бронь, карта и WhatsApp. Сайт удобно открывается с телефона — именно оттуда вас ищут клиенты.</p>
+          <div class="hero__cta">
+            <a class="btn btn--accent" href="#contact" data-i18n="hero.cta">Получить бесплатный пример</a>
+            <a class="btn btn--ghost" href="#work" data-i18n="hero.cta2">Мои работы</a>
+          </div>
+          <dl class="facts">
+            <div><dt data-i18n="fact1.v">3 языка</dt><dd>AZ · RU · EN</dd></div>
+            <div><dt data-i18n="fact2.v">1–2 дня</dt><dd data-i18n="fact2.l">бесплатный пример</dd></div>
+            <div><dt data-i18n="fact3.v">от 150 ₼</dt><dd data-i18n="fact3.l">цена сайта</dd></div>
+          </dl>
+        </div>
+
+        <div class="hero__demo">
+          <div class="phone">
+            <span class="phone__badge"><i aria-hidden="true"></i><span data-i18n="demo.badge">Живой пример</span></span>
+            <div class="phone__screen">
+              <iframe id="demoFrame" data-i18n-attr="title:demo.frame" title="Пример сайта: ресторан Obed"></iframe>
+              <a class="phone__tap js-demo" href="work/obed/index.html?lang=ru" target="_blank" rel="noopener" data-i18n-attr="aria-label:demo.open" aria-label="Открыть пример целиком"></a>
+            </div>
+          </div>
+          <a class="demo-link js-demo" href="work/obed/index.html?lang=ru" target="_blank" rel="noopener"><span data-i18n="demo.open">Открыть пример целиком</span> <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Для кого ===== -->
+    <section class="section" id="who">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 data-i18n="who.title">Для кого</h2>
+          <p data-i18n="who.lead">Делаю сайты для небольших бизнесов Баку: всё, что клиенту нужно узнать, — на одной странице.</p>
+        </div>
+        <ul class="who">
+          <li class="who__card reveal">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 2.5v3M12 2.5v3"/><path d="M3 21.5h14"/></svg>
+            <h3 data-i18n="who.1.t">Кафе и рестораны</h3>
+            <p data-i18n="who.1.d">Меню с ценами и фото, бронь столика, часы работы и карта.</p>
+          </li>
+          <li class="who__card reveal" style="--d:1">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.2 8.2 20 20M8.2 15.8 20 4"/></svg>
+            <h3 data-i18n="who.2.t">Салоны красоты и барбершопы</h3>
+            <p data-i18n="who.2.d">Цены на услуги, мастера и онлайн-запись через WhatsApp.</p>
+          </li>
+          <li class="who__card reveal" style="--d:2">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 3C5 3 3.5 5 3.5 7.5c0 2 .9 3.4 1.4 5.4.7 2.7.9 8.1 2.9 8.1 1.8 0 1.9-5.2 4.2-5.2s2.4 5.2 4.2 5.2c2 0 2.2-5.4 2.9-8.1.5-2 1.4-3.4 1.4-5.4C20.5 5 19 3 16.5 3c-1.9 0-2.7 1-4.5 1S9.4 3 7.5 3z"/></svg>
+            <h3 data-i18n="who.3.t">Стоматологии и клиники</h3>
+            <p data-i18n="who.3.d">Услуги и цены, врачи, запись на приём и как добраться.</p>
+          </li>
+          <li class="who__card reveal">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-8.5h16V21"/><path d="M4 16.5c1.6 1.2 3.4 1.2 5 0s3.4-1.2 5 0 3.4 1.2 5 0"/><path d="M12 12.5V9"/><path d="M12 6.5c.9 0 1.4-.7 1.4-1.5S12 2.5 12 2.5 10.6 4.2 10.6 5s.5 1.5 1.4 1.5z"/><path d="M2.5 21h19"/></svg>
+            <h3 data-i18n="who.4.t">Кондитерские</h3>
+            <p data-i18n="who.4.d">Каталог тортов и десертов, заказ в WhatsApp в одно касание.</p>
+          </li>
+          <li class="who__card reveal" style="--d:1">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1.6 1.3 3.2 1.1 4.4 0 0 3.6-1.7 6.6-4.4 6.6S7.6 6.6 7.6 3c1.2 1.1 2.8 1.3 4.4 0z"/><path d="M12 9.6V21"/><path d="M12 17c-.4-2.6-2.4-4.4-5-4.6.3 2.7 2.3 4.5 5 4.6zM12 19c.4-2.6 2.4-4.4 5-4.6-.3 2.7-2.3 4.5-5 4.6z"/></svg>
+            <h3 data-i18n="who.5.t">Цветочные магазины</h3>
+            <p data-i18n="who.5.d">Букеты с ценами, заказ и доставка через WhatsApp.</p>
+          </li>
+          <li class="who__card who__card--more reveal" style="--d:2">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v10h16V10"/><path d="M2.5 10 5 4h14l2.5 6z"/><path d="M10 20v-5h4v5"/></svg>
+            <h3 data-i18n="who.6.t">Другой бизнес</h3>
+            <p data-i18n="who.6.d">Магазин, мастерская, курсы — напишите, что нужно.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Услуги ===== -->
+    <section class="section section--dark" id="services">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 data-i18n="svc.title">Не только сайт</h2>
+          <p data-i18n="svc.lead">Всё, чтобы клиенты находили вас в интернете и быстро писали.</p>
+        </div>
+        <ol class="svc">
+          <li class="svc__item reveal"><span class="svc__n">01</span><div><h3 data-i18n="svc.1.t">Сайт на трёх языках</h3><p data-i18n="svc.1.d">Одна или несколько страниц. Удобно открывается с телефона и быстро загружается.</p></div></li>
+          <li class="svc__item reveal" style="--d:1"><span class="svc__n">02</span><div><h3 data-i18n="svc.2.t">Карточка в Google Maps</h3><p data-i18n="svc.2.d">Фото, меню, часы работы и ссылка на сайт — чтобы вас было легко найти.</p></div></li>
+          <li class="svc__item reveal"><span class="svc__n">03</span><div><h3 data-i18n="svc.3.t">QR-меню на столы</h3><p data-i18n="svc.3.d">Гость сканирует код и видит меню на своём языке.</p></div></li>
+          <li class="svc__item reveal" style="--d:1"><span class="svc__n">04</span><div><h3 data-i18n="svc.4.t">Автоответы в Instagram</h3><p data-i18n="svc.4.d">Ответы на «Сколько стоит?» и «Где вы находитесь?» через официальные инструменты Instagram.</p></div></li>
+          <li class="svc__item reveal"><span class="svc__n">05</span><div><h3 data-i18n="svc.5.t">Заказ в WhatsApp</h3><p data-i18n="svc.5.d">Кнопка, которая открывает чат WhatsApp с уже написанным заказом.</p></div></li>
+          <li class="svc__item reveal" style="--d:1"><span class="svc__n">06</span><div><h3 data-i18n="svc.6.t">Поддержка</h3><p data-i18n="svc.6.d">Обновляю меню, цены и фото, когда нужно.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Цены ===== -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 data-i18n="price.title">Цены</h2>
+          <p data-i18n="price.lead">Сначала бесплатный пример. Платите, только если понравится.</p>
+        </div>
+        <div class="plans">
+          <article class="plan reveal">
+            <h3 class="plan__name" lang="en">Mini</h3>
+            <p class="plan__desc" data-i18n="pkg.mini.d">Чтобы просто быть в интернете</p>
+            <p class="plan__price">150<span>₼</span></p>
+            <ul class="plan__list">
+              <li data-i18n="pkg.mini.f1">Одна страница</li>
+              <li data-i18n="pkg.mini.f2">Один язык на выбор</li>
+              <li data-i18n="pkg.mini.f3">Меню или прайс</li>
+              <li data-i18n="pkg.mini.f4">Карта и часы работы</li>
+              <li data-i18n="pkg.mini.f5">Кнопки WhatsApp и звонка</li>
+            </ul>
+            <a class="btn btn--ghost btn--block" href="#contact" data-pkg="mini" data-i18n="pkg.choose">Выбрать</a>
+          </article>
+          <article class="plan plan--hot reveal" style="--d:1">
+            <span class="plan__badge" data-i18n="pkg.hot">Рекомендую</span>
+            <h3 class="plan__name" lang="en">Standard</h3>
+            <p class="plan__desc" data-i18n="pkg.std.d">Чтобы клиенты бронировали и записывались сами</p>
+            <p class="plan__price">250<span>₼</span></p>
+            <ul class="plan__list">
+              <li data-i18n="pkg.std.f1">Всё из Mini</li>
+              <li data-i18n="pkg.std.f2">Три языка: AZ, RU, EN</li>
+              <li data-i18n="pkg.std.f3">Форма брони или записи — заявки приходят в WhatsApp</li>
+              <li data-i18n="pkg.std.f4">Оформление карточки в Google Maps</li>
+            </ul>
+            <a class="btn btn--accent btn--block" href="#contact" data-pkg="standard" data-i18n="pkg.choose">Выбрать</a>
+          </article>
+          <article class="plan reveal" style="--d:2">
+            <h3 class="plan__name" lang="en">Max</h3>
+            <p class="plan__desc" data-i18n="pkg.max.d">Для большого меню или каталога</p>
+            <p class="plan__price">400<span>₼</span></p>
+            <ul class="plan__list">
+              <li data-i18n="pkg.max.f1">Всё из Standard</li>
+              <li data-i18n="pkg.max.f2">Несколько страниц</li>
+              <li data-i18n="pkg.max.f3">Галерея или каталог</li>
+              <li data-i18n="pkg.max.f4">QR-меню на столы</li>
+              <li data-i18n="pkg.max.f5">3 месяца поддержки бесплатно</li>
+            </ul>
+            <a class="btn btn--ghost btn--block" href="#contact" data-pkg="max" data-i18n="pkg.choose">Выбрать</a>
+          </article>
+        </div>
+
+        <div class="extras reveal">
+          <div>
+            <h3 data-i18n="add.title">Отдельно</h3>
+            <ul class="extras__list">
+              <li><span data-i18n="add.maps">Карточка в Google Maps</span><b>30–60 ₼</b></li>
+              <li><span data-i18n="add.qr">QR-меню на столы</span><b>20–40 ₼</b></li>
+              <li><span data-i18n="add.ig">Автоответы в Instagram</span><b>40–80 ₼</b></li>
+              <li><span data-i18n="add.sup">Поддержка: меню, цены, фото</span><b data-i18n="add.supP">20–40 ₼ в месяц</b></li>
+            </ul>
+          </div>
+          <div>
+            <h3 data-i18n="note.title">Важно знать</h3>
+            <ul class="notes">
+              <li data-i18n="note.1">Хостинг бесплатный. Домен оплачиваете вы (.az — от 40 ₼ в год, .com — около 18 ₼), и он оформляется на ваше имя.</li>
+              <li data-i18n="note.2">Оплата: 50% — когда пример понравился, 50% — после запуска.</li>
+              <li data-i18n="note.3">Два круга правок входят в цену любого пакета.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Работы ===== -->
+    <section class="section section--alt" id="work">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 data-i18n="work.title">Работы</h2>
+          <p data-i18n="work.lead">Пока это демо-проект: так может выглядеть и ваш сайт.</p>
+        </div>
+        <div class="works">
+          <article class="work reveal">
+            <a class="work__shot js-demo" href="work/obed/index.html?lang=ru" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+              <div class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i></div>
+                <img src="work/obed/preview-ru.jpg" data-i18n-attr="src:work.img,alt:work.alt" alt="Главный экран сайта ресторана Obed" width="1440" height="900" loading="lazy">
+              </div>
+            </a>
+            <div class="work__body">
+              <span class="tag" data-i18n="work.tag">Демо-проект</span>
+              <h3 data-i18n="work.obed.t">Obed — ресторан в Баку</h3>
+              <p data-i18n="work.obed.d">Меню, онлайн-бронь столика, карта и часы работы. Три языка и тёмный дизайн.</p>
+              <a class="link js-demo" href="work/obed/index.html?lang=ru" target="_blank" rel="noopener"><span data-i18n="work.open">Открыть сайт</span> <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+          <article class="work work--next reveal" style="--d:1">
+            <h3 data-i18n="work.next.t">Здесь может быть ваш бизнес</h3>
+            <p data-i18n="work.next.d">Пришлите ссылку на ваш Instagram или Google Maps — за 1–2 дня сделаю бесплатный пример.</p>
+            <a class="btn btn--accent" href="#contact" data-i18n="work.next.b">Хочу пример</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Как работаю ===== -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <h2 data-i18n="how.title">Как я работаю</h2>
+        </div>
+        <ol class="steps">
+          <li class="step reveal"><span class="step__n">1</span><h3 data-i18n="how.1.t">Вы пишете</h3><p data-i18n="how.1.d">Присылаете ссылку на Instagram или Google Maps и коротко рассказываете, что нужно.</p></li>
+          <li class="step reveal" style="--d:1"><span class="step__n">2</span><h3 data-i18n="how.2.t">Бесплатный пример</h3><p data-i18n="how.2.d">За 1–2 дня делаю пример с вашим названием, меню и фото.</p></li>
+          <li class="step reveal" style="--d:2"><span class="step__n">3</span><h3 data-i18n="how.3.t">Правки</h3><p data-i18n="how.3.d">Меняем тексты, цвета и фото. Два круга правок входят в цену.</p></li>
+          <li class="step reveal" style="--d:3"><span class="step__n">4</span><h3 data-i18n="how.4.t">Запуск</h3><p data-i18n="how.4.d">Подключаю домен и помогаю добавить ссылку в Google Maps и Instagram.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Вопросы ===== -->
+    <section class="section section--alt" id="faq">
+      <div class="wrap faq-wrap">
+        <div class="sec-head reveal">
+          <h2 data-i18n="faq.title">Вопросы</h2>
+        </div>
+        <div class="faq reveal">
+          <details><summary data-i18n="faq.1.q">Что, если пример не понравится?</summary><p data-i18n="faq.1.a">Ничего не платите. Пример ни к чему вас не обязывает.</p></details>
+          <details><summary data-i18n="faq.2.q">Зачем сайт, если есть Instagram?</summary><p data-i18n="faq.2.a">Сайт лучше находится в Google и на картах. Меню и цены видны сразу — не нужно листать посты. И сайт открывается даже у тех, у кого нет Instagram.</p></details>
+          <details><summary data-i18n="faq.3.q">Сколько времени это займёт?</summary><p data-i18n="faq.3.a">Пример — 1–2 дня. Готовый сайт — обычно до недели после того, как вы пришлёте тексты и фото.</p></details>
+          <details><summary data-i18n="faq.4.q">Нужно ли платить за хостинг?</summary><p data-i18n="faq.4.a">Нет, хостинг бесплатный. Платите только за домен — адрес вроде vashe-kafe.az. Он оформляется на ваше имя, поэтому сайт всегда остаётся вашим.</p></details>
+          <details><summary data-i18n="faq.5.q">Можно ли потом менять меню и цены?</summary><p data-i18n="faq.5.a">Да. Пишете мне в WhatsApp — обычно обновляю за 1–2 дня. Это входит в поддержку (20–40 ₼ в месяц).</p></details>
+          <details><summary data-i18n="faq.6.q">Как проходит оплата?</summary><p data-i18n="faq.6.a">50% — когда пример понравился, 50% — после запуска. Все условия заранее присылаю одним сообщением в WhatsApp.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Контакты ===== -->
+    <section class="section contact" id="contact">
+      <div class="wrap contact__in">
+        <div class="reveal">
+          <h2 data-i18n="contact.title">Получить бесплатный пример</h2>
+          <p class="contact__lead" data-i18n="contact.lead">Заполните форму — откроется WhatsApp с готовым сообщением. Или напишите напрямую.</p>
+          <div class="direct">
+            <p class="direct__label" data-i18n="contact.direct">Напрямую</p>
+            <a class="direct__row" id="waLink" href="https://wa.me/994506162260" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg>
+              <span>WhatsApp</span><b class="js-phone">+994 50 616 22 60</b>
+            </a>
+            <a class="direct__row" id="telLink" href="tel:+994506162260">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+              <span data-i18n="contact.call">Позвонить</span><b class="js-phone">+994 50 616 22 60</b>
+            </a>
+            <a class="direct__row" id="igLink" href="https://www.instagram.com/" target="_blank" rel="noopener" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+              <span>Instagram</span><b id="igHandle"></b>
+            </a>
+            <ul class="direct__notes">
+              <li data-i18n="contact.reply">Отвечаю в течение дня</li>
+              <li data-i18n="contact.visit">Могу зайти к вам и показать пример на телефоне</li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="form reveal" id="leadForm" novalidate style="--d:1">
+          <div class="form__row">
+            <div class="field">
+              <label for="cName" data-i18n="f.name">Ваше имя</label>
+              <input id="cName" name="name" type="text" autocomplete="name" required aria-describedby="cNameErr">
+              <p class="err" id="cNameErr" data-i18n="f.nameErr">Укажите имя</p>
+            </div>
+            <div class="field">
+              <label for="cBiz" data-i18n="f.biz">Название бизнеса</label>
+              <input id="cBiz" name="business" type="text" autocomplete="organization" required aria-describedby="cBizErr" data-i18n-attr="placeholder:f.bizPh" placeholder="Кафе, салон, магазин…">
+              <p class="err" id="cBizErr" data-i18n="f.bizErr">Укажите название бизнеса</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="cLink"><span data-i18n="f.link">Ссылка на Instagram или Google Maps</span> <small data-i18n="f.opt">необязательно</small></label>
+            <input id="cLink" name="link" type="text" inputmode="url" autocomplete="url" data-i18n-attr="placeholder:f.linkPh" placeholder="instagram.com/… или ссылка на карту">
+          </div>
+          <fieldset class="field">
+            <legend data-i18n="f.needs">Что нужно?</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="need" value="site"><span data-i18n="need.site">Сайт</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="maps"><span data-i18n="need.maps">Google Maps</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="qr"><span data-i18n="need.qr">QR-меню</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="ig"><span data-i18n="need.ig">Instagram</span></label>
+              <label class="chip"><input type="checkbox" name="need" value="unsure"><span data-i18n="need.unsure">Пока не знаю</span></label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="cPkg" data-i18n="f.pkg">Пакет</label>
+            <select id="cPkg" name="package">
+              <option value="" data-i18n="f.pkgNone">Не выбран</option>
+              <option value="mini">Mini — 150 ₼</option>
+              <option value="standard">Standard — 250 ₼</option>
+              <option value="max">Max — 400 ₼</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cMsg"><span data-i18n="f.msg">Комментарий</span> <small data-i18n="f.opt">необязательно</small></label>
+            <textarea id="cMsg" name="message" rows="3" data-i18n-attr="placeholder:f.msgPh" placeholder="Например: нужно меню на трёх языках и бронь столиков"></textarea>
+          </div>
+          <button class="btn btn--accent btn--block" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.6-5.3A8.4 8.4 0 1 1 21 11.5z"/></svg>
+            <span data-i18n="f.submit">Отправить в WhatsApp</span>
+          </button>
+          <p class="form__sent" id="sent" role="status" hidden></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__in">
+      <a class="logo" href="#top">saytçı<span>.</span></a>
+      <p data-i18n="hero.eyebrow">Сайты для бизнеса в Баку</p>
+      <p>© <span id="year">2026</span></p>
+      <a class="footer__top" href="#top"><span data-i18n="footer.top">Наверх</span> <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script>
+    /* ==== Контакты: ЗАМЕНИ на свои (номер родителей или отдельный рабочий номер) ==== */
+    const CONFIG = {
+      whatsapp: "994506162260",    // номер для WhatsApp: только цифры, начиная с 994, без + и пробелов
+      phone: "+994 50 616 22 60",  // как номер показывается на сайте
+      instagram: ""                // ник в Instagram без @; если пусто — строка с Instagram скрыта
+    };
+
+    const LANGS = ["az", "ru", "en"];
+    const OG_LOCALES = { ru: "ru_RU", az: "az_AZ", en: "en_US" };
+    const I18N = {
+      "meta.title": {
+        ru: "saytçı — сайты для бизнеса в Баку",
+        az: "saytçı — Bakıda biznes üçün saytlar",
+        en: "saytçı — websites for Baku businesses"
+      },
+      "meta.desc": {
+        ru: "Сайты для кафе, ресторанов, салонов и магазинов в Баку: меню и цены на трёх языках, онлайн-бронь, карта и WhatsApp. Бесплатный пример до оплаты, от 150 ₼.",
+        az: "Bakıda kafe, restoran, salon və mağazalar üçün saytlar: üç dildə menyu və qiymətlər, onlayn rezerv, xəritə və WhatsApp. Ödənişdən əvvəl pulsuz nümunə, 150\u00a0₼-\u2060dan.",
+        en: "Websites for cafés, restaurants, salons and shops in Baku: menus and prices in three languages, online booking, a map and WhatsApp. A free sample before you pay, from 150 ₼."
+      },
+      "skip": { ru: "Перейти к содержимому", az: "Məzmuna keçin", en: "Skip to content" },
+      "lang.label": { ru: "Язык сайта", az: "Saytın dili", en: "Site language" },
+      "nav.label": { ru: "Разделы сайта", az: "Saytın bölmələri", en: "Site sections" },
+      "nav.services": { ru: "Услуги", az: "Xidmətlər", en: "Services" },
+      "nav.pricing": { ru: "Цены", az: "Qiymətlər", en: "Pricing" },
+      "nav.work": { ru: "Работы", az: "İşlər", en: "Work" },
+      "nav.faq": { ru: "Вопросы", az: "Suallar", en: "FAQ" },
+      "nav.cta": { ru: "Написать", az: "Yazın", en: "Message me" },
+
+      "hero.eyebrow": { ru: "Сайты для бизнеса в Баку", az: "Bakıda biznes üçün saytlar", en: "Websites for Baku businesses" },
+      "hero.title": {
+        ru: "Сайт для вашего бизнеса — <em>готов за неделю</em>",
+        az: "Biznesiniz üçün sayt — <em>bir həftəyə hazır</em>",
+        en: "A website for your business, <em>ready in a week</em>"
+      },
+      "hero.sub": {
+        ru: "Меню или прайс на трёх языках, онлайн-бронь, карта и WhatsApp. Сайт удобно открывается с телефона — именно оттуда вас ищут клиенты.",
+        az: "Üç dildə menyu və ya qiymət siyahısı, onlayn rezerv, xəritə və WhatsApp. Sayt telefonda rahat açılır — müştərilər sizi elə oradan axtarır.",
+        en: "A menu or price list in three languages, online booking, a map and WhatsApp. It works great on phones, which is exactly where customers look for you."
+      },
+      "hero.cta": { ru: "Получить бесплатный пример", az: "Pulsuz nümunə alın", en: "Get a free sample" },
+      "hero.cta2": { ru: "Мои работы", az: "İşlərim", en: "My work" },
+      "fact1.v": { ru: "3 языка", az: "3 dil", en: "3 languages" },
+      "fact2.v": { ru: "1–2 дня", az: "1–2 gün", en: "1–2 days" },
+      "fact2.l": { ru: "бесплатный пример", az: "pulsuz nümunə", en: "free sample" },
+      "fact3.v": { ru: "от 150\u00a0₼", az: "150\u00a0₼-\u2060dan", en: "from 150\u00a0₼" },
+      "fact3.l": { ru: "цена сайта", az: "sayt qiyməti", en: "per website" },
+      "demo.badge": { ru: "Живой пример", az: "Canlı nümunə", en: "Live demo" },
+      "demo.frame": { ru: "Пример сайта: ресторан Obed", az: "Sayt nümunəsi: Obed restoranı", en: "Website sample: Obed restaurant" },
+      "demo.open": { ru: "Открыть пример целиком", az: "Nümunəni tam açın", en: "Open the full demo" },
+
+      "who.title": { ru: "Для кого", az: "Kimlər üçün", en: "Who it’s for" },
+      "who.lead": {
+        ru: "Делаю сайты для небольших бизнесов Баку: всё, что клиенту нужно узнать, — на одной странице.",
+        az: "Bakının kiçik biznesləri üçün sayt hazırlayıram: müştərinin bilməli olduğu hər şey bir səhifədə.",
+        en: "I build websites for small businesses in Baku: everything a customer needs to know, on one page."
+      },
+      "who.1.t": { ru: "Кафе и рестораны", az: "Kafe və restoranlar", en: "Cafés and restaurants" },
+      "who.1.d": {
+        ru: "Меню с ценами и фото, бронь столика, часы работы и карта.",
+        az: "Qiymətləri və şəkilləri ilə menyu, masa rezervi, iş saatları və xəritə.",
+        en: "A menu with prices and photos, table booking, opening hours and a map."
+      },
+      "who.2.t": { ru: "Салоны красоты и барбершопы", az: "Gözəllik salonları və bərbərxanalar", en: "Beauty salons and barbershops" },
+      "who.2.d": {
+        ru: "Цены на услуги, мастера и онлайн-запись через WhatsApp.",
+        az: "Xidmət qiymətləri, ustalar və WhatsApp ilə onlayn yazılış.",
+        en: "Service prices, your team and booking via WhatsApp."
+      },
+      "who.3.t": { ru: "Стоматологии и клиники", az: "Stomatologiya və klinikalar", en: "Dental and medical clinics" },
+      "who.3.d": {
+        ru: "Услуги и цены, врачи, запись на приём и как добраться.",
+        az: "Xidmətlər və qiymətlər, həkimlər, qəbula yazılış və ünvan.",
+        en: "Services and prices, doctors, appointment requests and directions."
+      },
+      "who.4.t": { ru: "Кондитерские", az: "Şirniyyat və tortlar", en: "Bakeries and cake shops" },
+      "who.4.d": {
+        ru: "Каталог тортов и десертов, заказ в WhatsApp в одно касание.",
+        az: "Tort və desert kataloqu, bir toxunuşla WhatsApp sifarişi.",
+        en: "A catalogue of cakes and desserts, with ordering on WhatsApp in one tap."
+      },
+      "who.5.t": { ru: "Цветочные магазины", az: "Gül mağazaları", en: "Flower shops" },
+      "who.5.d": {
+        ru: "Букеты с ценами, заказ и доставка через WhatsApp.",
+        az: "Qiymətləri ilə buketlər, WhatsApp ilə sifariş və çatdırılma.",
+        en: "Bouquets with prices, plus ordering and delivery via WhatsApp."
+      },
+      "who.6.t": { ru: "Другой бизнес", az: "Başqa biznes", en: "Something else" },
+      "who.6.d": {
+        ru: "Магазин, мастерская, курсы — напишите, что нужно.",
+        az: "Mağaza, emalatxana, kurslar — nə lazım olduğunu yazın.",
+        en: "A shop, a workshop, courses — tell me what you need."
+      },
+
+      "svc.title": { ru: "Не только сайт", az: "Təkcə sayt deyil", en: "More than a website" },
+      "svc.lead": {
+        ru: "Всё, чтобы клиенты находили вас в интернете и быстро писали.",
+        az: "Müştərilərin sizi internetdə tapması və sizə tez yazması üçün hər şey.",
+        en: "Everything that helps customers find you online and get in touch fast."
+      },
+      "svc.1.t": { ru: "Сайт на трёх языках", az: "Üç dildə sayt", en: "A website in three languages" },
+      "svc.1.d": {
+        ru: "Одна или несколько страниц. Удобно открывается с телефона и быстро загружается.",
+        az: "Bir və ya bir neçə səhifə. Telefonda rahat açılır və tez yüklənir.",
+        en: "One page or several. Easy to use on a phone and quick to load."
+      },
+      "svc.2.t": { ru: "Карточка в Google Maps", az: "Google Maps profili", en: "Google Maps profile" },
+      "svc.2.d": {
+        ru: "Фото, меню, часы работы и ссылка на сайт — чтобы вас было легко найти.",
+        az: "Şəkillər, menyu, iş saatları və sayt linki — sizi asanlıqla tapsınlar deyə.",
+        en: "Photos, menu, opening hours and a link to your site, so you’re easy to find."
+      },
+      "svc.3.t": { ru: "QR-меню на столы", az: "Masalar üçün QR-menyu", en: "QR menu for tables" },
+      "svc.3.d": {
+        ru: "Гость сканирует код и видит меню на своём языке.",
+        az: "Qonaq kodu skan edir və menyunu öz dilində görür.",
+        en: "Guests scan the code and see the menu in their own language."
+      },
+      "svc.4.t": { ru: "Автоответы в Instagram", az: "Instagram-da avtomatik cavablar", en: "Instagram auto-replies" },
+      "svc.4.d": {
+        ru: "Ответы на «Сколько стоит?» и «Где вы находитесь?» через официальные инструменты Instagram.",
+        az: "«Neçəyədir?» və «Haradasınız?» suallarına Instagram-ın rəsmi alətləri ilə cavablar.",
+        en: "Answers to “How much?” and “Where are you?” using Instagram’s official tools."
+      },
+      "svc.5.t": { ru: "Заказ в WhatsApp", az: "WhatsApp ilə sifariş", en: "WhatsApp ordering" },
+      "svc.5.d": {
+        ru: "Кнопка, которая открывает чат WhatsApp с уже написанным заказом.",
+        az: "Sifariş mətni artıq yazılmış WhatsApp çatını açan düymə.",
+        en: "A button that opens a WhatsApp chat with the order already written."
+      },
+      "svc.6.t": { ru: "Поддержка", az: "Dəstək", en: "Support" },
+      "svc.6.d": {
+        ru: "Обновляю меню, цены и фото, когда нужно.",
+        az: "Lazım olanda menyunu, qiymətləri və şəkilləri yeniləyirəm.",
+        en: "I update your menu, prices and photos whenever you need."
+      },
+
+      "price.title": { ru: "Цены", az: "Qiymətlər", en: "Pricing" },
+      "price.lead": {
+        ru: "Сначала бесплатный пример. Платите, только если понравится.",
+        az: "Əvvəlcə pulsuz nümunə. Yalnız bəyənsəniz ödəyirsiniz.",
+        en: "A free sample first. You only pay if you like it."
+      },
+      "pkg.hot": { ru: "Рекомендую", az: "Tövsiyə edirəm", en: "Recommended" },
+      "pkg.choose": { ru: "Выбрать", az: "Seçin", en: "Choose" },
+      "pkg.mini.d": { ru: "Чтобы просто быть в интернете", az: "Sadəcə internetdə olmaq üçün", en: "To simply be online" },
+      "pkg.mini.f1": { ru: "Одна страница", az: "Bir səhifə", en: "One page" },
+      "pkg.mini.f2": { ru: "Один язык на выбор", az: "Seçdiyiniz bir dil", en: "One language of your choice" },
+      "pkg.mini.f3": { ru: "Меню или прайс", az: "Menyu və ya qiymət siyahısı", en: "Menu or price list" },
+      "pkg.mini.f4": { ru: "Карта и часы работы", az: "Xəritə və iş saatları", en: "Map and opening hours" },
+      "pkg.mini.f5": { ru: "Кнопки WhatsApp и звонка", az: "WhatsApp və zəng düymələri", en: "WhatsApp and call buttons" },
+      "pkg.std.d": {
+        ru: "Чтобы клиенты бронировали и записывались сами",
+        az: "Müştərilər özləri rezerv etsin və yazılsın deyə",
+        en: "So customers can book online on their own"
+      },
+      "pkg.std.f1": { ru: "Всё из Mini", az: "Mini-də olan hər şey", en: "Everything in Mini" },
+      "pkg.std.f2": { ru: "Три языка: AZ, RU, EN", az: "Üç dil: AZ, RU, EN", en: "Three languages: AZ, RU, EN" },
+      "pkg.std.f3": {
+        ru: "Форма брони или записи — заявки приходят в WhatsApp",
+        az: "Rezerv və ya yazılış forması — müraciətlər WhatsApp-a gəlir",
+        en: "Booking form — requests arrive in WhatsApp"
+      },
+      "pkg.std.f4": { ru: "Оформление карточки в Google Maps", az: "Google Maps profilinin tərtibatı", en: "Google Maps profile setup" },
+      "pkg.max.d": { ru: "Для большого меню или каталога", az: "Böyük menyu və ya kataloq üçün", en: "For a big menu or catalogue" },
+      "pkg.max.f1": { ru: "Всё из Standard", az: "Standard-da olan hər şey", en: "Everything in Standard" },
+      "pkg.max.f2": { ru: "Несколько страниц", az: "Bir neçə səhifə", en: "Several pages" },
+      "pkg.max.f3": { ru: "Галерея или каталог", az: "Qalereya və ya kataloq", en: "Gallery or catalogue" },
+      "pkg.max.f4": { ru: "QR-меню на столы", az: "Masalar üçün QR-menyu", en: "QR menu for tables" },
+      "pkg.max.f5": { ru: "3 месяца поддержки бесплатно", az: "3 ay pulsuz dəstək", en: "3 months of free support" },
+      "add.title": { ru: "Отдельно", az: "Ayrıca", en: "Add-ons" },
+      "add.maps": { ru: "Карточка в Google Maps", az: "Google Maps profili", en: "Google Maps profile" },
+      "add.qr": { ru: "QR-меню на столы", az: "Masalar üçün QR-menyu", en: "QR menu for tables" },
+      "add.ig": { ru: "Автоответы в Instagram", az: "Instagram-da avtomatik cavablar", en: "Instagram auto-replies" },
+      "add.sup": { ru: "Поддержка: меню, цены, фото", az: "Dəstək: menyu, qiymətlər, şəkillər", en: "Support: menu, prices, photos" },
+      "add.supP": { ru: "20–40 ₼ в месяц", az: "ayda 20–40 ₼", en: "20–40 ₼ a month" },
+      "note.title": { ru: "Важно знать", az: "Bilmək vacibdir", en: "Good to know" },
+      "note.1": {
+        ru: "Хостинг бесплатный. Домен оплачиваете вы (.az — от 40 ₼ в год, .com — около 18 ₼), и он оформляется на ваше имя.",
+        az: "Hostinq pulsuzdur. Domeni siz ödəyirsiniz (.az — ildə 40\u00a0₼-\u2060dan, .com — təxminən 18 ₼) və o, sizin adınıza qeydiyyatdan keçir.",
+        en: "Hosting is free. You pay for the domain (.az from 40 ₼ a year, .com about 18 ₼), and it’s registered in your name."
+      },
+      "note.2": {
+        ru: "Оплата: 50% — когда пример понравился, 50% — после запуска.",
+        az: "Ödəniş: 50% — nümunəni bəyəndikdən sonra, 50% — sayt işə düşəndən sonra.",
+        en: "Payment: 50% once you like the sample, 50% after launch."
+      },
+      "note.3": {
+        ru: "Два круга правок входят в цену любого пакета.",
+        az: "Hər paketin qiymətinə iki düzəliş mərhələsi daxildir.",
+        en: "Every package includes two rounds of changes."
+      },
+
+      "work.title": { ru: "Работы", az: "İşlər", en: "Work" },
+      "work.lead": {
+        ru: "Пока это демо-проект: так может выглядеть и ваш сайт.",
+        az: "Hələlik bu, demo layihədir: sizin saytınız da belə görünə bilər.",
+        en: "For now it’s a demo project: this is how your site could look."
+      },
+      "work.img": { ru: "work/obed/preview-ru.jpg", az: "work/obed/preview-az.jpg", en: "work/obed/preview-en.jpg" },
+      "work.alt": {
+        ru: "Главный экран сайта ресторана Obed",
+        az: "Obed restoranı saytının əsas ekranı",
+        en: "Home screen of the Obed restaurant website"
+      },
+      "work.tag": { ru: "Демо-проект", az: "Demo layihə", en: "Demo project" },
+      "work.obed.t": { ru: "Obed — ресторан в Баку", az: "Obed — Bakıda restoran", en: "Obed — a restaurant in Baku" },
+      "work.obed.d": {
+        ru: "Меню, онлайн-бронь столика, карта и часы работы. Три языка и тёмный дизайн.",
+        az: "Menyu, onlayn masa rezervi, xəritə və iş saatları. Üç dil və tünd dizayn.",
+        en: "Menu, online table booking, map and opening hours. Three languages and a dark design."
+      },
+      "work.open": { ru: "Открыть сайт", az: "Saytı açın", en: "Open the site" },
+      "work.next.t": { ru: "Здесь может быть ваш бизнес", az: "Burada sizin biznesiniz ola bilər", en: "Your business could be next" },
+      "work.next.d": {
+        ru: "Пришлите ссылку на ваш Instagram или Google Maps — за 1–2 дня сделаю бесплатный пример.",
+        az: "Instagram və ya Google Maps linkinizi göndərin — 1–2 günə pulsuz nümunə hazırlayaram.",
+        en: "Send me your Instagram or Google Maps link and I’ll make a free sample in 1–2 days."
+      },
+      "work.next.b": { ru: "Хочу пример", az: "Nümunə istəyirəm", en: "I want a sample" },
+
+      "how.title": { ru: "Как я работаю", az: "Necə işləyirəm", en: "How I work" },
+      "how.1.t": { ru: "Вы пишете", az: "Siz yazırsınız", en: "You message me" },
+      "how.1.d": {
+        ru: "Присылаете ссылку на Instagram или Google Maps и коротко рассказываете, что нужно.",
+        az: "Instagram və ya Google Maps linkinizi göndərir, nə lazım olduğunu qısaca yazırsınız.",
+        en: "Send your Instagram or Google Maps link and a few words about what you need."
+      },
+      "how.2.t": { ru: "Бесплатный пример", az: "Pulsuz nümunə", en: "A free sample" },
+      "how.2.d": {
+        ru: "За 1–2 дня делаю пример с вашим названием, меню и фото.",
+        az: "1–2 gün ərzində adınız, menyunuz və şəkillərinizlə nümunə hazırlayıram.",
+        en: "Within 1–2 days I build a sample with your name, menu and photos."
+      },
+      "how.3.t": { ru: "Правки", az: "Düzəlişlər", en: "Changes" },
+      "how.3.d": {
+        ru: "Меняем тексты, цвета и фото. Два круга правок входят в цену.",
+        az: "Mətnləri, rəngləri və şəkilləri dəyişirik. İki düzəliş mərhələsi qiymətə daxildir.",
+        en: "We adjust the texts, colours and photos. Two rounds of changes are included."
+      },
+      "how.4.t": { ru: "Запуск", az: "İşə salma", en: "Launch" },
+      "how.4.d": {
+        ru: "Подключаю домен и помогаю добавить ссылку в Google Maps и Instagram.",
+        az: "Domeni qoşuram və linki Google Maps və Instagram-a əlavə etməyə kömək edirəm.",
+        en: "I connect the domain and help you add the link to Google Maps and Instagram."
+      },
+
+      "faq.title": { ru: "Вопросы", az: "Suallar", en: "Questions" },
+      "faq.1.q": { ru: "Что, если пример не понравится?", az: "Nümunə xoşunuza gəlməsə, nə olacaq?", en: "What if I don’t like the sample?" },
+      "faq.1.a": {
+        ru: "Ничего не платите. Пример ни к чему вас не обязывает.",
+        az: "Heç nə ödəmirsiniz. Nümunə sizi heç nəyə məcbur etmir.",
+        en: "You pay nothing. The sample comes with no obligation."
+      },
+      "faq.2.q": { ru: "Зачем сайт, если есть Instagram?", az: "Instagram varkən sayt nəyə lazımdır?", en: "Why a website if I already have Instagram?" },
+      "faq.2.a": {
+        ru: "Сайт лучше находится в Google и на картах. Меню и цены видны сразу — не нужно листать посты. И сайт открывается даже у тех, у кого нет Instagram.",
+        az: "Sayt Google-da və xəritələrdə daha yaxşı tapılır. Menyu və qiymətlər dərhal görünür — postları vərəqləməyə ehtiyac yoxdur. Sayt Instagram-ı olmayanlarda da açılır.",
+        en: "A website is easier to find on Google and Maps. Your menu and prices are visible right away, with no scrolling through posts. And it opens even for people who don’t use Instagram."
+      },
+      "faq.3.q": { ru: "Сколько времени это займёт?", az: "Bu nə qədər vaxt aparır?", en: "How long does it take?" },
+      "faq.3.a": {
+        ru: "Пример — 1–2 дня. Готовый сайт — обычно до недели после того, как вы пришлёте тексты и фото.",
+        az: "Nümunə — 1–2 gün. Hazır sayt — mətn və şəkilləri göndərdikdən sonra adətən bir həftəyə qədər.",
+        en: "A sample takes 1–2 days. The finished site usually takes up to a week after you send the texts and photos."
+      },
+      "faq.4.q": { ru: "Нужно ли платить за хостинг?", az: "Hostinq üçün pul ödəmək lazımdır?", en: "Do I have to pay for hosting?" },
+      "faq.4.a": {
+        ru: "Нет, хостинг бесплатный. Платите только за домен — адрес вроде vashe-kafe.az. Он оформляется на ваше имя, поэтому сайт всегда остаётся вашим.",
+        az: "Xeyr, hostinq pulsuzdur. Yalnız domen üçün ödəyirsiniz — sizinkafe.az kimi ünvan. O, sizin adınıza qeydiyyatdan keçir, yəni sayt həmişə sizin olaraq qalır.",
+        en: "No, hosting is free. You only pay for the domain — an address like yourcafe.az. It’s registered in your name, so the site always stays yours."
+      },
+      "faq.5.q": { ru: "Можно ли потом менять меню и цены?", az: "Sonra menyunu və qiymətləri dəyişmək olar?", en: "Can the menu and prices be changed later?" },
+      "faq.5.a": {
+        ru: "Да. Пишете мне в WhatsApp — обычно обновляю за 1–2 дня. Это входит в поддержку (20–40 ₼ в месяц).",
+        az: "Bəli. WhatsApp-da yazırsınız — adətən 1–2 günə yeniləyirəm. Bu, dəstək xidmətinə daxildir (ayda 20–40 ₼).",
+        en: "Yes. Message me on WhatsApp and I usually update it within 1–2 days. This is part of support (20–40 ₼ a month)."
+      },
+      "faq.6.q": { ru: "Как проходит оплата?", az: "Ödəniş necə olur?", en: "How does payment work?" },
+      "faq.6.a": {
+        ru: "50% — когда пример понравился, 50% — после запуска. Все условия заранее присылаю одним сообщением в WhatsApp.",
+        az: "50% — nümunəni bəyəndikdən sonra, 50% — sayt işə düşəndən sonra. Bütün şərtləri əvvəlcədən bir WhatsApp mesajında göndərirəm.",
+        en: "50% once you like the sample, 50% after launch. I send all the terms in advance in a single WhatsApp message."
+      },
+
+      "contact.title": { ru: "Получить бесплатный пример", az: "Pulsuz nümunə alın", en: "Get a free sample" },
+      "contact.lead": {
+        ru: "Заполните форму — откроется WhatsApp с готовым сообщением. Или напишите напрямую.",
+        az: "Formu doldurun — hazır mesajla WhatsApp açılacaq. Və ya birbaşa yazın.",
+        en: "Fill in the form and WhatsApp will open with your message ready. Or message me directly."
+      },
+      "contact.direct": { ru: "Напрямую", az: "Birbaşa", en: "Directly" },
+      "contact.call": { ru: "Позвонить", az: "Zəng edin", en: "Call" },
+      "contact.reply": { ru: "Отвечаю в течение дня", az: "Gün ərzində cavab verirəm", en: "I reply within a day" },
+      "contact.visit": {
+        ru: "Могу зайти к вам и показать пример на телефоне",
+        az: "Yanınıza gəlib nümunəni telefonda göstərə bilərəm",
+        en: "I can drop by and show you the sample on my phone"
+      },
+      "f.name": { ru: "Ваше имя", az: "Adınız", en: "Your name" },
+      "f.nameErr": { ru: "Укажите имя", az: "Adınızı yazın", en: "Please enter your name" },
+      "f.biz": { ru: "Название бизнеса", az: "Biznesin adı", en: "Business name" },
+      "f.bizPh": { ru: "Кафе, салон, магазин…", az: "Kafe, salon, mağaza…", en: "Café, salon, shop…" },
+      "f.bizErr": { ru: "Укажите название бизнеса", az: "Biznesin adını yazın", en: "Please enter the business name" },
+      "f.link": { ru: "Ссылка на Instagram или Google Maps", az: "Instagram və ya Google Maps linki", en: "Instagram or Google Maps link" },
+      "f.linkPh": { ru: "instagram.com/… или ссылка на карту", az: "instagram.com/… və ya xəritə linki", en: "instagram.com/… or a map link" },
+      "f.opt": { ru: "необязательно", az: "istəyə görə", en: "optional" },
+      "f.needs": { ru: "Что нужно?", az: "Nə lazımdır?", en: "What do you need?" },
+      "need.site": { ru: "Сайт", az: "Sayt", en: "Website" },
+      "need.maps": { ru: "Google Maps", az: "Google Maps", en: "Google Maps" },
+      "need.qr": { ru: "QR-меню", az: "QR-menyu", en: "QR menu" },
+      "need.ig": { ru: "Instagram", az: "Instagram", en: "Instagram" },
+      "need.unsure": { ru: "Пока не знаю", az: "Hələ bilmirəm", en: "Not sure yet" },
+      "f.pkg": { ru: "Пакет", az: "Paket", en: "Package" },
+      "f.pkgNone": { ru: "Не выбран", az: "Seçilməyib", en: "Not chosen" },
+      "f.msg": { ru: "Комментарий", az: "Şərh", en: "Comment" },
+      "f.msgPh": {
+        ru: "Например: нужно меню на трёх языках и бронь столиков",
+        az: "Məsələn: üç dildə menyu və masa rezervi lazımdır",
+        en: "For example: a menu in three languages and table booking"
+      },
+      "f.submit": { ru: "Отправить в WhatsApp", az: "WhatsApp ilə göndərin", en: "Send via WhatsApp" },
+      "f.sent": {
+        ru: "Сейчас откроется WhatsApp с вашим сообщением. Если этого не произошло, напишите напрямую: {phone}",
+        az: "İndi mesajınızla WhatsApp açılacaq. Açılmasa, birbaşa yazın: {phone}",
+        en: "WhatsApp will open with your message. If it doesn’t, message me directly: {phone}"
+      },
+      "wa.hello": { ru: "Здравствуйте! Хочу бесплатный пример сайта.", az: "Salam! Pulsuz sayt nümunəsi istəyirəm.", en: "Hi! I’d like a free website sample." },
+      "wa.name": { ru: "Имя: {v}", az: "Ad: {v}", en: "Name: {v}" },
+      "wa.biz": { ru: "Бизнес: {v}", az: "Biznes: {v}", en: "Business: {v}" },
+      "wa.link": { ru: "Ссылка: {v}", az: "Link: {v}", en: "Link: {v}" },
+      "wa.needs": { ru: "Нужно: {v}", az: "Lazımdır: {v}", en: "Needed: {v}" },
+      "wa.pkg": { ru: "Пакет: {v}", az: "Paket: {v}", en: "Package: {v}" },
+      "wa.msg": { ru: "Комментарий: {v}", az: "Şərh: {v}", en: "Comment: {v}" },
+      "footer.top": { ru: "Наверх", az: "Yuxarı", en: "Back to top" }
+    };
+
+    let lang = "ru";
+    const onLangChange = [];
+
+    function t(key, vars) {
+      const entry = I18N[key];
+      let s = entry ? (entry[lang] ?? entry.ru) : key;
+      if (vars) s = s.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+      return s;
+    }
+
+    function demoUrl() { return "work/obed/index.html?lang=" + lang; }
+
+    function setLang(next, remember) {
+      lang = LANGS.includes(next) ? next : "az";
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+      document.querySelectorAll("[data-i18n-html]").forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+      document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+        el.dataset.i18nAttr.split(",").forEach(pair => {
+          const [attr, key] = pair.split(":").map(s => s.trim());
+          if (el.getAttribute(attr) !== t(key)) el.setAttribute(attr, t(key));
+        });
+      });
+
+      document.title = t("meta.title");
+      document.querySelector('meta[name="description"]').setAttribute("content", t("meta.desc"));
+      document.querySelector('meta[property="og:title"]').setAttribute("content", t("meta.title"));
+      document.querySelector('meta[property="og:description"]').setAttribute("content", t("meta.desc"));
+      document.querySelector('meta[property="og:locale"]').setAttribute("content", OG_LOCALES[lang]);
+
+      document.querySelectorAll(".lang [data-lang]").forEach(b => {
+        b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+      });
+
+      // Пример сайта в телефоне — на том же языке. replace(), чтобы не засорять историю «Назад»
+      const url = demoUrl();
+      document.querySelectorAll(".js-demo").forEach(a => a.setAttribute("href", url));
+      const frame = document.getElementById("demoFrame");
+      if (!frame.getAttribute("src")) {
+        frame.setAttribute("src", url);              // первая загрузка
+      } else if (frame.dataset.lang !== lang) {
+        try { frame.contentWindow.location.replace(new URL(url, location.href).href); }
+        catch (e) { frame.setAttribute("src", url); }
+      }
+      frame.dataset.lang = lang;
+
+      onLangChange.forEach(fn => fn());
+
+      if (remember) {
+        try { localStorage.setItem("saytci-lang", lang); } catch (e) {}
+        try {
+          const u = new URL(location.href);
+          u.searchParams.set("lang", lang);
+          history.replaceState(null, "", u);
+        } catch (e) {}
+      }
+    }
+
+    function detectLang() {
+      try {
+        const p = new URLSearchParams(location.search).get("lang");
+        if (LANGS.includes(p)) return p;
+      } catch (e) {}
+      try {
+        const saved = localStorage.getItem("saytci-lang");
+        if (LANGS.includes(saved)) return saved;
+      } catch (e) {}
+      const prefs = navigator.languages || [navigator.language || ""];
+      for (const l of prefs) {
+        const code = String(l).slice(0, 2).toLowerCase();
+        if (LANGS.includes(code)) return code;
+      }
+      return "az";
+    }
+
+    // Переключатель языка
+    document.querySelectorAll(".lang [data-lang]").forEach(b => {
+      b.addEventListener("click", () => setLang(b.dataset.lang, true));
+    });
+
+    // Контакты из CONFIG
+    (function () {
+      const digits = CONFIG.phone.replace(/[^\d+]/g, "");
+      document.querySelectorAll(".js-phone").forEach(el => { el.textContent = CONFIG.phone; });
+      document.getElementById("waLink").setAttribute("href", "https://wa.me/" + CONFIG.whatsapp);
+      document.getElementById("telLink").setAttribute("href", "tel:" + digits);
+      if (CONFIG.instagram) {
+        const ig = document.getElementById("igLink");
+        ig.setAttribute("href", "https://www.instagram.com/" + encodeURIComponent(CONFIG.instagram) + "/");
+        document.getElementById("igHandle").textContent = "@" + CONFIG.instagram;
+        ig.hidden = false;
+      }
+      if (/^9940+$/.test(CONFIG.whatsapp)) console.info("saytçı: впиши свой номер в CONFIG в начале скрипта");
+    })();
+
+    // Шапка с линией после прокрутки
+    (function () {
+      const header = document.querySelector(".header");
+      const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    })();
+
+    // Кнопки «Выбрать» в ценах подставляют пакет в форму
+    document.querySelectorAll("[data-pkg]").forEach(a => {
+      a.addEventListener("click", () => {
+        document.getElementById("cPkg").value = a.dataset.pkg;
+        const site = document.querySelector('input[name="need"][value="site"]');
+        if (site) site.checked = true;
+      });
+    });
+
+    // Форма → сообщение в WhatsApp
+    (function () {
+      const form = document.getElementById("leadForm");
+      const sent = document.getElementById("sent");
+      const required = ["cName", "cBiz"].map(id => document.getElementById(id));
+      const val = id => document.getElementById(id).value.trim();
+
+      function setError(input, on) {
+        input.closest(".field").classList.toggle("is-invalid", on);
+        input.setAttribute("aria-invalid", on ? "true" : "false");
+      }
+      required.forEach(input => input.addEventListener("input", () => {
+        if (input.value.trim()) setError(input, false);
+      }));
+
+      function renderSent() { sent.textContent = t("f.sent", { phone: CONFIG.phone }); }
+      onLangChange.push(() => { if (!sent.hidden) renderSent(); });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let first = null;
+        required.forEach(input => {
+          const bad = !input.value.trim();
+          setError(input, bad);
+          if (bad && !first) first = input;
+        });
+        if (first) { first.focus(); return; }
+
+        const needs = [...form.querySelectorAll('input[name="need"]:checked')].map(c => t(`need.${c.value}`));
+        const pkg = document.getElementById("cPkg");
+        const lines = [t("wa.hello"), t("wa.name", { v: val("cName") }), t("wa.biz", { v: val("cBiz") })];
+        if (val("cLink")) lines.push(t("wa.link", { v: val("cLink") }));
+        if (needs.length) lines.push(t("wa.needs", { v: needs.join(", ") }));
+        if (pkg.value) lines.push(t("wa.pkg", { v: pkg.options[pkg.selectedIndex].text }));
+        if (val("cMsg")) lines.push(t("wa.msg", { v: val("cMsg") }));
+
+        const url = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(lines.join("\n"));
+        window.__lastWhatsApp = url;
+        window.open(url, "_blank", "noopener");
+        renderSent();
+        sent.hidden = false;
+      });
+    })();
+
+    // Плавное появление блоков
+    (function () {
+      const items = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) { items.forEach(el => el.classList.add("is-in")); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+      items.forEach(el => io.observe(el));
+    })();
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    setLang(detectLang(), false);
+  </script>
+</body>
+</html>
