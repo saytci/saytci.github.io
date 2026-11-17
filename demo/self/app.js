@@ -6,6 +6,7 @@
   const CONFIG = {
     waSalon: "994516241063",   // запись в салон (WhatsApp), только цифры
     waLaser: "994506041063",   // запись на лазер (WhatsApp)
+    waShop: "994516291063",    // магазин Self Beauty Shop (WhatsApp)
     demo: true                 // true — ничего не отправляется, только окно «это демо»
   };
   const fmtPhone = d => "+" + d.slice(0, 3) + " " + d.slice(3, 5) + " " + d.slice(5, 8) + " " + d.slice(8, 10) + " " + d.slice(10);
@@ -255,6 +256,7 @@
     "ct.salon": { az: "Salon · WhatsApp", ru: "Салон · WhatsApp", en: "Salon · WhatsApp" },
     "ct.laser": { az: "Lazer · WhatsApp", ru: "Лазер · WhatsApp", en: "Laser · WhatsApp" },
     "ct.city": { az: "Şəhər nömrəsi", ru: "Городской", en: "Landline" },
+    "ct.shop": { az: "Mağaza · WhatsApp", ru: "Магазин · WhatsApp", en: "Shop · WhatsApp" },
     "ct.route": { az: "Yol tarifi", ru: "Как добраться", en: "Directions" },
     "ct.book": { az: "Yazılış əvvəlcədən aparılır.", ru: "Запись заранее.", en: "Please book in advance." },
     "ct.map": { az: "Xəritə: Self Beauty Space, Nizami 108A", ru: "Карта: Self Beauty Space, Низами 108A", en: "Map: Self Beauty Space, 108A Nizami St" },
