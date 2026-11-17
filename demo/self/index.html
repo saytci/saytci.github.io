@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="az" class="js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DEMO · Self Beauty Space — gözəllik məkanı, Bakı</title>
+  <meta name="description" content="Makiyaj, saç, lazer epilyasiyası və kosmetika mağazası — Nizami 108A. Qiymətlər, lazer kalkulyatoru və WhatsApp ilə yazılış.">
+  <!-- Демо для показа владельцу: не индексировать -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#E0C9C7">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DEMO · Self Beauty Space — Bakı">
+  <meta property="og:description" content="Nümunə sayt (demo) — yazılış qəbul olunmur. Salon, lazer epilyasiyası və mağaza, Nizami 108A.">
+  <meta property="og:locale" content="az_AZ">
+  <meta property="og:image" content="https://saytci.github.io/demo/self/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23E0C9C7'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-family='Georgia,serif' font-size='36' fill='%2356382D'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ground: #E0C9C7;
+      --ground-hi: #EBDAD7;
+      --pearl: #FBF7F5;
+      --glass: rgba(250, 242, 240, .5);
+      --glass-strong: rgba(251, 246, 244, .84);
+      --ink: #56382D;
+      --muted: #6B4A44;
+      --line: rgba(86, 56, 45, .16);
+      --action: #AC6060;
+      --action-hi: #994F51;
+      --glow: #D9787A;
+      --focus: #7E3A3D;
+      --wa: #157F43;
+      --display: "Literata", Georgia, "Times New Roman", serif;
+      --ui: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --r: 18px;
+      --r-sm: 12px;
+      --gut: 20px;
+      --shadow: 0 24px 60px -28px rgba(86, 56, 45, .45), 0 2px 6px -2px rgba(86, 56, 45, .12);
+      --ease: cubic-bezier(.16, 1, .3, 1);
+      color-scheme: light;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 76px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0; min-height: 100vh;
+      font: 400 16px/1.55 var(--ui); color: var(--ink);
+      background: var(--ground);
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      overflow-x: clip;
+    }
+    ::selection { background: #C98587; color: #fff; }
+    input, textarea, select { caret-color: var(--action); }
+    html { scrollbar-color: rgba(86, 56, 45, .35) transparent; }
+    img, svg { display: block; }
+    a { color: inherit; text-underline-offset: .18em; text-decoration-thickness: 1px; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 6px; }
+    h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 400; letter-spacing: -.01em; text-wrap: balance; }
+    h1, h2 { font-variation-settings: "opsz" 36; }
+    p { margin: 0; }
+    .sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .skip { position: absolute; left: 12px; top: -60px; z-index: 50; background: var(--pearl); padding: 10px 14px; border-radius: 10px; }
+    .skip:focus { top: 12px; }
+
+    /* 3D-сцена за страницей. Без WebGL остаётся мягкий градиент студии */
+    #scene { position: fixed; left: 0; top: 0; width: 100%; height: 100vh; height: 100lvh; z-index: 0; pointer-events: none;
+      background: radial-gradient(120% 80% at 70% 30%, var(--ground-hi), var(--ground) 60%); }
+    #scene canvas { width: 100% !important; height: 100% !important; display: block; opacity: 0; transition: opacity .9s var(--ease); }
+    .has3d #scene canvas { opacity: 1; }
+    .page { position: relative; z-index: 1; overflow-x: clip; }
+    [data-stage] { pointer-events: none; }
+
+    .wrap { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: var(--gut); }
+
+    /* Демо */
+    .ribbon {
+      position: fixed; top: 0; right: 0; z-index: 40; width: 62px; height: 62px; overflow: hidden; pointer-events: none;
+    }
+    .ribbon button {
+      pointer-events: auto; position: absolute; top: 9px; right: -40px; width: 130px; padding: 5px 0 4px;
+      transform: rotate(45deg); border: 0; background: var(--ink); color: var(--pearl);
+      font: 500 11px/1 var(--ui); letter-spacing: .1em; box-shadow: 0 6px 16px -6px rgba(86, 56, 45, .6);
+    }
+
+    /* Шапка */
+    .bar { position: sticky; top: 0; z-index: 30; transition: background-color .4s var(--ease), box-shadow .4s var(--ease); }
+    .bar.is-stuck { background: rgba(240, 226, 223, .72); -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2); box-shadow: 0 1px 0 var(--line); }
+    .bar__in { display: flex; align-items: center; gap: 18px; height: 56px; padding-block: 6px; border-bottom: 1px solid #CDB3B1; box-shadow: 0 1px 0 #D3B8B7; }
+    .bar.is-stuck .bar__in { border-bottom-color: transparent; }
+    .logo { font: 400 41px/1 var(--display); letter-spacing: -.02em; text-decoration: none; margin-right: auto; padding-block: 2px; position: relative; top: 6px; }
+    .nav { display: none; gap: 26px; }
+    .nav a { text-decoration: none; font-weight: 500; font-size: 15px; padding: 10px 0; background: linear-gradient(currentColor, currentColor) 0 calc(100% - 6px) / 0 1px no-repeat; transition: background-size .35s var(--ease); }
+    .nav a:hover { background-size: 100% 1px; }
+    .langs { display: flex; gap: 4px; margin-right: 34px; }
+    .langs button { border: 0; background: none; padding: 10px 7px; min-width: 40px; min-height: 44px; font-size: 16px; font-weight: 400; color: var(--ink); }
+    .langs button[aria-pressed="true"] { color: var(--ink); text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 7px; text-decoration-thickness: 1.5px; }
+    .bar .btn { display: none; }
+
+    /* Кнопки */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 28px; border-radius: var(--r-sm); border: 0;
+      background: var(--action); color: #fff; font: 500 17px/1 var(--ui); text-decoration: none;
+      box-shadow: 0 14px 30px -16px rgba(147, 75, 77, .9);
+      transition: background-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .btn:hover { background: var(--action-hi); transform: translateY(-1px); }
+    .btn:active { transform: translateY(1px) scale(.99); box-shadow: 0 6px 16px -10px rgba(147, 75, 77, .9); }
+    .btn svg { width: 20px; height: 20px; }
+    .btn--quiet { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+    .btn--quiet:hover { background: rgba(255, 255, 255, .45); }
+    .btn--wa { background: var(--wa); box-shadow: 0 14px 30px -16px rgba(21, 127, 67, .9); }
+    .btn--wa:hover { background: #106a37; }
+    .btn[disabled] { opacity: .45; pointer-events: none; }
+
+    /* Стекло: все тексты лежат на матовых табличках */
+    .glass {
+      background: var(--glass); border-radius: var(--r);
+      -webkit-backdrop-filter: blur(22px) saturate(1.25); backdrop-filter: blur(22px) saturate(1.25);
+      box-shadow: var(--shadow), inset 0 0 0 1px rgba(255, 255, 255, .55);
+    }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .glass { background: var(--glass-strong); } }
+
+    section { position: relative; }
+    .sec { padding-block: 96px 40px; }
+    .sec__head { max-width: 620px; margin-bottom: 28px; }
+    .sec__head h2, .h2 { font-size: clamp(36px, 5.2vw, 64px); line-height: 1.04; }
+    .lead { margin-top: 14px; font-size: 17px; color: var(--muted); max-width: 52ch; }
+
+    /* Первый экран */
+    .hero { min-height: calc(58.7svh - 56px); padding-top: 38px; overflow: hidden; }
+    .hero h1 { font-size: clamp(44px, 11.4vw, 96px); line-height: 1.04; max-width: 9.5em; }
+    .hero__addr { margin-top: 12px; font-size: 17px; font-weight: 500; }
+    .hero__cta { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero__cta .btn { min-width: 158px; min-height: 46px; }
+    .stage-hero { position: absolute; left: 16vw; right: -32vw; top: -12px; height: 50svh; }
+
+    /* Цены */
+    .prices { position: relative; }
+    .stage-prices { position: absolute; left: 0; right: 0; top: -12svh; height: 24svh; }
+    .ptablet { position: relative; padding: 26px 22px 22px; }
+    .ptabs { display: flex; gap: 0; flex-wrap: wrap; margin-bottom: 6px; }
+    .ptabs button { border: 0; background: none; padding: 10px 0; min-height: 44px; font-size: 18px; color: var(--muted); position: relative; transition: color .25s var(--ease); }
+    .ptabs__sep { align-self: center; padding: 0 .3em; color: var(--muted); font-size: 18px; }
+    .ptabs button:hover { color: var(--ink); }
+    .ptabs button[aria-selected="true"] { color: var(--ink); }
+    .plist h3 { font-size: 26px; margin: 8px 0 6px; }
+    .prow { display: grid; grid-template-columns: 1fr auto 44px; align-items: center; gap: 10px; padding: 2px 0; min-height: 50px; border-top: 1px solid var(--line); }
+    .prow:first-of-type { border-top: 0; }
+    .prow__name { font-size: 17px; }
+    .prow__name small { display: block; font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+    .prow__price { font-size: 17px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .pgroup { margin: 18px 0 4px; font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--muted); }
+    .pnote { margin-top: 14px; font-size: 13.5px; color: var(--muted); }
+    .sel {
+      width: 44px; height: 44px; border-radius: 50%; border: 0; display: grid; place-items: center;
+      background: radial-gradient(circle, rgba(255, 255, 255, .7) 15px, transparent 15.5px); color: var(--ink);
+      transition: background-color .25s var(--ease), transform .2s var(--ease);
+    }
+    .sel svg { width: 15px; height: 15px; }
+    .sel .i-on { display: none; }
+    .sel[aria-pressed="true"] { background: radial-gradient(circle, var(--action) 15px, transparent 15.5px); color: #fff; }
+    .sel[aria-pressed="true"] .i-on { display: block; }
+    .sel[aria-pressed="true"] .i-off { display: none; }
+    .sel:hover { transform: scale(1.06); }
+    .sel:active { transform: scale(.94); }
+
+    /* Остальные услуги */
+    .more { margin-top: 18px; padding: 22px; }
+    .more h3 { font-size: 24px; margin-bottom: 6px; }
+    .more ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0 28px; }
+    .more li { padding: 12px 0; border-top: 1px solid var(--line); }
+    .more li:first-child { border-top: 0; }
+    .more li b { display: block; font-weight: 500; }
+    .more li span { font-size: 14px; color: var(--muted); }
+    .more li a { font-weight: 500; }
+
+    /* Лазер */
+    .laser__grid { display: grid; gap: 18px; }
+    .stage-laser { position: relative; height: 62svh; min-height: 420px; pointer-events: auto; touch-action: pan-y pinch-zoom; cursor: grab; border-radius: var(--r); }
+    .stage-laser, .stage-shop, .stage-book { display: none; }
+    .has3d .stage-laser, .has3d .stage-shop, .has3d .stage-book { display: block; }
+    .stage-laser:active { cursor: grabbing; }
+    .no3d .stage-laser, .no3d .lz-turn { display: none; }
+    .lz-turn { position: absolute; left: 0; bottom: 10px; display: flex; gap: 6px; padding: 5px; border-radius: 999px; }
+    .lz-turn button { border: 0; min-height: 40px; padding: 0 16px; border-radius: 999px; background: none; font-weight: 500; font-size: 15px; color: var(--muted); }
+    .lz-turn button[aria-pressed="true"] { background: var(--pearl); color: var(--ink); box-shadow: 0 2px 8px -3px rgba(86, 56, 45, .35); }
+    .lz-mini { position: absolute; right: 0; bottom: 10px; padding: 12px 16px; font-size: 15px; line-height: 1.35; min-width: 150px; text-align: right; }
+    .lz-mini s { color: var(--muted); }
+    .lz-mini b { display: block; font: 500 24px/1.1 var(--display); color: var(--action-hi); font-variant-numeric: tabular-nums; }
+    .lz-hint { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); font-size: 13px; color: var(--muted); white-space: nowrap; }
+    .ztip { position: fixed; z-index: 45; pointer-events: none; padding: 7px 11px; border-radius: 10px; font-size: 14px; background: var(--glass-strong); box-shadow: var(--shadow); opacity: 0; transform: translate(-50%, calc(-100% - 14px)); transition: opacity .15s; white-space: nowrap; }
+    .ztip.is-on { opacity: 1; }
+    .zpanel { padding: 22px; }
+    .zgroup + .zgroup { margin-top: 16px; }
+    .zgroup h3 { font: 600 13px/1.3 var(--ui); letter-spacing: .02em; color: var(--muted); margin-bottom: 10px; }
+    .zgrid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .zone {
+      display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px; border-radius: 999px; border: 0;
+      background: rgba(255, 255, 255, .62); box-shadow: inset 0 0 0 1px var(--line); font-size: 15px; text-align: left;
+      transition: background-color .25s var(--ease), transform .2s var(--ease), color .25s;
+    }
+    .zone b { font-weight: 600; font-variant-numeric: tabular-nums; }
+    .zone small { display: block; font-size: 12px; color: var(--muted); }
+    .zone:hover { background: #fff; }
+    .zone:active { transform: scale(.97); }
+    .zone[aria-pressed="true"] { background: var(--action); color: #fff; box-shadow: none; }
+    .zone[aria-pressed="true"] small { color: rgba(255, 255, 255, .85); }
+    .ticket { padding: 22px; margin-bottom: 64px; }
+    .ticket h3 { font-size: 26px; }
+    .ticket__count { color: var(--muted); margin-top: 2px; }
+    .ticket dl { margin: 14px 0 0; }
+    .ticket dl div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); }
+    .ticket dt { color: var(--muted); }
+    .ticket dd { margin: 0; font-variant-numeric: tabular-nums; }
+    .ticket__final dd { font: 500 28px/1.1 var(--display); color: var(--action-hi); }
+    .ticket__final dt { color: var(--ink); align-self: center; }
+    .tiers { list-style: none; margin: 14px 0 0; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
+    .tiers li { font-size: 13.5px; padding: 6px 10px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--line); color: var(--muted); transition: background-color .3s, color .3s; }
+    .tiers li.is-on { background: var(--ink); color: var(--pearl); box-shadow: none; }
+    .nudge { margin-top: 12px; font-size: 14.5px; min-height: 1.5em; }
+    .ticket__acts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .ticket__note { margin-top: 14px; font-size: 13px; color: var(--muted); }
+    .about { margin-top: 18px; display: grid; gap: 18px; }
+    .devices { padding: 22px; display: grid; gap: 18px; }
+    .device p:first-child { font-size: 13px; font-weight: 600; letter-spacing: .02em; color: var(--muted); }
+    .device h3 { font-size: 24px; margin: 4px 0 6px; }
+    .device p:last-child { color: var(--muted); font-size: 15px; }
+    .faq { padding: 8px 22px; }
+    .faq details { border-top: 1px solid var(--line); }
+    .faq details:first-child { border-top: 0; }
+    .faq summary { list-style: none; cursor: pointer; padding: 16px 30px 16px 0; font-weight: 500; position: relative; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: ""; position: absolute; right: 4px; top: 50%; width: 9px; height: 9px; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor; transform: translateY(-70%) rotate(45deg); transition: transform .3s var(--ease); }
+    .faq details[open] summary::after { transform: translateY(-30%) rotate(225deg); }
+    .faq details p { padding: 0 0 16px; color: var(--muted); font-size: 15px; }
+
+    /* Магазин */
+    .shop__grid { display: grid; gap: 18px; }
+    .shop__grid > *, .laser__grid > *, .book__grid > *, .contact > * { min-width: 0; }
+    .stage-shop { height: 42svh; min-height: 300px; }
+    .no3d .stage-shop { display: none; }
+    .shop__card { padding: 24px 22px; }
+    .shop__card h2 { font-size: clamp(36px, 5.2vw, 64px); line-height: 1.04; }
+    .social { display: grid; gap: 8px; margin-top: 20px; }
+    .social a { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 52px; padding: 0 16px; border-radius: var(--r-sm); background: rgba(255, 255, 255, .6); box-shadow: inset 0 0 0 1px var(--line); text-decoration: none; transition: background-color .25s, transform .25s var(--ease); }
+    .social a:hover { background: #fff; transform: translateY(-1px); }
+    .social b { display: flex; align-items: center; gap: 10px; font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+    .social svg { width: 20px; height: 20px; }
+    .social span { color: var(--muted); font-size: 14px; }
+
+    /* Отзывы */
+    .reviews { padding: 24px 22px; display: grid; gap: 24px; }
+    .rating { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+    .rating b { font: 400 72px/1 var(--display); }
+    .stars { display: flex; gap: 3px; color: var(--action); }
+    .stars svg { width: 20px; height: 20px; }
+    .rating span { color: var(--muted); width: 100%; }
+    .quotes { display: grid; gap: 0; }
+    .quote { margin: 0; padding: 18px 0; border-top: 1px solid var(--line); }
+    .quote blockquote { margin: 0; font: 400 19px/1.5 var(--display); }
+    .quote figcaption { margin-top: 8px; font-size: 13.5px; color: var(--muted); }
+
+    /* Запись */
+    .book__grid { display: grid; gap: 18px; }
+    .stage-book { height: 30svh; min-height: 220px; }
+    .no3d .stage-book { display: none; }
+    .steps { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 12px; counter-reset: s; }
+    .steps li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; counter-increment: s; }
+    .steps li::before { content: counter(s); width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .7); font-weight: 600; font-size: 14px; }
+    .steps b { display: block; font-weight: 500; }
+    .steps span { color: var(--muted); font-size: 15px; }
+    .tip { margin-top: 18px; font-size: 15px; color: var(--muted); }
+    .tip b { color: var(--ink); font-weight: 600; }
+    .form { padding: 24px 22px; display: grid; gap: 16px; }
+    .summary h3 { font-size: 24px; margin-bottom: 6px; }
+    .summary ul { list-style: none; margin: 0; padding: 0; }
+    .summary li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+    .summary li small { display: block; color: var(--muted); font-size: 13px; }
+    .summary li button { border: 0; background: none; color: var(--action-hi); font-size: 13.5px; text-decoration: underline; padding: 6px 0 6px 10px; min-height: 32px; }
+    .summary__total { display: flex; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--ink); font-weight: 600; }
+    .summary__empty { color: var(--muted); font-size: 15px; }
+    .grid2 { display: grid; gap: 16px; }
+    .field label { display: block; font-weight: 500; margin-bottom: 6px; }
+    .field label small { color: var(--muted); font-weight: 400; }
+    .field input, .field select, .field textarea {
+      width: 100%; min-height: 50px; padding: 12px 14px; border-radius: var(--r-sm); border: 0;
+      background: rgba(255, 255, 255, .78); box-shadow: inset 0 0 0 1px var(--line); font-size: 16px;
+    }
+    .field textarea { min-height: 96px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; box-shadow: inset 0 0 0 2px var(--action); }
+    .field [aria-invalid="true"] { box-shadow: inset 0 0 0 2px #B3261E; }
+    .err { display: block; min-height: 1.2em; margin-top: 5px; color: #9E2219; font-size: 14px; }
+    .err:empty { min-height: 0; margin: 0; }
+    .form__note { font-size: 13.5px; color: var(--muted); }
+
+    /* Контакты */
+    .contact { display: grid; gap: 18px; }
+    .contact iframe { width: 100%; height: 340px; border: 0; border-radius: var(--r); box-shadow: var(--shadow); background: var(--ground-hi); }
+    .place { padding: 24px 22px; }
+    .place h3 { font-size: 28px; }
+    .place > p { color: var(--muted); margin-top: 4px; }
+    .phones { list-style: none; margin: 16px 0 18px; padding: 0; }
+    .phones li { display: flex; justify-content: space-between; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); }
+    .phones span { color: var(--muted); }
+    .phones a { font-weight: 500; font-variant-numeric: tabular-nums; text-decoration: none; }
+    .place small { display: block; margin-top: 12px; color: var(--muted); }
+
+    .foot { padding: 40px 0 120px; font-size: 14px; color: var(--muted); }
+    .foot__demo { width: 100%; color: var(--ink); }
+    .foot__in { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 20px; }
+
+    /* Нижняя панель выбора */
+    .bookbar {
+      position: fixed; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); z-index: 35;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 10px 18px;
+      transform: translateY(140%); transition: transform .5s var(--ease);
+    }
+    .bookbar.is-on { transform: none; }
+    .bookbar.is-on.is-away { transform: translateY(140%); }
+    .bookbar .btn { min-height: 46px; padding: 0 18px; font-size: 15.5px; }
+
+    /* Окно «это демо» */
+    .demo-dialog { border: 0; padding: 0; border-radius: var(--r); max-width: min(520px, calc(100vw - 32px)); background: var(--pearl); color: var(--ink); box-shadow: var(--shadow); }
+    .demo-dialog::backdrop { background: rgba(86, 56, 45, .35); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+    .demo-dialog__in { padding: 26px 24px 22px; display: grid; gap: 14px; }
+    .demo-dialog h3 { font-size: 28px; }
+    .demo-dialog pre { margin: 0; white-space: pre-wrap; font: 14px/1.5 var(--ui); background: #F1E6E3; padding: 14px; border-radius: var(--r-sm); max-height: 40vh; overflow: auto; }
+    .demo-dialog pre:empty { display: none; }
+    .demo-dialog .btn { justify-self: start; }
+
+    /* Планшет и десктоп */
+    @media (min-width: 760px) {
+      :root { --gut: 32px; }
+      .hero { min-height: calc(100svh - 160px); padding-top: 11svh; }
+      .stage-hero { left: 42%; right: 0; top: 0; height: 72svh; }
+        .stage-prices { right: auto; left: 50%; top: 4svh; width: 46vw; height: 56svh; }
+      .ptablet { width: min(620px, 56%); padding: 30px 32px 26px; }
+      .more { width: min(620px, 56%); padding: 26px 32px; }
+      .more ul { grid-template-columns: 1fr 1fr; }
+      .more li:nth-child(2) { border-top: 0; }
+      .grid2 { grid-template-columns: 1fr 1fr; }
+      .reviews { padding: 34px; grid-template-columns: .8fr 1.6fr; }
+      .quote:first-child { border-top: 0; padding-top: 0; }
+      .form, .place, .shop__card, .zpanel, .ticket, .devices { padding: 30px 32px; }
+      .devices { grid-template-columns: 1fr 1fr; }
+      .faq { padding: 10px 32px; }
+    }
+    @media (min-width: 760px) and (max-width: 1023px) {
+      .hero { min-height: calc(64svh - 90px); }
+      .hero h1 { font-size: clamp(52px, 7.2vw, 72px); }
+      .stage-hero { left: 46%; height: 56svh; }
+      .stage-prices { top: -6svh; height: 40svh; }
+    }
+    @media (min-width: 1024px) {
+      .nav { display: flex; }
+      .bar .btn { display: inline-flex; min-height: 44px; padding: 0 20px; font-size: 15.5px; }
+      .langs { margin-right: 52px; }
+      .hero h1 { font-size: clamp(64px, 6.2vw, 92px); }
+      .hero { min-height: 0; padding-top: 8svh; padding-bottom: 34px; }
+      .stage-hero { left: 40%; right: -6vw; top: -6svh; height: 90svh; }
+      .ptablet, .more { width: min(560px, 44%); }
+      .stage-prices { left: 52%; top: 30svh; width: 40vw; height: 50svh; }
+      .lz-mini { top: 44%; bottom: auto; right: 2%; }
+      .ticket { margin-bottom: 0; }
+      .laser__grid { grid-template-columns: 1.05fr 1fr; align-items: start; }
+      .stage-laser { position: sticky; top: 80px; height: calc(100svh - 110px); grid-row: span 3; }
+      .about { grid-template-columns: 1fr 1fr; align-items: start; }
+      .shop__grid { grid-template-columns: 1.1fr 1fr; align-items: center; }
+      .stage-shop { height: 64svh; order: -1; }
+      .book__grid { grid-template-columns: 1fr 1.1fr; align-items: start; }
+      .stage-book { height: 34svh; }
+      .contact { grid-template-columns: 1.3fr 1fr; align-items: stretch; }
+      .contact iframe { height: 100%; min-height: 420px; }
+      .bookbar { left: auto; right: 24px; bottom: 24px; width: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#prices" data-i18n="skip">Qiymətlərə keç</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-chat" viewBox="0 0 24 24">
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5A8.5 8.5 0 1 1 21 11.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M8.5 9.5c0 3 2.5 5.5 5.5 5.5l1.2-1.4-1.8-1-1 .8a3.6 3.6 0 0 1-2.2-2.2l.8-1-1-1.8z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><path d="M3 11 21 3l-8 18-2-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.8 2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z" fill="currentColor"/></symbol>
+  </svg>
+
+  <div id="scene" aria-hidden="true"></div>
+
+  <div class="ribbon"><button type="button" id="demoRibbon" aria-label="DEMO" data-i18n-attr="aria-label:demo.ribbonAria">DEMO</button></div>
+
+  <div class="page">
+
+    <header class="bar" id="bar">
+      <div class="wrap bar__in">
+        <a class="logo" href="#top" aria-label="Self Beauty Space">Self</a>
+        <nav class="nav" aria-label="Menyu" data-i18n-attr="aria-label:nav.aria">
+          <a href="#prices" data-i18n="nav.prices">Qiymətlər</a>
+          <a href="#laser" data-i18n="nav.laser">Lazer</a>
+          <a href="#shop" data-i18n="nav.shop">Mağaza</a>
+          <a href="#contact" data-i18n="nav.contact">Əlaqə</a>
+        </nav>
+        <a class="btn" href="#booking" data-i18n="nav.book">Yazıl</a>
+        <div class="langs" role="group" aria-label="Dil" data-i18n-attr="aria-label:lang.label">
+          <button type="button" data-lang="az" aria-pressed="true">AZ</button>
+          <button type="button" data-lang="ru" aria-pressed="false">RU</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="stage-hero" data-stage="hero"></div>
+        <div class="wrap">
+          <h1 id="heroTitle" data-i18n="hero.title">Gözəllik üçün bir ünvan</h1>
+          <p class="hero__addr" data-i18n="hero.addr">Nizami 108A · Sahil</p>
+          <div class="hero__cta">
+            <a class="btn" href="#booking" data-i18n="nav.book">Yazıl</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="prices" id="prices" aria-labelledby="pricesTitle">
+        <div class="stage-prices" data-stage="prices"></div>
+        <div class="wrap">
+          <div class="ptablet glass">
+            <h2 class="sr" id="pricesTitle" data-i18n="pr.title">Qiymətlər</h2>
+            <div class="ptabs" role="tablist" aria-label="Bölmələr" data-i18n-attr="aria-label:pr.tabsLabel" id="ptabs"></div>
+            <div class="plist" id="plist" role="tabpanel"></div>
+          </div>
+          <div class="more glass" id="services">
+            <h3 data-i18n="more.title">Salonda həm də</h3>
+            <ul id="moreList"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="laser" aria-labelledby="laserTitle">
+        <div class="wrap">
+          <div class="laser__grid">
+            <div class="stage-laser" data-stage="laser" id="laserStage">
+              <p class="lz-hint" aria-hidden="true" data-i18n="lz.hint">Fırlatmaq üçün sürüşdürün</p>
+              <div class="lz-turn glass">
+                <button type="button" data-face="front" aria-pressed="true" data-i18n="lz.front">Ön</button>
+                <button type="button" data-face="back" aria-pressed="false" data-i18n="lz.back">Arxa</button>
+              </div>
+              <div class="lz-mini glass" id="lzMini" aria-hidden="true" hidden></div>
+            </div>
+            <div class="sec__head" style="margin-bottom:0">
+              <h2 id="laserTitle" data-i18n="lz.title">Lazer epilyasiyası</h2>
+              <p class="lead" data-i18n="lz.lead">Zonaya toxunun: fiqurda və ya siyahıda. Endirim avtomatik hesablanır.</p>
+            </div>
+            <div class="zpanel glass" id="zones"></div>
+            <aside class="ticket glass" aria-live="polite" aria-labelledby="ticketTitle">
+              <h3 id="ticketTitle" data-i18n="calc.title">Sizin seansınız</h3>
+              <p class="ticket__count" id="cCount"></p>
+              <dl>
+                <div><dt data-i18n="calc.sum">Zonaların cəmi</dt><dd id="cSum">—</dd></div>
+                <div><dt id="cDiscLabel">Endirim</dt><dd id="cDisc">—</dd></div>
+                <div class="ticket__final"><dt data-i18n="calc.final">1 seansın qiyməti</dt><dd id="cFinal">—</dd></div>
+              </dl>
+              <ul class="tiers" id="tiers">
+                <li data-tier="10" data-i18n="calc.t2">2 zona −10%</li>
+                <li data-tier="15" data-i18n="calc.t3">3 zona −15%</li>
+                <li data-tier="20" data-i18n="calc.t4">4+ zona −20%</li>
+              </ul>
+              <p class="nudge" id="cNudge"></p>
+              <div class="ticket__acts">
+                <a class="btn" href="#booking" data-i18n="calc.go">Yazılışa keç</a>
+                <button type="button" class="btn btn--quiet" id="cReset" data-i18n="calc.reset">Sıfırla</button>
+              </div>
+              <p class="ticket__note" data-i18n="calc.device">Qiymətlər «Candela» GentleLase Pro Upgraded (aleksandrit) aparatı üçündür.</p>
+            </aside>
+          </div>
+
+          <div class="about">
+            <div class="devices glass">
+              <article class="device">
+                <p data-i18n="dev1.k">Aleksandrit lazer</p>
+                <h3>Candela GentleLase Pro</h3>
+                <p data-i18n="dev1.d">Adətən 8–10 seans: tüklərin təxminən 80%-i gedir. Prosedur zamanı dəri bir az isti hiss edilə bilər.</p>
+              </article>
+              <article class="device">
+                <p data-i18n="dev2.k">Diod lazer</p>
+                <h3>Alma Soprano Ice Platinum</h3>
+                <p data-i18n="dev2.d">Adətən 10–12 seans. Başlıq −12 °C-yə qədər soyuyur, ona görə prosedur ağrısızdır.</p>
+              </article>
+            </div>
+            <div class="faq glass">
+              <details open>
+                <summary data-i18n="q1">Seansdan əvvəl qırxmaq lazımdır?</summary>
+                <p data-i18n="a1">Diod lazer — hər seansdan əvvəl. Aleksandrit — yalnız ilk seansdan 3–5 gün əvvəl.</p>
+              </details>
+              <details>
+                <summary data-i18n="q2">Ağrılıdırmı?</summary>
+                <p data-i18n="a2">Diod aparatın başlığı −12 °C-yə qədər soyuyur. Dərini əlavə soyutmaq üçün salonda Zimmer Cryo 6 var.</p>
+              </details>
+              <details>
+                <summary data-i18n="q3">Neçə seans lazım olacaq?</summary>
+                <p data-i18n="a3">Aleksandritdə adətən 8–10, diodda 10–12 seans. Dəqiq sayı dəri və tük tipindən asılıdır.</p>
+              </details>
+              <details>
+                <summary data-i18n="q4">Necə yazılmaq olar?</summary>
+                <p data-i18n="a4">Yazılış əvvəlcədən aparılır. Zonaları seçin və aşağıdakı formanı göndərin — administrator vaxtı WhatsApp-da təsdiqləyəcək.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="shop" aria-labelledby="shopTitle">
+        <div class="wrap shop__grid">
+          <div class="stage-shop" data-stage="shop"></div>
+          <div class="shop__card glass">
+            <h2 id="shopTitle">Self Beauty Shop</h2>
+            <p class="lead" data-i18n="shop.text">Kosmetika mağazası: baxım və makiyaj vasitələri, salonla eyni ünvanda.</p>
+            <div class="social">
+              <a href="https://www.instagram.com/self.beautyshop/" target="_blank" rel="noopener"><b><svg aria-hidden="true"><use href="#i-ig"/></svg>@self.beautyshop</b><span data-i18n="soc.shop">mağaza</span></a>
+              <a href="https://www.instagram.com/self.beautyspace/" target="_blank" rel="noopener"><b><svg aria-hidden="true"><use href="#i-ig"/></svg>@self.beautyspace</b><span data-i18n="soc.salon">salon</span></a>
+              <a href="https://www.instagram.com/self.laser/" target="_blank" rel="noopener"><b><svg aria-hidden="true"><use href="#i-ig"/></svg>@self.laser</b><span data-i18n="soc.laser">lazer</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="reviews" aria-labelledby="reviewsTitle">
+        <div class="wrap">
+          <div class="reviews glass">
+            <div>
+              <h2 class="h2" id="reviewsTitle" data-i18n="rv.title">Müştərilər nə deyir</h2>
+              <div class="rating" style="margin-top:22px">
+                <b data-i18n="fact.ratingV">4,9</b>
+                <div class="stars" aria-hidden="true">
+                  <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
+                </div>
+                <span data-i18n="rv.google">Google-da 245 rəy</span>
+              </div>
+            </div>
+            <div class="quotes">
+              <figure class="quote">
+                <blockquote data-i18n="rv1">Zümrüd xanım çox gözəl iş görür, əlinə, zəhmətinə sağlıq. Nəticədən həmişəki kimi razı qaldım.</blockquote>
+                <figcaption data-i18n="rv.src">Instagram rəyi · @self.laser</figcaption>
+              </figure>
+              <figure class="quote">
+                <blockquote data-i18n="rv2">1-10 aralığında 10 ilə qiymətləndirirəm: həm gigiyenik idi, həm də lazeroloq bilikli idi — prosedurdan əvvəl və sonra nə etmək lazımdırsa, izah etdi.</blockquote>
+                <figcaption data-i18n="rv.src">Instagram rəyi · @self.laser</figcaption>
+              </figure>
+              <figure class="quote">
+                <blockquote data-i18n="rv3">Hər zamankı kimi 10-dur. Həm sizin peşəkarlığınız, həm də Zümrüd xanımın səmimiyyəti məni hər zaman məmnun edir.</blockquote>
+                <figcaption data-i18n="rv.src">Instagram rəyi · @self.laser</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="booking" aria-labelledby="bookTitle">
+        <div class="wrap book__grid">
+          <div>
+            <div class="stage-book" data-stage="booking"></div>
+            <h2 class="h2" id="bookTitle" data-i18n="bk.title">Bir dəqiqəyə yazılın</h2>
+            <p class="lead" data-i18n="bk.lead">Xidmətləri seçin və günü göstərin — hazır mesaj WhatsApp-da açılacaq.</p>
+            <ol class="steps">
+              <li><div><b data-i18n="st1.t">Seçin</b><span data-i18n="st1.d">Qiymətlərdə «+» basın və ya lazer zonalarını seçin.</span></div></li>
+              <li><div><b data-i18n="st2.t">Gün və vaxt</b><span data-i18n="st2.d">Sizə nə vaxt rahatdır.</span></div></li>
+              <li><div><b data-i18n="st3.t">Göndərin</b><span data-i18n="st3.d">Administrator vaxtı WhatsApp-da təsdiqləyəcək.</span></div></li>
+            </ol>
+            <p class="tip" data-i18n-html="bk.tip"><b>Gəlin obrazı?</b> Qiymətə sınaq makiyajı daxildir. Qeyddə toy tarixini yazın.</p>
+          </div>
+
+          <form class="form glass" id="bookForm" novalidate>
+            <div class="summary" id="summary"></div>
+            <div class="grid2">
+              <div class="field">
+                <label for="fDate" data-i18n="f.date">Hansı gün?</label>
+                <input id="fDate" name="date" type="date" required aria-describedby="eDate">
+                <span class="err" id="eDate" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="fTime" data-i18n="f.time">Vaxt</label>
+                <select id="fTime" name="time">
+                  <option value="any" data-i18n="t.any">Fərqi yoxdur</option>
+                  <option value="m" data-i18n="t.m">Səhər</option>
+                  <option value="d" data-i18n="t.d">Gündüz</option>
+                  <option value="e" data-i18n="t.e">Axşam</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="fName" data-i18n="f.name">Adınız</label>
+              <input id="fName" name="name" type="text" autocomplete="name" required aria-describedby="eName">
+              <span class="err" id="eName" role="alert"></span>
+            </div>
+            <div class="field">
+              <label for="fNote"><span data-i18n="f.note">Qeyd</span> <small data-i18n="f.optional">(istəyə görə)</small></label>
+              <textarea id="fNote" name="note" maxlength="500" placeholder="Məs.: saçım uzundur; lazerə ilk dəfə gəlirəm" data-i18n-attr="placeholder:f.notePh" aria-describedby="eNote"></textarea>
+              <span class="err" id="eNote" role="alert"></span>
+            </div>
+            <button class="btn btn--wa" type="submit">
+              <svg aria-hidden="true"><use href="#i-chat"/></svg>
+              <span data-i18n="f.submit">WhatsApp ilə göndər</span>
+            </button>
+            <p class="form__note" data-i18n="f.hint">Demo: yazılış göndərilmir — yalnız mesajın necə görünəcəyini göstəririk.</p>
+          </form>
+        </div>
+      </section>
+
+      <section class="sec" id="contact" aria-labelledby="contactTitle">
+        <div class="wrap">
+          <div class="sec__head"><h2 id="contactTitle" data-i18n="ct.title">Bizə gəlin</h2></div>
+          <div class="contact">
+            <iframe class="js-map" src="https://maps.google.com/maps?q=Self%20Beauty%20Space%2C%20Nizami%20108A%2C%20Bak%C4%B1&amp;z=16&amp;hl=az&amp;output=embed" title="Xəritə: Self Beauty Space, Nizami 108A" data-i18n-attr="title:ct.map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="place glass">
+              <h3 data-i18n="ct.addr">Nizami küçəsi 108A</h3>
+              <p data-i18n="ct.near">Bakı, Sahil metrosunun yanında (Torqovaya)</p>
+              <ul class="phones">
+                <li><span data-i18n="ct.salon">Salon · WhatsApp</span><a href="tel:+994516241063">051 624 10 63</a></li>
+                <li><span data-i18n="ct.laser">Lazer · WhatsApp</span><a href="tel:+994506041063">050 604 10 63</a></li>
+                <li><span data-i18n="ct.city">Şəhər nömrəsi</span><a href="tel:+994124930601">012 493 06 01</a></li>
+              </ul>
+              <a class="btn" href="https://maps.google.com/?cid=13274247390493778044" target="_blank" rel="noopener">
+                <svg aria-hidden="true"><use href="#i-route"/></svg><span data-i18n="ct.route">Yol tarifi</span>
+              </a>
+              <small data-i18n="ct.book">Yazılış əvvəlcədən aparılır.</small>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot__in">
+        <p class="foot__demo" data-i18n="ribbon.text">Bu, nümunə saytdır: yazılış qəbul olunmur. Self üçün pulsuz hazırlanıb.</p>
+        <span>© 2026 Self Beauty Space · Nizami 108A</span>
+        <span><span data-i18n="footer.demo">Nümunə sayt. Hazırladı:</span> <a href="https://saytci.github.io/" target="_blank" rel="noopener">saytçı</a></span>
+      </div>
+    </footer>
+  </div>
+
+  <div class="ztip" id="ztip" aria-hidden="true"></div>
+
+  <dialog class="demo-dialog" id="demoDialog" aria-labelledby="demoTitle">
+    <div class="demo-dialog__in">
+      <h3 id="demoTitle" data-i18n="demo.title">Bu, demo-saytdır</h3>
+      <p id="demoText"></p>
+      <pre id="demoMsg"></pre>
+      <button type="button" class="btn" id="demoClose" data-i18n="demo.close">Bağla</button>
+    </div>
+  </dialog>
+
+  <div class="bookbar glass" id="bookbar" aria-live="polite">
+    <span id="barText"></span>
+    <a class="btn" href="#booking" data-i18n="bar.go">Yazılışa keç</a>
+  </div>
+
+  <script src="app.js"></script>
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+  <script>
+    // Без поддержки import map (старый Safari) 3D не грузим вовсе — сразу обычная страница
+    if (!(window.HTMLScriptElement && HTMLScriptElement.supports && HTMLScriptElement.supports("importmap"))) document.documentElement.classList.add("no3d");
+  </script>
+  <script type="module" src="scene.js" onerror="document.documentElement.classList.add('no3d')"></script>
+  <script>
+    // Если 3D не загрузилось за 9 секунд (нет WebGL, заблокирован CDN) — обычная страница
+    setTimeout(function () { if (!window.__scene3d) document.documentElement.classList.add("no3d"); }, 9000);
+  </script>
+</body>
+</html>

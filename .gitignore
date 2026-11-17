@@ -1,1 +1,9 @@
 .DS_Store
+# design-process files (never publish)
+PRODUCT.md
+DESIGN.md
+.impeccable/
+.taste-skill/
+design-system/
+docs/
+shots/
